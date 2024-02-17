@@ -43,7 +43,7 @@ export class AuthService {
     async createAccount({ email, password, name }) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
-            // userAccount ? this.loginAccount({ email, password }) : userAccount;
+            userAccount ? this.loginAccount({ email, password }) : userAccount;
             return userAccount;
         } catch (error) {
             // console.log('creating account :: appwrite service error :: error : ', error)
@@ -70,7 +70,6 @@ export class AuthService {
             throw error;
         }
     }
-
 
 }
 
