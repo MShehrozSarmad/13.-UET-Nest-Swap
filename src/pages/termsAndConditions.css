@@ -1,0 +1,57 @@
+:root {
+    --primary-light: #66B2FF;
+    --secondary-light: #FF7F50;
+    --accent-light: #FFFFFF;
+    --background-light: #F5F5F5;
+    --text-light: #000000;
+
+    --primary-dark: #26628A;
+    --secondary-dark: #C66038;
+    --accent-dark: #FFFFFF;
+    --background-dark: #303030;
+    --text-dark: #FFFFFF;
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+h1,
+h2 {
+    color: var(--primary-light);
+}
+
+p {
+    color: var(--secondary-light);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--background-dark);
+        color: var(--text-dark);
+    }
+
+    h1,
+    h2 {
+        color: var(--primary-dark);
+    }
+
+    p {
+        color: var(--secondary-dark);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
