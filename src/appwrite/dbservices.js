@@ -12,7 +12,7 @@ export class DbService {
         this.bucket = new Storage(this.client);
     }
 
-    async createPostDorm({ title, slug, content, featuredImg, status, userId, author }) {
+    async createPostDorm({ slug, title, userId, status, author, date, price, condition, description, image1, image2, image3, phone }) {
         try {
             slug = slug.substring(0, 36).replace(/[^a-zA-Z0-9._-]/g, '');
             if (!/^[a-zA-Z0-9]/.test(slug)) {
@@ -24,12 +24,7 @@ export class DbService {
                 config.appwriteCollectionIdDorms,
                 slug,
                 {
-                    title,
-                    content,
-                    featuredImg: featuredImg,
-                    status,
-                    userId,
-                    author
+                    title, userId, status, author, date, price, condition, description, image1, image2, image3, phone
                 }
             )
         } catch (error) {
@@ -214,7 +209,7 @@ export class DbService {
         }
     }
 
-    async getPostsDorms(queries = [Query.equal('status', 'active')]) {
+    async getPostsDorms(queries = [Query.equal('status', true)]) {
         try {
             return await this.databases.listDocuments(
                 config.appwriteDatabaseId,
