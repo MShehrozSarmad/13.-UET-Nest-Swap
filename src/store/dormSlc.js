@@ -4,7 +4,7 @@ const dormSlc = createSlice({
     name : 'dormSlc',
     initialState : [],
     reducers : {
-        setdorms : (action) => {
+        setdorms : (state, action) => {
             return action.payload;
         },
         clrdorms : () => {

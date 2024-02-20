@@ -27,12 +27,12 @@ const SignUp = () => {
 			console.log('catch it => ', err.response.message)
 			seterror(err.response.message)
 		}
-		try {
-			const verRes = await authService.createVerification();
-			console.log(verRes)
-		} catch (error) {
-			console.log('error =>', {error})			
-		}
+		// try {
+		// 	const verRes = await authService.createVerification();
+		// 	console.log(verRes)
+		// } catch (error) {
+		// 	console.log('error =>', {error})			
+		// }
 	};
 
 	return (
@@ -74,6 +74,15 @@ const SignUp = () => {
 				<Button type="submit" children="Sign Up" />
 				{error && <p>{error}</p>}
 			</form>
+
+			<button onClick={ async () => {
+						try {
+							const verRes = await authService.createVerification();
+							console.log(verRes)
+						} catch (error) {
+							console.log('error =>', {error})			
+						}
+			} } >Verify Account</button>
 		</div>
 	);
 };
