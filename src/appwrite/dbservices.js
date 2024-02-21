@@ -209,12 +209,24 @@ export class DbService {
         }
     }
 
-    async getPostsDorms(queries = [Query.equal('status', true)]) {
+    // async getPostsDorms(queries = [Query.equal('status', 'available')]) {
+    //     try {
+    //         return await this.databases.listDocuments(
+    //             config.appwriteDatabaseId,
+    //             config.appwriteCollectionIdDorms,
+    //             queries
+    //         )
+    //     } catch (error) {
+    //         console.log('get posts :: appwrite service :: error : ', error);
+    //         return false;
+
+    //     }
+    // }
+    async getPostsDorms() {
         try {
             return await this.databases.listDocuments(
                 config.appwriteDatabaseId,
-                config.appwriteCollectionIdDorms,
-                queries
+                config.appwriteCollectionIdDorms
             )
         } catch (error) {
             console.log('get posts :: appwrite service :: error : ', error);

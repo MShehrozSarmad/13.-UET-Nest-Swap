@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import dbService from "./appwrite/dbservices";
 import { setdorms } from "./store/dormSlc";
+import authService from "./appwrite/authservices";
+import { login } from "./store/authSlc";
 
 const App = () => {
 	const navigate = useNavigate();
@@ -19,6 +21,16 @@ const App = () => {
 				});
 			} catch (error) {
 				console.log("error", error);
+			}
+		}
+		async function getuserData(){
+			try {
+				const userData = await authService.getCurrentUser();
+				console.log(userData);
+				// useSelector()
+				userData ? dispatch(login(userData)) : null
+			} catch (error) {
+				console.log(error)
 			}
 		}
 		// async function getRentals() {
@@ -40,6 +52,7 @@ const App = () => {
 		// 	}
 		// }
 		getDorms();
+		getuserData();
 		// getRentals();
 		// getServices();
 	}, []);

@@ -1,7 +1,4 @@
 import "./termsAndConditions.css";
-
-console.log("running 1st");
-
 const TermsAndConditions = () => {
     console.log("running");
 	return (

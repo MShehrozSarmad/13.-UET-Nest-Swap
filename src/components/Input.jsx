@@ -10,7 +10,7 @@ const Input = React.forwardRef(function Input(
 			{label && <label htmlFor={id}>{label}</label>}
 			<input
 				type={type}
-				className={` border-solid ${className} `}
+				className={` border-solid text-slate-950 ${className} `}
 				id={id}
 				ref={ref}
 				{...props}

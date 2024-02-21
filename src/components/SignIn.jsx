@@ -4,10 +4,14 @@ import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import authService from "../appwrite/authservices";
+import { useDispatch, useSelector } from "react-redux";
+import { login as storeLogin } from "../store/authSlc";
 
 const SignIn = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const [error, seterror] = useState("");
+	const [udata, setUdata] = useState(null);
 	const {
 		register,
 		handleSubmit,
@@ -22,13 +26,18 @@ const SignIn = () => {
 			if(session){
 				const userData = await authService.getCurrentUser();
 				console.log('user data => ', userData);
+				setUdata(userData)
+				// userData ? dispatch(storeLogin(userData)) : null;
 			}
 		} catch (err) {
 			console.log(err.message)
 			seterror(err.message)
 		}
 	};
-
+	// console.log(udata)
+	// const data = useSelector(state => state.authslc.userData);
+	// console.log(data);
+	
 	return (
 		<div>
 			<form onSubmit={handleSubmit(login)}>
