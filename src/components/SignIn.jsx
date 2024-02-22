@@ -36,7 +36,7 @@ const SignIn = () => {
 	};
 	// console.log(udata)
 	// const data = useSelector(state => state.authslc.userData);
-	// console.log(data);
+	// console.log(data);	
 	
 	return (
 		<div>

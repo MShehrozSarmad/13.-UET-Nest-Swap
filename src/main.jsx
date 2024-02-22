@@ -23,6 +23,7 @@ import Aboutus from './pages/Aboutus.jsx';
 import Contactus from './pages/Contactus.jsx';
 import TermsAndConditions from './pages/TermsAndConditions.jsx';
 import Verify from './pages/Verify.jsx';
+import EditDorm from "./pages/EditDorm.jsx";
 
 
 
@@ -74,6 +75,10 @@ const route = createBrowserRouter([
 			{
 				path: "/dormform",
 				element: <DormForm />,
+			},
+			{
+				path: "/editdorm/:slug",
+				element: <EditDorm />,
 			},
 			{
 				path: "/rentalform",

@@ -80,17 +80,18 @@ export class DbService {
         }
     }
 
-    async updatePostDorm(slug, { title, content, featuredImg, status }) {
+    async updatePostDorm(slug, { date, price, phone, status, description }) {
         try {
             return await this.databases.updateDocument(
                 config.appwriteDatabaseId,
                 config.appwriteCollectionIdDorms,
                 slug,
                 {
-                    title,
-                    content,
-                    featuredImg,
-                    status
+                    date,
+                    price,
+                    phone,
+                    status,
+                    description
                 }
             )
         } catch (error) {

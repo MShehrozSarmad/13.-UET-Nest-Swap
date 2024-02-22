@@ -27,8 +27,7 @@ const App = () => {
 			try {
 				const userData = await authService.getCurrentUser();
 				console.log(userData);
-				// useSelector()
-				userData ? dispatch(login(userData)) : null
+				userData ? dispatch(login(userData)) : null;
 			} catch (error) {
 				console.log(error)
 			}
