@@ -29,8 +29,7 @@ const Dormform = ({ post }) => {
 			phone: post?.phone || "",
 			description: post?.description || "",
 			status: post?.status || "available",
-			condition: post?.condition || 6,
-			description: post?.description || "",
+			condition: post?.condition || 6
 		},
 	});
 

@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="flex items-center">
                     <img src="logo.png" alt="Logo" className="w-8 h-8 mr-2" />
                     <span className="font-bold">Logo</span>
-                    <span className="mr-4">© 2022 Company Name</span>
+                    <span className="mr-4">© <a href="https://wa.me/923424295275" target='_blank'>Muhammad Shehroz Sarmad</a> </span>
                 </div>
                 <div className="flex flex-wrap items-center">
                     <Link to="#" className="mr-4">About Us</Link>

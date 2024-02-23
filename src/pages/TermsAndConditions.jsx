@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./termsAndConditions.css";
 const TermsAndConditions = () => {
     console.log("running");
@@ -85,14 +86,14 @@ const TermsAndConditions = () => {
 			<h2>10. Governing Law</h2>
 			<p>
 				These Terms shall be governed by and construed in accordance
-				with the laws of Pakistan.
+				with the <a href='https://pakistancode.gov.pk/english/index.php' className=" text-blue-500" target="_blank">laws of Pakistan</a>.
 			</p>
 			<h2>11. Dispute Resolution</h2>
 			<p>
 				Any dispute arising out of or in connection with these Terms
 				shall be settled by arbitration in accordance with the
 				Arbitration Act, 2010 of Pakistan. The arbitration shall be
-				conducted in Taxila, Pakistan.
+				conducted in UET Taxila, Pakistan.
 			</p>
 			<h2>12. Entire Agreement</h2>
 			<p>
@@ -114,13 +115,7 @@ const TermsAndConditions = () => {
 			<h2>15. Contact Us</h2>
 			<p>
 				If you have any questions about these Terms, please contact us
-				at [insert your email address].
-			</p>
-			<p>
-				Please note: This is a sample template and you may need to
-				modify it to fit your specific needs. You should consult with an
-				attorney to ensure that the Terms are legally sound and comply
-				with all applicable laws.
+				at <a href="mailto:shehrozm107@gmail.com" className=" text-blue-500">shehrozm107@gmail.com</a>.
 			</p>
 		</div>
 	);

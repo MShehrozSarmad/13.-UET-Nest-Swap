@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import authService from "../appwrite/authservices";
@@ -27,16 +27,12 @@ const SignIn = () => {
 				const userData = await authService.getCurrentUser();
 				console.log('user data => ', userData);
 				setUdata(userData)
-				// userData ? dispatch(storeLogin(userData)) : null;
 			}
 		} catch (err) {
 			console.log(err.message)
 			seterror(err.message)
 		}
-	};
-	// console.log(udata)
-	// const data = useSelector(state => state.authslc.userData);
-	// console.log(data);	
+	};	
 	
 	return (
 		<div>
@@ -48,15 +44,14 @@ const SignIn = () => {
 					className=" text-slate-950 "
 					{...register("email", {
 						required: true,
-						// validate: {
-						// 	matchPattern: (value) =>
-						// 		/\.uettaxila\.edu\.pk$/.test(value) ||
-						// 		"Only in campus deals allowed, Use UET assigned email",
-						// },
+						validate: {
+							matchPattern: (value) =>
+								/\.uettaxila\.edu\.pk$/.test(value) ||
+								"Only in campus deals allowed, Use UET assigned email",
+						},
 					})}
 				/>
-				{/* Render the error message */}
-				{errors.email && <p>{errors.email.message}</p>}
+				{errors.email && <p className=" text-red-600">{errors.email.message}</p>}
 				<Input
 					type="password"
 					label="Password"
@@ -66,8 +61,9 @@ const SignIn = () => {
 						required: true,
 					})}
 				/>
+				<p>By signing in, you agree to our <Link to={'/terms'} target="_blank" className=" text-blue-500">Terms & Conditions</Link> </p>
 				<Button type="submit" children="Sign In" />
-				{error && <p>{error}</p>}
+				{error && <p className=" text-red-600">{error}</p>}
 			</form>
 		</div>
 	);

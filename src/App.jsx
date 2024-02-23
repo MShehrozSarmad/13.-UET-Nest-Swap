@@ -26,7 +26,6 @@ const App = () => {
 		async function getuserData(){
 			try {
 				const userData = await authService.getCurrentUser();
-				console.log(userData);
 				userData ? dispatch(login(userData)) : null;
 			} catch (error) {
 				console.log(error)

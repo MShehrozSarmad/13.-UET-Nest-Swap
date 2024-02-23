@@ -75,6 +75,8 @@ const SignUp = () => {
 				{error && <p>{error}</p>}
 			</form>
 
+			
+
 			<button onClick={ async () => {
 						try {
 							const verRes = await authService.createVerification();
