@@ -4,22 +4,22 @@ import { useNavigate } from 'react-router-dom';
 // import { clearPosts } from '../store/postSlice';
 
 
-export default function Prtctd({ children, authentication = true }) {
+export default function AuthLayout({ children, authentication = true }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(true);
-  const authStatus = useSelector((state) => state.auth.status);
+  const authStatus = useSelector(state => state.authslc.status);
 
   useEffect(() => {
     if (authentication && authentication !== authStatus) {
       navigate('/signin');
     //   dispatch(clearPosts()); // clear posts when authStatus changes
     } else if (!authentication && authentication !== authStatus) {
-      navigate('/');
+      // navigate('/');
     //   dispatch(clearPosts()); // clear posts when authStatus changes
     }
     setLoader(false);
-  }, [navigate, authentication, authStatus, dispatch]); // add dispatch to the dependency array
+  }, [navigate, authentication, authStatus, dispatch]); 
 
   return loader ? <h1>Loading...</h1> : <>{children}</>;
 }

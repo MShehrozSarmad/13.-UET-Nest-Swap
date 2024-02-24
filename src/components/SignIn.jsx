@@ -27,6 +27,8 @@ const SignIn = () => {
 				const userData = await authService.getCurrentUser();
 				console.log('user data => ', userData);
 				setUdata(userData)
+				dispatch(storeLogin(userData))
+				navigate('/')
 			}
 		} catch (err) {
 			console.log(err.message)

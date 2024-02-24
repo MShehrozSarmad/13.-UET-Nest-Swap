@@ -24,7 +24,7 @@ import Contactus from './pages/Contactus.jsx';
 import TermsAndConditions from './pages/TermsAndConditions.jsx';
 import Verify from './pages/Verify.jsx';
 import EditDorm from "./pages/EditDorm.jsx";
-
+import AuthLayout from "./components/AuthLayout.jsx";
 
 
 const route = createBrowserRouter([
@@ -38,15 +38,27 @@ const route = createBrowserRouter([
 			},
 			{
 				path: "/signin",
-				element: <Signin />,
+				element: (
+					<AuthLayout authentication={false}>
+						<Signin />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/signup",
-				element: <Signup />,
+				element: (
+					<AuthLayout authentication={false}>
+						<Signup />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/userprofile",
-				element: <UserProfile />,
+				element: (
+					<AuthLayout authentication={true}>
+						<UserProfile />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/dormdeals",
@@ -80,6 +92,14 @@ const route = createBrowserRouter([
 				path: "/editdorm/:slug",
 				element: <EditDorm />,
 			},
+			// {
+			// 	path: "/editdorm/:slug",
+			// 	element: <EditService />,
+			// },
+			// {
+			// 	path: "/editdorm/:slug",
+			// 	element: <EditRental />,
+			// },
 			{
 				path: "/rentalform",
 				element: <RentalForm />,

@@ -56,7 +56,7 @@ const Dormform = ({ post }) => {
 
 		if (post) {
 			try {
-				const postUpdate = await dbService.updatePostDorm(post.$id, { ...data, date: getDate() }).then(console.log("posted"));
+				const postUpdate = await dbService.updatePostDorm(post.$id, { ...data, date: getDate() }).then(navigate(`/dormdeal/${post.$id}`));
 			} catch (error) {
 				console.log(error);
 			}
@@ -82,7 +82,7 @@ const Dormform = ({ post }) => {
 						date: getDate(),
 					});
 
-					dbPost ? console.log("posted successfully", dbPost) : null;
+					dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
 				}
@@ -100,7 +100,6 @@ const Dormform = ({ post }) => {
 				value
 					.trim()
 					.toLowerCase()
-					// .replace(/^[a-zA-Z\d\s]+/g, "-")
 					.replace(/\s/g, "-")
 			);
 		return "";

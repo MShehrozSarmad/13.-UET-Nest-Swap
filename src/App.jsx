@@ -53,7 +53,7 @@ const App = () => {
 		getuserData();
 		// getRentals();
 		// getServices();
-	}, []);
+	}, [navigate, location]);
 
 	return (
 		<>

@@ -10,19 +10,19 @@ const DormDeal = () => {
 	const [loading, setLoading] = useState(true);
 	const { slug } = useParams();
 	const navigate = useNavigate();
+	const [response, setresponse] = useState('loading...');
 
 	const userData = useSelector((state) => state.authslc.userData);
-
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
-
 	const allPosts = useSelector((state) => state.dormslc);
 
 	useEffect(() => {
 		if (slug) {
 			const myDeal = allPosts.filter((item) => item.$id == slug)[0];
-			myDeal ? setDeal(myDeal) : console.log("post not found");
+			myDeal ? setDeal(myDeal) : setresponse('Post not found');
 		} else {
-			console.log("slug not found");
+			console.log("Post not found");
+			setresponse('Post not found');
 		}
 		console.log("deal", deal);
 	}, [navigate, slug, allPosts, deal]);
@@ -41,13 +41,14 @@ const DormDeal = () => {
 					.then(dbService.delFile(deal.image2))
 					.then(dbService.delFile(deal.image3))
 					.then(console.log("deleted images"));
-				navigate("/");
+				navigate("/dormdeals");
 			}
 		});
 	};
 
 	return loading ? (
-		<div>loading...</div>
+		// <div>loading...</div>
+		<div>{response}</div>
 	) : (
 		<>
 			<div>
@@ -109,9 +110,13 @@ const DormDeal = () => {
 				</div>
 			</div>
 			<p className=" border-red-900 rounded-md w-fit px-3 py-1 bg-slate-500 text-red-600">
-				<Link target="_blank" to={`https://wa.me/923424295275?text=i%20am%20interested%20in%20this%20deal%20https://localhost:5173/dormdeal/${deal.$id}%20and%20i%20offer%20you%20${deal.price}PKR`}>Make an Offer</Link>
+				<Link
+					target="_blank"
+					to={`https://wa.me/923424295275?text=i%20am%20interested%20in%20this%20deal%20https://localhost:5173/dormdeal/${deal.$id}%20and%20i%20offer%20you%20${deal.price}PKR`}
+				>
+					Make an Offer
+				</Link>
 			</p>
-
 		</>
 	);
 };
