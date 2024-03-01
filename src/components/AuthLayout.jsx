@@ -1,25 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-// import { clearPosts } from '../store/postSlice';
-
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthLayout({ children, authentication = true }) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [loader, setLoader] = useState(true);
-  const authStatus = useSelector(state => state.authslc.status);
+	const navigate = useNavigate();
+	const authStatus = useSelector((state) => state.authslc.status);
+	const [authStts, setAuthStts] = useState(null);
+	const [loader, setLoader] = useState(true);
+	const [response, setresponse] = useState("loading...");
 
-  useEffect(() => {
-    if (authentication && authentication !== authStatus) {
-      navigate('/signin');
-    //   dispatch(clearPosts()); // clear posts when authStatus changes
-    } else if (!authentication && authentication !== authStatus) {
-      // navigate('/');
-    //   dispatch(clearPosts()); // clear posts when authStatus changes
-    }
-    setLoader(false);
-  }, [navigate, authentication, authStatus, dispatch]); 
+	useEffect(() => {
+		setAuthStts(authStatus);
+	}, [authStatus]);
 
-  return loader ? <h1>Loading...</h1> : <>{children}</>;
+	useEffect(() => {
+		setLoader(authentication && !authStts);
+		if (authentication) {
+			authStts ? null : setresponse("SignIn to Continue !");
+		} else if (authStts) {
+			navigate("/");
+		}
+	}, [authentication, authStatus, authStts, navigate]);
+
+	return loader ? <h1>{response}</h1> : <>{children}</>;
 }

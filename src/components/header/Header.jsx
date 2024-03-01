@@ -43,7 +43,6 @@ const Header = () => {
 	};
 
 
-
 	return (
 		<header className="py-3 shadow bg-gray-900 text-white">
 			<div div className="header bg-gray-800 text-white">

@@ -34,7 +34,7 @@ const Dormform = ({ post }) => {
 	});
 
 	const userData = useSelector((state) => state.authslc.userData);
-	console.log(userData);
+	// console.log(userData);
 
 	const getcurrent = async () => {
 		const data = await authService.getCurrentUser();
@@ -82,7 +82,7 @@ const Dormform = ({ post }) => {
 						date: getDate(),
 					});
 
-					dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
+					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
 				}
@@ -122,7 +122,7 @@ const Dormform = ({ post }) => {
 
 	return (
 		<div>
-			<h2>All Fields are Required</h2>
+			<h2 className='text-red-600'>All Fields are Required</h2>
 			<form onSubmit={handleSubmit(submit)}>
 				<Input
 					label="Title :"

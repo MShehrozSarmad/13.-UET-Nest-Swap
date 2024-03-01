@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/footer/Footer";
@@ -12,20 +12,23 @@ import { login } from "./store/authSlc";
 const App = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const [loading, setLoading] = useState(true)
+	const [loading2, setLoading2] = useState(true)
+
 
 	useEffect(() => {
 		async function getDorms() {
 			try {
 				await dbService.getPostsDorms().then((deals) => {
-					deals ? dispatch(setdorms(deals.documents)) : null;
-				});
+					deals ? dispatch(setdorms(deals.documents)) : console.log('failed to set');
+				}).then(setLoading(false));
 			} catch (error) {
 				console.log("error", error);
 			}
 		}
 		async function getuserData(){
 			try {
-				const userData = await authService.getCurrentUser();
+				const userData = await authService.getCurrentUser().then(setLoading2(false));
 				userData ? dispatch(login(userData)) : null;
 			} catch (error) {
 				console.log(error)
@@ -55,7 +58,7 @@ const App = () => {
 		// getServices();
 	}, [navigate, location]);
 
-	return (
+	return (loading && loading2) ? (<p>loading...</p>) : (
 		<>
 			<Header />
 			<Outlet />

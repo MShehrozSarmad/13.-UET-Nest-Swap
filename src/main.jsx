@@ -55,7 +55,7 @@ const route = createBrowserRouter([
 			{
 				path: "/userprofile",
 				element: (
-					<AuthLayout authentication={true}>
+					<AuthLayout authentication>
 						<UserProfile />
 					</AuthLayout>
 				),
@@ -86,7 +86,11 @@ const route = createBrowserRouter([
 			},
 			{
 				path: "/dormform",
-				element: <DormForm />,
+				element: (
+					<AuthLayout authentication>
+						<DormForm />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/editdorm/:slug",
