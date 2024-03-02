@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
 	const [usrData, setUsrData] = useState(null);
@@ -33,9 +34,9 @@ const UserProfile = () => {
 					<p>{usrData.name}</p>
 					<p>{usrData.email}</p>
 					<p>
-						{usrData.emailVerification && (
-							<span>Verified User</span>
-						)}
+						{usrData.emailVerification ? (
+							<span className=" text-green-600">Verified User</span>
+						) : (<span className=" text-red-600"> <Link to='/verify'>User Not Verified</Link> </span>)}
 					</p>
 				</div>
 			) : null}

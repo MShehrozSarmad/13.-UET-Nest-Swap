@@ -25,7 +25,7 @@ import TermsAndConditions from './pages/TermsAndConditions.jsx';
 import Verify from './pages/Verify.jsx';
 import EditDorm from "./pages/EditDorm.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
-
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 
 const route = createBrowserRouter([
 	{
@@ -131,6 +131,10 @@ const route = createBrowserRouter([
 			{
 				path: "/terms",
 				element: <TermsAndConditions />,
+			},
+			{
+				path: "/privacy",
+				element: <PrivacyPolicy />,
 			},
 		],
 	},

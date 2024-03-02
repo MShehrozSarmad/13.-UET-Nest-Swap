@@ -35,6 +35,7 @@ export class AuthService {
             console.log(this.account)
             const link = await this.account.createVerification('http://localhost:5173/verify');
             console.log('email sent', link)
+            return link;
         } catch (error) {
             throw error
         }

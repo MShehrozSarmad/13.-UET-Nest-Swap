@@ -4,49 +4,55 @@ import { useNavigate } from "react-router-dom";
 import Input from "./Input";
 import Button from "./Button";
 import authService from "../appwrite/authservices";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login as rdxLogin } from "../store/authSlc";
 
 const SignUp = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const [error, seterror] = useState("");
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }, 
+		formState: { errors },
 	} = useForm();
+
+	const setUsrData = (resp) => {
+		try {
+			dispatch(rdxLogin(resp));
+		} catch (error) {
+			console.log('dipatch error', {error})
+		}
+	}
 
 	const signup = async (data) => {
 		seterror("");
 		try {
 			const response = await authService.createAccount(data);
-			console.log('response => ', response);
-			if(response){
-				// const userData = await authService.getCurrentUser();
-				// console.log('user data => ', userData);
+			console.log("response => ", response);
+			if (response) {
+				setUsrData(response);
+				navigate("/verify");
 			}
 		} catch (err) {
-			console.log('catch it => ', err.response.message)
-			seterror(err.response.message)
+			console.log("catch it => ", err.response.message);
+			seterror(err.response.message);
 		}
-		// try {
-		// 	const verRes = await authService.createVerification();
-		// 	console.log(verRes)
-		// } catch (error) {
-		// 	console.log('error =>', {error})			
-		// }
 	};
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit(signup)}>
-                <Input
-                    type="text"
-                    label="Name"
-                    placeholder="Enter your Full name"
-                    className=" text-slate-950 "
-                    {...register("name", {
-                        required: true,
-                    })}
-                />
+				<Input
+					type="text"
+					label="Name"
+					placeholder="Enter your Full name"
+					className=" text-slate-950 "
+					{...register("name", {
+						required: true,
+					})}
+				/>
 				<Input
 					type="email"
 					label="Email"
@@ -61,7 +67,9 @@ const SignUp = () => {
 						},
 					})}
 				/>
-				{errors.email && <p>{errors.email.message}</p>}
+				{errors.email && (
+					<p className=" text-red-600">{errors.email.message}</p>
+				)}
 				<Input
 					type="password"
 					label="Password"
@@ -71,20 +79,21 @@ const SignUp = () => {
 						required: true,
 					})}
 				/>
+
+				<p>
+					By signing in, you agree to our{" "}
+					<Link
+						to={"/terms"}
+						target="_blank"
+						className=" text-blue-500"
+					>
+						Terms & Conditions
+					</Link>{" "}
+				</p>
+
 				<Button type="submit" children="Sign Up" />
-				{error && <p>{error}</p>}
+				{error && <p className=" text-red-600">{error}</p>}
 			</form>
-
-			
-
-			<button onClick={ async () => {
-						try {
-							const verRes = await authService.createVerification();
-							console.log(verRes)
-						} catch (error) {
-							console.log('error =>', {error})			
-						}
-			} } >Verify Account</button>
 		</div>
 	);
 };

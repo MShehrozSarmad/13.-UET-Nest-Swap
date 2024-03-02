@@ -8,15 +8,35 @@ export default function AuthLayout({ children, authentication = true }) {
 	const [authStts, setAuthStts] = useState(null);
 	const [loader, setLoader] = useState(true);
 	const [response, setresponse] = useState("loading...");
+	const usrData = useSelector(state => state.authslc.userData);
+	const [userData, setUserData] = useState(null);
+
+
 
 	useEffect(() => {
 		setAuthStts(authStatus);
 	}, [authStatus]);
 
 	useEffect(() => {
+		setUserData(usrData);
+	}, [usrData]);
+
+	useEffect(() => {
+		// setLoader(authentication && !authStts);
+		// if (authentication) {
+		// 	authStts ? null : setresponse("SignIn to Continue !");
+		// } else if (authStts) {
+		// 	navigate("/");
+		// }
 		setLoader(authentication && !authStts);
 		if (authentication) {
-			authStts ? null : setresponse("SignIn to Continue !");
+			if (authStts) {
+				if (userData && !userData.emailVerification) {
+					navigate("/verify");
+				}
+			} else {
+				setresponse("SignIn to Continue !");
+			}
 		} else if (authStts) {
 			navigate("/");
 		}
