@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input";
@@ -6,6 +6,7 @@ import Button from "./Button";
 import authService from "../appwrite/authservices";
 import { useDispatch, useSelector } from "react-redux";
 import { login as storeLogin } from "../store/authSlc";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
 	const navigate = useNavigate();
@@ -22,20 +23,28 @@ const SignIn = () => {
 		seterror("");
 		try {
 			const session = await authService.loginAccount(data);
-			console.log('session => ', session);
-			if(session){
+			console.log("session => ", session);
+			if (session) {
 				const userData = await authService.getCurrentUser();
-				console.log('user data => ', userData);
-				setUdata(userData)
-				dispatch(storeLogin(userData))
-				navigate('/')
+				console.log("user data => ", userData);
+				setUdata(userData);
+				dispatch(storeLogin(userData));
+				navigate("/");
 			}
 		} catch (err) {
-			console.log(err.message)
-			seterror(err.message)
+			console.log(err.message);
+			seterror(err.message);
 		}
-	};	
+	};
+
+	useEffect(() => {
+		errors.email ? toast.warn(errors.email.message, {autoClose: 5000}) : console.log('nothing happened email') 
+	}, [errors]);
 	
+	useEffect(() => {
+		error ? toast.error(error, {autoClose: 5000}) : console.log('nothing happened error') 
+	}, [error]);
+
 	return (
 		<div>
 			<form onSubmit={handleSubmit(login)}>
@@ -46,14 +55,16 @@ const SignIn = () => {
 					className=" text-slate-950 "
 					{...register("email", {
 						required: true,
-						validate: {
-							matchPattern: (value) =>
-								/\.uettaxila\.edu\.pk$/.test(value) ||
-								"Only in campus deals allowed, Use UET assigned email",
-						},
+						// validate: {
+						// 	matchPattern: (value) =>
+						// 		/\.uettaxila\.edu\.pk$/.test(value) ||
+						// 		"Only in campus deals allowed, Use UET assigned email",
+						// },
 					})}
 				/>
-				{errors.email && <p className=" text-red-600">{errors.email.message}</p>}
+				{/* {errors.email && (
+					<p className=" text-red-600">{errors.email.message}</p>
+				)} */}
 				<Input
 					type="password"
 					label="Password"
@@ -63,9 +74,18 @@ const SignIn = () => {
 						required: true,
 					})}
 				/>
-				<p>By signing in, you agree to our <Link to={'/terms'} target="_blank" className=" text-blue-500">Terms & Conditions</Link> </p>
+				<p>
+					By signing in, you agree to our{" "}
+					<Link
+						to={"/terms"}
+						target="_blank"
+						className=" text-blue-500"
+					>
+						Terms & Conditions
+					</Link>{" "}
+				</p>
 				<Button type="submit" children="Sign In" />
-				{error && <p className=" text-red-600">{error}</p>}
+				{/* {error && <p className=" text-red-600">{error}</p>} */}
 			</form>
 		</div>
 	);

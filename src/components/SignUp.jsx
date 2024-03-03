@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Input from "./Input";
@@ -7,6 +7,7 @@ import authService from "../appwrite/authservices";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login as rdxLogin } from "../store/authSlc";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
 	const navigate = useNavigate();
@@ -30,9 +31,10 @@ const SignUp = () => {
 		seterror("");
 		try {
 			const response = await authService.createAccount(data);
-			console.log("response => ", response);
+			// console.log("response => ", response);
 			if (response) {
 				setUsrData(response);
+				toast.success('Signed Up successfully');
 				navigate("/verify");
 			}
 		} catch (err) {
@@ -40,6 +42,14 @@ const SignUp = () => {
 			seterror(err.response.message);
 		}
 	};
+
+	useEffect(() => {
+		errors.email ? toast.warn(errors.email.message, {autoClose: 5000}) : console.log('nothing happened email') 
+	}, [errors]);
+	
+	useEffect(() => {
+		error ? toast.error(error, {autoClose: 5000}) : console.log('nothing happened error') 
+	}, [error]);
 
 	return (
 		<div>
@@ -60,16 +70,16 @@ const SignUp = () => {
 					className=" text-slate-950 "
 					{...register("email", {
 						required: true,
-						validate: {
-							matchPattern: (value) =>
-								/\.uettaxila\.edu\.pk$/.test(value) ||
-								"Only in campus deals allowed, Use UET assigned email",
-						},
+						// validate: {
+						// 	matchPattern: (value) =>
+						// 		/\.uettaxila\.edu\.pk$/.test(value) ||
+						// 		"Only in campus deals allowed, Use UET assigned email",
+						// },
 					})}
 				/>
-				{errors.email && (
+				{/* {errors.email && (
 					<p className=" text-red-600">{errors.email.message}</p>
-				)}
+				)} */}
 				<Input
 					type="password"
 					label="Password"
@@ -92,7 +102,7 @@ const SignUp = () => {
 				</p>
 
 				<Button type="submit" children="Sign Up" />
-				{error && <p className=" text-red-600">{error}</p>}
+				{/* {error && <p className=" text-red-600">{error}</p>} */}
 			</form>
 		</div>
 	);

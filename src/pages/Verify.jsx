@@ -4,22 +4,21 @@ import authService from "../appwrite/authservices";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login as rdxlogin } from "../store/authSlc";
-
-// todo : upon successful verification redirect user to user profile page ...
+import { toast } from "react-toastify";
 
 const Verify = () => {
 	const [usrData, setusrData] = useState(null);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [params] = useSearchParams();
+	console.log(params);
 	const secret = params.get("secret");
 	const id = params.get("userId");
-	console.log(secret);
+	// console.log(secret);
 
 	const userData = async () => {
 		try {
 			const userData = await authService.getCurrentUser();
-			console.log("user data => ", userData);
 			setusrData(userData);
 		} catch (error) {
 			console.log("error =>", { error });
@@ -31,32 +30,32 @@ const Verify = () => {
 	}, []);
 
 	useEffect(() => {
-		if (usrData) {
+		if (usrData && usrData.emailVerification) {
 			console.log("useeffect user data ", usrData);
+			// toast.success("Acoount Verified", { autoClose: 3000 });
 			dispatch(rdxlogin(usrData));
 			navigate("/userprofile");
 		}
 	}, [usrData]);
-
+	
 	useEffect(() => {
+		console.log(params);
 		if (params.size > 0) {
-			console.log(params);
 			verifyAccnt();
 		}
 	}, [params]);
-
+	
 	const verifyAccnt = async () => {
 		try {
 			const res = await authService.verifyAccount(id, secret);
-			console.log("res => ", res);
-
-			// navigate("/userprofile");
+			// console.log("res => ", res);
+			toast.success("Acoount Verified", { autoClose: 3000 });
+			navigate("/userprofile");
 		} catch (error) {
-			console.log("error => ", error);
+			console.log("error => ", {error});
+			toast.error(error.response.message);
 		}
 	};
-
-	// verifyAccnt();
 
 	return (
 		<>
@@ -65,9 +64,10 @@ const Verify = () => {
 				onClick={async () => {
 					try {
 						const verRes = await authService.createVerification();
-						console.log(verRes);
 						if (verRes) {
-							alert("email sent");
+							toast.success("Email Sent, Check Your Inbox", {
+								autoClose: 5000,
+							});
 						}
 					} catch (error) {
 						console.log("error =>", { error });
