@@ -31,8 +31,8 @@ const UserProfile = () => {
 			<div>UserProfile ---------------------</div>
 			{usrData ? (
 				<div>
-					<p>{usrData.name}</p>
-					<p>{usrData.email}</p>
+					<p> Name : {usrData.name}</p>
+					<p> Email : {usrData.email}</p>
 					<p>
 						{usrData.emailVerification ? (
 							<span className=" text-green-600">Verified User</span>

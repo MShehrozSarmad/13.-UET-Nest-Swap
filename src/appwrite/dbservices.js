@@ -29,6 +29,7 @@ export class DbService {
             )
         } catch (error) {
             console.log('create post :: appwrite service :: error : ', error);
+            throw error;
         }
     }
     async createPostRental({ title, slug, content, featuredImg, status, userId, author }) {

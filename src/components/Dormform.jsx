@@ -8,6 +8,7 @@ import Select from "./Select";
 import dbService from "../appwrite/dbservices";
 import { useSelector } from "react-redux";
 import authService from "../appwrite/authservices";
+import { toast } from "react-toastify";
 
 const Dormform = ({ post }) => {
 	const navigate = useNavigate();
@@ -29,7 +30,7 @@ const Dormform = ({ post }) => {
 			phone: post?.phone || "",
 			description: post?.description || "",
 			status: post?.status || "available",
-			condition: post?.condition || 6
+			condition: post?.condition || 6,
 		},
 	});
 
@@ -54,18 +55,26 @@ const Dormform = ({ post }) => {
 		console.log("triggered");
 		console.log(data);
 
+		if (data.description.trim() === "") {
+			toast.warning("Description cant be empty!");
+			return;
+		}
+
 		if (post) {
 			try {
-				const postUpdate = await dbService.updatePostDorm(post.$id, { ...data, date: getDate() }).then(navigate(`/dormdeal/${post.$id}`));
+				const postUpdate = await dbService.updatePostDorm(post.$id, {
+					...data,
+					date: getDate(),
+				});
+				toast.success("Updated successfully");
+				navigate(`/dormdeal/${post.$id}`);
 			} catch (error) {
 				console.log(error);
+				toast.error(error.response.message);
 			}
 		} else {
-			if (data.description.trim() === "") {
-				alert("description cant be empty");
-				return;
-			}
 			try {
+				// toast.promise('Posting Deal')
 				const file1 = await dbService.uploadFile(data.image1[0]);
 				const file2 = await dbService.uploadFile(data.image2[0]);
 				const file3 = await dbService.uploadFile(data.image3[0]);
@@ -75,33 +84,37 @@ const Dormform = ({ post }) => {
 					data.image2 = file2.$id;
 					data.image3 = file3.$id;
 
-					const dbPost = await dbService.createPostDorm({
-						...data,
-						userId: userData.$id,
-						author: userData.name,
-						date: getDate(),
-					});
-
+					try {
+						const dbPost = await dbService.createPostDorm({
+							...data,
+							userId: userData.$id,
+							author: userData.name,
+							date: getDate(),
+						});
+						toast.success("Deal Posted Successfully.");
+					} catch (error) {
+						console.log({ error });
+						toast.error(
+							error.type == "document_already_exists"
+								? "Use different slug"
+								: error.response.message
+						);
+					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
+					toast.error("Failed to upload Images, Try Again");
 				}
 			} catch (error) {
-				console.log(error);
+				toast.error(error.message);
 			}
 		}
-
-		console.log("yes submitted");
+		console.log("exiting submit");
 	};
 
 	const slugTransform = useCallback((value) => {
 		if (value && typeof value === "string")
-			return (
-				value
-					.trim()
-					.toLowerCase()
-					.replace(/\s/g, "-")
-			);
+			return value.trim().toLowerCase().replace(/\s/g, "-");
 		return "";
 	}, []);
 
@@ -122,7 +135,7 @@ const Dormform = ({ post }) => {
 
 	return (
 		<div>
-			<h2 className='text-red-600'>All Fields are Required</h2>
+			<h2 className="text-red-600">All Fields are Required</h2>
 			<form onSubmit={handleSubmit(submit)}>
 				<Input
 					label="Title :"
@@ -156,7 +169,7 @@ const Dormform = ({ post }) => {
 				<Input
 					label="Whatsapp No :"
 					type="number"
-					placeholder="+923424295275"
+					placeholder="923424295275"
 					className="mb-4"
 					{...register("phone", { required: true })}
 				/>
