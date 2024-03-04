@@ -13,6 +13,7 @@ const SignIn = () => {
 	const dispatch = useDispatch();
 	const [error, seterror] = useState("");
 	const [udata, setUdata] = useState(null);
+	const [btnStat, setbtnStat] = useState(false);
 	const {
 		register,
 		handleSubmit,
@@ -20,6 +21,7 @@ const SignIn = () => {
 	} = useForm();
 
 	const login = async (data) => {
+		setbtnStat(true);
 		seterror("");
 		try {
 			const session = await authService.loginAccount(data);
@@ -29,21 +31,27 @@ const SignIn = () => {
 				console.log("user data => ", userData);
 				setUdata(userData);
 				dispatch(storeLogin(userData));
-				toast.success('Signed in successfully');
+				toast.success("Signed in successfully");
 				navigate("/");
 			}
 		} catch (err) {
 			console.log(err.message);
 			seterror(err.message);
+			setbtnStat(false);
+			// register[pass]
 		}
 	};
 
 	useEffect(() => {
-		errors.email ? toast.warn(errors.email.message, {autoClose: 10000}) : console.log('nothing happened email') 
+		errors.email
+			? toast.warn(errors.email.message, { autoClose: 10000 })
+			: console.log("nothing happened email");
 	}, [errors]);
-	
+
 	useEffect(() => {
-		error ? toast.error(error, {autoClose: 5000}) : console.log('nothing happened error') 
+		error
+			? toast.error(error, { autoClose: 5000 })
+			: console.log("nothing happened error");
 	}, [error]);
 
 	return (
@@ -60,7 +68,7 @@ const SignIn = () => {
 							matchPattern: (value) =>
 								/\.uettaxila\.edu\.pk$/.test(value) ||
 								"Only in campus deals allowed, Use UET assigned email",
-								// toast.warn("Only in campus deals allowed, Use UET assigned email" , {autoClose: 5000})
+							// toast.warn("Only in campus deals allowed, Use UET assigned email" , {autoClose: 5000})
 						},
 					})}
 				/>
@@ -86,7 +94,7 @@ const SignIn = () => {
 						Terms & Conditions
 					</Link>{" "}
 				</p>
-				<Button type="submit" children="Sign In" />
+				<Button type="submit" children="Sign In" disabled={btnStat} className={` ${ btnStat ? 'bg-blue-200' : null } `}/>
 				{/* {error && <p className=" text-red-600">{error}</p>} */}
 			</form>
 		</div>
