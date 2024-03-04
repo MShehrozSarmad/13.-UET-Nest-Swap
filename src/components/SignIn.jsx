@@ -29,6 +29,7 @@ const SignIn = () => {
 				console.log("user data => ", userData);
 				setUdata(userData);
 				dispatch(storeLogin(userData));
+				toast.success('Signed in successfully');
 				navigate("/");
 			}
 		} catch (err) {
@@ -38,7 +39,7 @@ const SignIn = () => {
 	};
 
 	useEffect(() => {
-		errors.email ? toast.warn(errors.email.message, {autoClose: 5000}) : console.log('nothing happened email') 
+		errors.email ? toast.warn(errors.email.message, {autoClose: 10000}) : console.log('nothing happened email') 
 	}, [errors]);
 	
 	useEffect(() => {
@@ -55,16 +56,17 @@ const SignIn = () => {
 					className=" text-slate-950 "
 					{...register("email", {
 						required: true,
-						// validate: {
-						// 	matchPattern: (value) =>
-						// 		/\.uettaxila\.edu\.pk$/.test(value) ||
-						// 		"Only in campus deals allowed, Use UET assigned email",
-						// },
+						validate: {
+							matchPattern: (value) =>
+								/\.uettaxila\.edu\.pk$/.test(value) ||
+								"Only in campus deals allowed, Use UET assigned email",
+								// toast.warn("Only in campus deals allowed, Use UET assigned email" , {autoClose: 5000})
+						},
 					})}
 				/>
-				{/* {errors.email && (
+				{errors.email && (
 					<p className=" text-red-600">{errors.email.message}</p>
-				)} */}
+				)}
 				<Input
 					type="password"
 					label="Password"

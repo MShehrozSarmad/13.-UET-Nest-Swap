@@ -70,11 +70,11 @@ const SignUp = () => {
 					className=" text-slate-950 "
 					{...register("email", {
 						required: true,
-						// validate: {
-						// 	matchPattern: (value) =>
-						// 		/\.uettaxila\.edu\.pk$/.test(value) ||
-						// 		"Only in campus deals allowed, Use UET assigned email",
-						// },
+						validate: {
+							matchPattern: (value) =>
+								/\.uettaxila\.edu\.pk$/.test(value) ||
+								"Only in campus deals allowed, Use UET assigned email",
+						},
 					})}
 				/>
 				{/* {errors.email && (

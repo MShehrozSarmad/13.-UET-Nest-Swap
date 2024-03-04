@@ -5,15 +5,16 @@ import Button from "../components/Button";
 import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import Carousel from "@itseasy21/react-elastic-carousel";
+import { toast } from "react-toastify";
+
 
 const DormDeal = () => {
-
 	// const breakPoints = [
-    //     { width: 1, itemsToShow: 1 },
-    //     { width: 550, itemsToShow: 2 },
-    //     { width: 768, itemsToShow: 2 },
-    //     { width: 1200, itemsToShow: 3 }
-    // ]
+	//     { width: 1, itemsToShow: 1 },
+	//     { width: 550, itemsToShow: 2 },
+	//     { width: 768, itemsToShow: 2 },
+	//     { width: 1200, itemsToShow: 3 }
+	// ]
 
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
@@ -49,6 +50,7 @@ const DormDeal = () => {
 					.then(dbService.delFile(deal.image2))
 					.then(dbService.delFile(deal.image3))
 					.then(console.log("deleted images"));
+				toast.success("Deleted successfully");
 				navigate("/dormdeals");
 			}
 		});
@@ -114,7 +116,18 @@ const DormDeal = () => {
 					<br />
 					<span>Condition: {deal.condition}/10</span>
 					<br />
-					<p>Current Status: <span className={`${deal.status == 'sold' ? 'text-red-600' : 'text-green-600' }`} >{deal.status}</span></p>
+					<p>
+						Current Status:{" "}
+						<span
+							className={`${
+								deal.status == "sold"
+									? "text-red-600"
+									: "text-green-600"
+							}`}
+						>
+							{deal.status}
+						</span>
+					</p>
 					<br />
 				</div>
 				<div className="browser-css">
@@ -122,12 +135,12 @@ const DormDeal = () => {
 					Description: {parse(deal.description)}
 				</div>
 			</div>
-			{deal.status !== 'sold' && (
+			{deal.status !== "sold" && (
 				<p className=" border-red-900 rounded-md w-fit px-3 py-1 bg-slate-500 text-red-600">
 					<Link
 						target="_blank"
 						to={`https://wa.me/923424295275?text=i%20am%20interested%20in%20this%20deal%20https://localhost:5173/dormdeal/${deal.$id}%20and%20i%20offer%20you%20${deal.price}PKR`}
-						>
+					>
 						Make an Offer
 					</Link>
 				</p>
