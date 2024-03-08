@@ -8,6 +8,8 @@ import dbService from "./appwrite/dbservices";
 import { setdorms } from "./store/dormSlc";
 import authService from "./appwrite/authservices";
 import { login } from "./store/authSlc";
+import Lottie from "lottie-react";
+import preloader from './loading.json';
 
 const App = () => {
 	const navigate = useNavigate();
@@ -58,7 +60,14 @@ const App = () => {
 		// getServices();
 	}, [navigate, location]);
 
-	return (loading && loading2) ? (<p>loading...</p>) : (
+	// return (loading && loading2) ? (<p>loading...</p>) : (
+	// 	<>
+	// 		<Header />
+	// 		<Outlet />
+	// 		<Footer />
+	// 	</>
+	// );
+	return (loading && loading2) ? (<div className=" w-5 h-5"> <Lottie animationData={preloader} loop={true} /> </div>) : (
 		<>
 			<Header />
 			<Outlet />

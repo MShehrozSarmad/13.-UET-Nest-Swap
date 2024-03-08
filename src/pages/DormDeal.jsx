@@ -6,7 +6,8 @@ import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import { toast } from "react-toastify";
-
+import Lottie from "lottie-react";
+import preloader from "../loading.json";
 
 const DormDeal = () => {
 	// const breakPoints = [
@@ -20,19 +21,20 @@ const DormDeal = () => {
 	const [loading, setLoading] = useState(true);
 	const { slug } = useParams();
 	const navigate = useNavigate();
-	const [response, setresponse] = useState("loading...");
+	const [response, setresponse] = useState("Loading...");
 
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.dormslc);
 
 	useEffect(() => {
-		if (slug) {
+		// if (slug) {
+		if (slug && allPosts.length > 0) {
 			const myDeal = allPosts.filter((item) => item.$id == slug)[0];
-			myDeal ? setDeal(myDeal) : setresponse("Post not found");
+			myDeal ? setDeal(myDeal) : setresponse("Deal not found");
 		} else {
-			console.log("Post not found");
-			setresponse("Post not found");
+			// console.log("Post not found");
+			setresponse("Loading...");
 		}
 	}, [navigate, slug, allPosts, deal]);
 
@@ -57,11 +59,23 @@ const DormDeal = () => {
 	};
 
 	return loading ? (
-		<div>{response}</div>
+		<div>
+			{
+				response == 'Loading...' ? (
+					<div className="">
+					<Lottie
+						className=" border-red-500"
+						animationData={preloader}
+						loop={true}
+					/>
+				</div>
+				) : response
+			}
+		</div>
 	) : (
 		<>
 			<div>
-				<p>dorm deal</p>
+				{/* <p>dorm deal</p> */}
 				{deal ? (
 					<Carousel>
 						<div>
@@ -89,7 +103,7 @@ const DormDeal = () => {
 				) : null}
 
 				{isAuthor && (
-					<div className="absolute right-6 top-6">
+					<div className="">
 						<Link to={`/editdorm/${deal.$id}`}>
 							<Button bgColor="bg-green-500" className="mr-3">
 								Edit
