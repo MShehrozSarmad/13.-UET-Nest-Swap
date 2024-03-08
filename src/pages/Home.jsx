@@ -66,13 +66,13 @@ const Home = () => {
 			{rntls && <Dealscontainer posts={rntls} link="/services" />}
 			{srvcs && <Dealscontainer posts={srvcs} link="/rentals" />}
 			<section className="flex flex-wrap">
-				<div className="p-2 w-1/4">
+				<div className="p-2 w-[33.3%]">
 					<Link to={"/dormform"}>Post Deal</Link>
 				</div>
-				<div className="p-2 w-1/4">
+				<div className="p-2 w-[33.3%]">
 					<Link to={"/rentalform"}>Post Rental</Link>
 				</div>
-				<div className="p-2 w-1/4">
+				<div className="p-2 w-[33.3%]">
 					<Link to={"/serviceform"}>Post Service</Link>
 				</div>
 			</section>

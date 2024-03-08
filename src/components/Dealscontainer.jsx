@@ -8,7 +8,7 @@ const Dealscontainer = ({posts, link}) => {
 			<div className="flex flex-wrap">
 				{posts ? (
 					posts.map((post) => (
-						<div key={post.$id} className="p-2 w-1/4">
+						<div key={post.$id} className="p-2 w-[30%]">
 							<DormCard {...post} />
 						</div>
 					))
