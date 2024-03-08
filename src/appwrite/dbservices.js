@@ -25,6 +25,8 @@ export class DbService {
                 slug,
                 {
                     title, userId, status, author, date, price, condition, description, image1, image2, image3, phone
+                    // vehicle (title), userId, status(available, not available), author, date, description (additional details), image1, image2, rent(Xrs per Ytime), phone (hire button)
+                    // service(title), userId, status(available, not available), author, date, description (additional details), image 
                 }
             )
         } catch (error) {
@@ -32,6 +34,7 @@ export class DbService {
             throw error;
         }
     }
+
     async createPostRental({ title, slug, content, featuredImg, status, userId, author }) {
         try {
             slug = slug.substring(0, 36).replace(/[^a-zA-Z0-9._-]/g, '');
@@ -56,6 +59,7 @@ export class DbService {
             console.log('create post :: appwrite service :: error : ', error);
         }
     }
+    
     async createPostService({ title, slug, content, featuredImg, status, userId, author }) {
         try {
             slug = slug.substring(0, 36).replace(/[^a-zA-Z0-9._-]/g, '');
