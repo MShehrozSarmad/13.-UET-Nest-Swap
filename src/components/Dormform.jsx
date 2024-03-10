@@ -133,6 +133,14 @@ const Dormform = ({ post }) => {
 		};
 	}, [watch, slugTransform, setValue]);
 
+	// const [image, setImage] = useState();
+
+	// function handleChange(e) {
+	// 	console.log('triggered change')
+	// 	console.log(e.target.files);
+	// 	setImage(URL.createObjectURL(e.target.files[0]));
+	// }
+
 	// return (
 	// 	<div>
 	// 		<h2 className="text-red-600">All Fields are Required</h2>
@@ -250,141 +258,136 @@ const Dormform = ({ post }) => {
 	// 	</div>
 	// );
 
-
-
-
-
 	return (
-		<div className="max-w-lg mx-auto">
-		  <h2 className="text-red-600 text-center text-2xl font-semibold mb-4">All Fields are Required</h2>
-		  <form onSubmit={handleSubmit(submit)} className="mt-8">
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-			  <div>
-				<Input
-				  label="Title :"
-				  placeholder="Title"
-				  className="mb-4"
-				  {...register("title", { required: true })}
-				  disabled={post}
-				/>
-				<Input
-				  label="Price :"
-				  type="number"
-				  placeholder="150"
-				  className="mb-4"
-				  {...register("price", { required: true })}
-				/>
-				<Input
-				  label="Slug :"
-				  placeholder="Slug"
-				  className="mb-4"
-				  {...register("slug", { required: true })}
-				  onInput={(e) => {
-					setValue("slug", slugTransform(e.currentTarget.value), {
-					  shouldValidate: true,
-					});
-				  }}
-				  disabled={post}
-				/>
-				<Input
-				  label="Whatsapp No :"
-				  type="number"
-				  placeholder="923424295275"
-				  className="mb-4"
-				  {...register("phone", { required: true })}
-				/>
-				<Input
-				  label="Image 1:"
-				  type="file"
-				  className="mb-4"
-				  accept="image/png, image/jpg, image/jpeg, image/gif"
-				  {...register("image1", { required: !post })}
-				  disabled={post}
-				/>
-				<Input
-				  label="Image 2:"
-				  type="file"
-				  className="mb-4"
-				  accept="image/png, image/jpg, image/jpeg, image/gif"
-				  {...register("image2", { required: !post })}
-				  disabled={post}
-				/>
-				<Input
-				  label="Image 3:"
-				  type="file"
-				  className="mb-4"
-				  accept="image/png, image/jpg, image/jpeg, image/gif"
-				  {...register("image3", { required: !post })}
-				  disabled={post}
-				/>
-			  </div>
-			  <div>
-				<Controller
-				  control={control}
-				  name="condition"
-				  rules={{ required: true }}
-				  render={({ field }) => (
-					<Select
-					  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-					  label="Condition: "
-					  className="mb-4"
-					  {...field}
-					  onChange={(e) => {
-						field.onChange(parseInt(e.target.value));
-					  }}
-					  disabled={post}
-					/>
-				  )}
-				/>
-	  
-				<Controller
-				  control={control}
-				  name="status"
-				  rules={{ required: true }}
-				  render={({ field }) => (
-					<Select
-					  options={["avialable", "sold"]}
-					  label="Status: "
-					  className="mb-4"
-					  {...field}
-					  disabled={!post}
-					/>
-				  )}
-				/>
-	  
-				<RTE
-				  label="Description :"
-				  name="description"
-				  control={control}
-				  defaultValue={getValues("description")}
-				  rules={{ required: true }}
-				/>
-				<Button
-				  type="submit"
-				  children={post ? "Update Deal" : "Post Deal"}
-				  className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
-				/>
-				{error && <p className="text-red-500">{error}</p>}
-			  </div>
-			</div>
-		  </form>
+		<div className=" max-w-5xl border-2 p-6 my-6 shadow-md mx-auto">
+			<h1 className=" text-purple-500 text-center text-2xl font-semibold m-4 ">
+				Dorm Deal Form
+			</h1>
+			<h2 className="text-red-600 text-md  mb-4">
+				* All Fields are Required
+			</h2>
+			<form onSubmit={handleSubmit(submit)} className="mt-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+					<div>
+						<Input
+							label="Title :"
+							placeholder="Title"
+							className="mb-4"
+							{...register("title", { required: true })}
+							disabled={post}
+						/>
+						<Input
+							label="Price :"
+							type="number"
+							placeholder="150"
+							className="mb-4"
+							{...register("price", { required: true })}
+						/>
+						<Input
+							label="Slug :"
+							placeholder="Slug"
+							className="mb-4"
+							{...register("slug", { required: true })}
+							onInput={(e) => {
+								setValue(
+									"slug",
+									slugTransform(e.currentTarget.value),
+									{
+										shouldValidate: true,
+									}
+								);
+							}}
+							disabled={post}
+						/>
+						<Input
+							label="Whatsapp No :"
+							type="number"
+							placeholder="923424295275"
+							className="mb-4"
+							{...register("phone", { required: true })}
+						/>
+						<Input
+							label="Image 1:"
+							type="file"
+							className="mb-4"
+							accept="image/png, image/jpg, image/jpeg, image/gif"
+							{...register("image1", { required: !post })}
+							disabled={post}
+						/>
+						{/* {
+							image && <img src={image} alt="preview" />
+						} */}
+						<Input
+							label="Image 2:"
+							type="file"
+							className="mb-4"
+							accept="image/png, image/jpg, image/jpeg, image/gif"
+							{...register("image2", { required: !post })}
+							disabled={post}
+						/>
+						<Input
+							label="Image 3:"
+							type="file"
+							className="mb-4"
+							accept="image/png, image/jpg, image/jpeg, image/gif"
+							{...register("image3", { required: !post })}
+							disabled={post}
+						/>
+					</div>
+					<div>
+						<Controller
+							control={control}
+							name="condition"
+							rules={{ required: true }}
+							render={({ field }) => (
+								<Select
+									options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+									label="Condition: "
+									className="mb-4"
+									{...field}
+									onChange={(e) => {
+										field.onChange(
+											parseInt(e.target.value)
+										);
+									}}
+									disabled={post}
+								/>
+							)}
+						/>
+
+						<Controller
+							control={control}
+							name="status"
+							rules={{ required: true }}
+							render={({ field }) => (
+								<Select
+									options={["avialable", "sold"]}
+									label="Status: "
+									className="mb-4"
+									{...field}
+									disabled={!post}
+								/>
+							)}
+						/>
+
+						<RTE
+							label="Description :"
+							name="description"
+							control={control}
+							defaultValue={getValues("description")}
+							rules={{ required: true }}
+						/>
+						<Button
+							type="submit"
+							children={post ? "Update Deal" : "Post Deal"}
+							className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+						/>
+						{error && <p className="text-red-500">{error}</p>}
+					</div>
+				</div>
+			</form>
 		</div>
-	  );
-
-
-
-
-
-
-
-	
-	  
-
-
-
-
-
-
+	);
 };
 
 export default Dormform;
