@@ -26,8 +26,11 @@ import Verify from "./pages/Verify.jsx";
 import EditDorm from "./pages/EditDorm.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import Help from "./pages/Help.jsx";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Feedback from "./pages/Feedback.jsx";
+import Complaint from "./pages/Complaints.jsx";
 
 const route = createBrowserRouter([
 	{
@@ -123,8 +126,8 @@ const route = createBrowserRouter([
 				element: <Aboutus />,
 			},
 			{
-				path: "/contactus",
-				element: <Contactus />,
+				path: "/complaint",
+				element: <Complaint />,
 			},
 			{
 				path: "/verify",
@@ -137,6 +140,14 @@ const route = createBrowserRouter([
 			{
 				path: "/privacy",
 				element: <PrivacyPolicy />,
+			},
+			{
+				path: "/help",
+				element: <Help />,
+			},
+			{
+				path: "/feedback",
+				element: <Feedback />,
 			},
 		],
 	},

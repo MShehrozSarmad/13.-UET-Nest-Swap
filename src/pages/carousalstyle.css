@@ -1,0 +1,40 @@
+.rec-arrow {
+    font-size: 1em !important;
+    width: min-content !important;
+    height: min-content !important;
+    padding: 0 !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    line-height: normal !important;
+    border-radius: 50% !important;
+}
+
+.rec-pagination{
+
+}
+
+.rec-dot_active{
+    /* background-color: red !important; */
+}
+
+.rec-carousel-wrapper{
+    /* border: 2px solid purple; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* height: fit-content; */
+    /* margin: auto 0 auto 0; */
+}
+.rec-carousel{
+    /* max-height: 625px; */
+    /* max-width: 625px; */
+    /* border: 2px solid black; */
+}
+
+.rec-slider-container{
+    /* border: 2px solid red; */
+    /* width: 100% !important; */
+    /* height: 100% !important; */
+    /* object-fit: contain; */
+}
+
