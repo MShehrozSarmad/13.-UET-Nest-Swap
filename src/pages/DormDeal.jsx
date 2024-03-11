@@ -11,7 +11,6 @@ import preloader from "../loading.json";
 import "./carousalstyle.css";
 
 const DormDeal = () => {
-
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const { slug } = useParams();
@@ -72,7 +71,6 @@ const DormDeal = () => {
 			{
 				// console.log((dbService.previewFile(deal.image1)).href)
 			}
-
 
 			<div className="[&>*]:border4 [&>*]:lg:bg-red400 [&>*]:border-blue-500 borderred-400 border-2 grid lg:grid-flow-col border-gray-200 w-[95%] max-w-5xl mx-auto my-8 p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
 				<div className=" my-auto p-4">
@@ -194,7 +192,17 @@ const DormDeal = () => {
 							Date Posted: {deal.date}
 						</p>
 						<p>
-							Condition:  <span className={`  ${deal.condition < 5 ? 'text-red-500' : 'text-gray-700'} `}>{deal.condition}</span>/10
+							Condition:{" "}
+							<span
+								className={`  ${
+									deal.condition < 5
+										? "text-red-500"
+										: "text-gray-700"
+								} `}
+							>
+								{deal.condition}
+							</span>
+							/10
 						</p>
 						<p className="text-gray-700">
 							Current Status:{" "}
@@ -210,9 +218,12 @@ const DormDeal = () => {
 						</p>
 					</div>
 					<div className="mb-4">
-						<p className="text-gray-700">
-							Description: {parse(deal.description)}
-						</p>
+						<p>Description: </p>
+						<div className="">
+							{parse(deal.description)}
+							{/* Description: {parse(deal.description)} */}
+							{/* <div className="" dangerouslySetInnerHTML={{ __html: deal.description }} /> */}
+						</div>
 					</div>
 					{deal.status !== "sold" && (
 						<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">

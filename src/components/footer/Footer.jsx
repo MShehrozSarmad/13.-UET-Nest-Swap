@@ -5,11 +5,11 @@ import logo from "../../assets/logo.png";
 const Footer = () => {
 	return (
 		<>
-			<div className=" text-center p-2 bg-gray-400  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+			<div className=" text-center p-2 bg-[#80bfff] text-[#053e7c]  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 				<div className=" flex flex-col justify-evenly p-2 gap-2 sm:col-span-2 md:row-span-2 md:col-span-1 lg:row-span-1">
 					<p className=" w-fit m-auto">
 						<Link to={"/"}>
-							<img src={logo} alt="Logo" className="h-[3.5rem]" />
+							<img src={logo} alt="Logo" className="h-[3.2rem]" />
 						</Link>
 					</p>
 					<p className="">
@@ -25,7 +25,7 @@ const Footer = () => {
 						</span>
 					</p>
 				</div>
-				<div className=" [&>*]:bgred-400 [&>*]:m-auto [&>*]:text-justify [&>*]:w-[10rem] bgblue-800 flex flex-col justify-evenly p-2 gap-2">
+				<div className=" [&>*]:bgred-400 [&>*]:m-auto [&>*]:text-justify [&>*]:w-[10rem] bgblue-800 flex flex-col justify-evenly p-2 gap-2 ">
 					<p>
 						<Link to="help" className="">
 							Help

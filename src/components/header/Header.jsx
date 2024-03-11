@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LogoutBtn from "./LogoutBtn";
+import logo from "../../assets/logo.png";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,17 +45,17 @@ const Header = () => {
 
 
 	return (
-		<header className="py-3 shadow bg-gray-900 text-white">
-			<div className="header bg-gray-800 text-white">
+		<header className="">
+			<div className="header bg-[#88c3ff] text-[#053e7c] p-2">
 				<nav className="flex flex-wrap items-center justify-between">
-					<div className="mr-4">
+					<div className=" mx-2">
 						<Link to="/">
-							<span>Logo</span>
+							<img className="h-[3.2rem]" src={logo} alt="logo" />
 						</Link>
 					</div>
 					<div className="ml-auto">
 						<button
-							className="block md:hidden text-white focus:outline-none"
+							className="block md:hidden textwhite focus:outline-none"
 							onClick={toggleMenu}
 						>
 							<svg
@@ -88,7 +89,7 @@ const Header = () => {
 								<li key={item.name}>
 									<button
 										onClick={() => navigate(item.slug)}
-										className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 hover:text-gray-900 rounded-full"
+										className="inline-block px-6 py-2 duration-200 hover:bg-blue100 hover:text-[#000001] rounded-full"
 									>
 										{item.name}
 									</button>
@@ -100,7 +101,7 @@ const Header = () => {
 								<li className="ml-4">
 									<LogoutBtn />
 								</li>
-								<li className="inline-block px-6 py-2 duration-200 hover:text-gray-900 rounded-full" style={{ color: "white" }}>
+								<li className="inline-block px-6 py-2 duration-200 hover:text-[#053e7c] rounded-full" style={{ color: "white" }}>
 									<Link to={'userprofile'}>{(userData?.name).split(' ').slice(0, 2).join(' ')} </Link>
 								</li>
 							</>
