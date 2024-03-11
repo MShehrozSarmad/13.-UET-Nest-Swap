@@ -13,7 +13,14 @@ import { toast } from "react-toastify";
 const Dormform = ({ post }) => {
 	const navigate = useNavigate();
 	const [error, seterror] = useState("");
+	const [imagePreviews, setImagePreviews] = useState({
+		image1: null,
+		image2: null,
+		image3: null,
+	});
+	// const [image, setImage] = useState();
 	// const [uData, setUdata] = useState(null)
+
 	const {
 		register,
 		handleSubmit,
@@ -132,6 +139,27 @@ const Dormform = ({ post }) => {
 			subscription.unsubscribe();
 		};
 	}, [watch, slugTransform, setValue]);
+
+	// const handleFileChange = (e) => {
+	// 	if (e.target.files && e.target.files[0]) {
+	// 		let img = e.target.files[0];
+	// 		setImage(URL.createObjectURL(img));
+	// 	}
+	// };
+
+	const handleFileChange = (e, imageNumber) => {
+		if (e.target.files && e.target.files[0]) {
+			let img = e.target.files[0];
+			let reader = new FileReader();
+			reader.onload = function (e) {
+				setImagePreviews((prev) => ({
+					...prev,
+					[`image${imageNumber}`]: e.target.result,
+				}));
+			};
+			reader.readAsDataURL(img);
+		}
+	};
 
 	// const [image, setImage] = useState();
 
@@ -264,29 +292,25 @@ const Dormform = ({ post }) => {
 				Dorm Deal Form
 			</h1>
 			<h2 className="text-red-600 text-md  mb-4">
-				* All Fields are Required
+				* All Input Fields are Required
 			</h2>
-			<form onSubmit={handleSubmit(submit)} className="mt-8 border2 border-red-500">
+			<form
+				onSubmit={handleSubmit(submit)}
+				className="mt-8 border2 border-red-500"
+			>
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 [&>*]:border2 [&>*]:border-blue-500">
 					<div>
 						<Input
 							label="Title :"
 							placeholder="Title"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
 							{...register("title", { required: true })}
 							disabled={post}
 						/>
 						<Input
-							label="Price :"
-							type="number"
-							placeholder="150"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
-							{...register("price", { required: true })}
-						/>
-						<Input
 							label="Slug :"
 							placeholder="Slug"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
 							{...register("slug", { required: true })}
 							onInput={(e) => {
 								setValue(
@@ -299,41 +323,82 @@ const Dormform = ({ post }) => {
 							}}
 							disabled={post}
 						/>
+
+						<Input
+							label="Price :"
+							type="number"
+							placeholder="150"
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							{...register("price", { required: true })}
+						/>
 						<Input
 							label="Whatsapp No :"
 							type="number"
 							placeholder="923424295275"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
 							{...register("phone", { required: true })}
 						/>
 						<Input
 							label="Image 1:"
 							type="file"
-							className="mb-4"
+							className="mb-4 w-full"
 							accept="image/png, image/jpg, image/jpeg, image/gif"
 							{...register("image1", { required: !post })}
 							disabled={post}
+							// onChange={handleFileChange}
+							onChange={(e) => handleFileChange(e, 1)}
 						/>
+
 						{/* {
 							image && <img src={image} alt="preview" />
 						} */}
+
 						<Input
 							label="Image 2:"
 							type="file"
-							className="mb-4"
-							accept="image/png, image/jpg, image/jpeg, image/gif"
+							className="mb-4 w-full"
+							accept="image/png, image/jpg, image/jpeg, image/gif w-full border-4 border-red-500"
 							{...register("image2", { required: !post })}
 							disabled={post}
+							onChange={(e) => handleFileChange(e, 2)}
 						/>
+
 						<Input
 							label="Image 3:"
 							type="file"
-							className="mb-4"
+							className="mb-4 w-full"
 							accept="image/png, image/jpg, image/jpeg, image/gif"
 							{...register("image3", { required: !post })}
 							disabled={post}
+							onChange={(e) => handleFileChange(e, 3)}
 						/>
+
+						<div className=" border2 border-red-400 [&>*]:border2 [&>*]:max-w-[33%] [&>*]:aspect-square [&>*]:object-contain flex flex-row">
+						{imagePreviews.image1 && (
+							<img
+								src={imagePreviews.image1}
+								alt="preview"
+								className="w-full h-auto mb-4"
+							/>
+						)}
+						{imagePreviews.image2 && (
+							<img
+								src={imagePreviews.image2}
+								alt="preview"
+								className="w-full h-auto mb-4"
+							/>
+						)}
+						{imagePreviews.image3 && (
+							<img
+								src={imagePreviews.image3}
+								alt="preview"
+								className="w-full h-auto mb-4"
+							/>
+						)}
+						</div>
+
 					</div>
+
 					<div>
 						<Controller
 							control={control}
