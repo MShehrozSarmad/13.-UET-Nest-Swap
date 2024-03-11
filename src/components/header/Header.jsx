@@ -46,11 +46,11 @@ const Header = () => {
 
 	return (
 		<header className="">
-			<div className="header bg-[#88c3ff] text-[#053e7c] p-2">
+			<div className="header bg-[#4696EC] text-white p-2">
 				<nav className="flex flex-wrap items-center justify-between">
 					<div className=" mx-2">
 						<Link to="/">
-							<img className="h-[3.2rem]" src={logo} alt="logo" />
+							<img className="h-[3.2rem] drop-shadow-md" src={logo} alt="logo" />
 						</Link>
 					</div>
 					<div className="ml-auto">
