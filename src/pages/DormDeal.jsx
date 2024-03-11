@@ -74,7 +74,7 @@ const DormDeal = () => {
 			}
 
 
-			<div className="[&>*]:border4 [&>*]:lg:bg-red400 [&>*]:border-blue-500 borderred-400 border-2 grid lg:grid-flow-col border-gray-200 w-[95%] max-w-[1024px] mx-auto my-8 p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
+			<div className="[&>*]:border4 [&>*]:lg:bg-red400 [&>*]:border-blue-500 borderred-400 border-2 grid lg:grid-flow-col border-gray-200 w-[95%] max-w-5xl mx-auto my-8 p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
 				<div className=" my-auto p-4">
 					{deal ? (
 						<Carousel className="">

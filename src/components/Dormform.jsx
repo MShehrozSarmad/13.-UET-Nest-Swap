@@ -259,20 +259,20 @@ const Dormform = ({ post }) => {
 	// );
 
 	return (
-		<div className=" max-w-5xl border-2 p-6 my-6 shadow-md mx-auto">
+		<div className=" w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md">
 			<h1 className=" text-purple-500 text-center text-2xl font-semibold m-4 ">
 				Dorm Deal Form
 			</h1>
 			<h2 className="text-red-600 text-md  mb-4">
 				* All Fields are Required
 			</h2>
-			<form onSubmit={handleSubmit(submit)} className="mt-8">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+			<form onSubmit={handleSubmit(submit)} className="mt-8 border2 border-red-500">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-4 [&>*]:border2 [&>*]:border-blue-500">
 					<div>
 						<Input
 							label="Title :"
 							placeholder="Title"
-							className="mb-4"
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
 							{...register("title", { required: true })}
 							disabled={post}
 						/>
@@ -280,13 +280,13 @@ const Dormform = ({ post }) => {
 							label="Price :"
 							type="number"
 							placeholder="150"
-							className="mb-4"
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
 							{...register("price", { required: true })}
 						/>
 						<Input
 							label="Slug :"
 							placeholder="Slug"
-							className="mb-4"
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
 							{...register("slug", { required: true })}
 							onInput={(e) => {
 								setValue(
@@ -303,7 +303,7 @@ const Dormform = ({ post }) => {
 							label="Whatsapp No :"
 							type="number"
 							placeholder="923424295275"
-							className="mb-4"
+							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full" 
 							{...register("phone", { required: true })}
 						/>
 						<Input
