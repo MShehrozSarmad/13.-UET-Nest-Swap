@@ -4,14 +4,14 @@ const serviceSlc = createSlice({
     name : 'serviceSlc',
     initialState : [],
     reducers : {
-        setsrvc : (action) => {
+        setsrvcs : (action) => {
             return action.payload;
         },
-        clrsrvc : () => {
+        clrsrvcs : () => {
             return []
         }
     }
 })
 
-export const {setsrvc, clrsrvc} = serviceSlc.actions;
+export const {setsrvcs, clrsrvcs} = serviceSlc.actions;
 export default serviceSlc.reducer;

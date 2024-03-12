@@ -4,14 +4,14 @@ const rentalSlc = createSlice({
     name : 'rentalSlc',
     initialState : [],
     reducers : {
-        setrental : (action) => {
+        setrentals : (state, action) => {
             return action.payload;
         },
-        clrrental : () => {
+        clrrentals : () => {
             return []
         }
     }
 })
 
-export const {setrental, clrrental} = rentalSlc.actions;
+export const {setrentals, clrrentals} = rentalSlc.actions;
 export default rentalSlc.reducer;

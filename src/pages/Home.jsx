@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import Dealscontainer from "../components/Dealscontainer";
 import { Link } from "react-router-dom";
 import { setdorms, clrdorms } from "../store/dormSlc";
-import { setrental, clrrental } from "../store/rentalSlc";
-import { setsrvc, clrsrvc } from "../store/servicesSlc";
+import { setrentals, clrrentals } from "../store/rentalSlc";
+import { setsrvcs, clrsrvcs } from "../store/servicesSlc";
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
