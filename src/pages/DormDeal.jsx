@@ -6,8 +6,9 @@ import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import { toast } from "react-toastify";
-import Lottie from "lottie-react";
-import preloader from "../loading.json";
+// import Lottie from "lottie-react";
+// import preloader from "../loading.json";
+import Preloader from "../components/Preloader";
 import "./carousalstyle.css";
 
 const DormDeal = () => {
@@ -53,19 +54,7 @@ const DormDeal = () => {
 	};
 
 	return loading ? (
-		<div>
-			{response == "Loading..." ? (
-				<div className="">
-					<Lottie
-						className=" border-red-500"
-						animationData={preloader}
-						loop={true}
-					/>
-				</div>
-			) : (
-				response
-			)}
-		</div>
+		<div>{response == "Loading..." ? <Preloader /> : response}</div>
 	) : (
 		<>
 			{
