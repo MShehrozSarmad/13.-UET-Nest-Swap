@@ -29,13 +29,24 @@ const Rentalform = ({ post }) => {
 	} = useForm({
 		defaultValues: {
 			title: post?.title || "",
-			rent: post?.rent || "",
+			time: post ? extractAmountAndTime(post.rent).tm : "",
+			amount: post ? extractAmountAndTime(post.rent).amnt : "",
 			slug: post?.$id || "",
 			phone: post?.phone || "",
 			description: post?.description || "",
 			status: post?.status || "available",
 		},
 	});
+
+	function extractAmountAndTime(str) {
+		const amountMatch = str.match(/(\d+)PKR/);
+		const timeMatch = str.match(/(\d+(\.\d+)?)hr/);
+
+		const amnt = amountMatch ? parseFloat(amountMatch[1]) : null;
+		const tm = timeMatch ? parseFloat(timeMatch[1]) : null;
+
+		return { amnt, tm };
+	}
 
 	const userData = useSelector((state) => state.authslc.userData);
 
@@ -64,8 +75,9 @@ const Rentalform = ({ post }) => {
 
 		if (post) {
 			try {
-				const postUpdate = await dbService.updatePostDorm(post.$id, {
+				const postUpdate = await dbService.updatePostRental(post.$id, {
 					...data,
+					rent: data.amount + "PKR / " + data.time + "hr",
 					date: getDate(),
 				});
 				toast.success("Updated successfully");
@@ -86,6 +98,7 @@ const Rentalform = ({ post }) => {
 					try {
 						const dbPost = await dbService.createPostRental({
 							...data,
+							rent: data.amount + "PKR / " + data.time + "hr",
 							userId: userData.$id,
 							author: userData.name,
 							date: getDate(),
@@ -184,13 +197,29 @@ const Rentalform = ({ post }) => {
 							disabled={post}
 						/>
 
-						<Input
-							label="Rent :"
-							type="number"
-							placeholder="150"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
-							{...register("rent", { required: true })}
-						/>
+						<div>
+							<label className="">Rent: </label>
+							<div className="border2 flex gap-3 p2">
+								<Input
+									label="Amount(PKR) "
+									type="number"
+									placeholder="300"
+									lblClass="text-sm text-xs"
+									className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+									{...register("amount", { required: true })}
+								/>
+								<Input
+									label="Time(hour)"
+									type="number"
+									placeholder="1"
+									step="any"
+									lblClass="text-sm text-xs"
+									className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+									{...register("time", { required: true })}
+								/>
+							</div>
+						</div>
+
 						<Input
 							label="Whatsapp No :"
 							type="number"
@@ -263,7 +292,7 @@ const Rentalform = ({ post }) => {
 							rules={{ required: true }}
 							render={({ field }) => (
 								<Select
-									options={["avialable", "sold"]}
+									options={["avialable", "unavailable"]}
 									label="Status: "
 									className="mb-4"
 									{...field}

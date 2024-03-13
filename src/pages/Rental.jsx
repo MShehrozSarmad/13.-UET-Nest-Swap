@@ -117,7 +117,7 @@ const Rental = () => {
 							Current Status:{" "}
 							<span
 								className={`${
-									deal.status === "sold"
+									deal.status != "available"
 										? "text-red-500"
 										: "text-green-500"
 								}`}
@@ -134,13 +134,14 @@ const Rental = () => {
 							{/* <div className="" dangerouslySetInnerHTML={{ __html: deal.description }} /> */}
 						</div>
 					</div>
-					{deal.status !== "sold" && (
+					{deal.status == "available" && (
 						<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
 							<a
 								href={`https://wa.me/923424295275?text=i%20am%20interested%20in%20this%20deal%20https://localhost:5173/dormdeal/${deal.$id}%20and%20i%20offer%20you%20${deal.price}PKR`}
 								target="_blank"
 								rel="noreferrer"
 								className="hover:text-white cursor-pointer"
+								aria-disabled= {true}
 							>
 								Hire
 							</a>

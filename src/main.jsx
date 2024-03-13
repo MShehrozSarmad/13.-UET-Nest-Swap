@@ -24,6 +24,7 @@ import Contactus from "./pages/Contactus.jsx";
 import TermsAndConditions from "./pages/TermsAndConditions.jsx";
 import Verify from "./pages/Verify.jsx";
 import EditDorm from "./pages/EditDorm.jsx";
+import EditRental from "./pages/EditRental.jsx";
 import AuthLayout from "./components/AuthLayout.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import Help from "./pages/Help.jsx";
@@ -105,10 +106,10 @@ const route = createBrowserRouter([
 			// 	path: "/editdorm/:slug",
 			// 	element: <EditService />,
 			// },
-			// {
-			// 	path: "/editdorm/:slug",
-			// 	element: <EditRental />,
-			// },
+			{
+				path: "/editrental/:slug",
+				element: <EditRental />,
+			},
 			{
 				path: "/rentalform",
 				element: <RentalForm />,

@@ -1,13 +1,13 @@
 import React, { useId } from "react";
 
 const Input = React.forwardRef(function Input(
-	{ label, type = "text", className = "", ...props },
+	{ label, type = "text", className = "", lblClass, ...props },
 	ref
 ) {
 	const id = useId();
 	return (
 		<div>
-			{label && <label htmlFor={id}>{label}</label>}
+			{label && <label className={lblClass} htmlFor={id}>{label}</label>}
 			<input
 				type={type}
 				className={` border-solid text-slate-950 ${className} `}
