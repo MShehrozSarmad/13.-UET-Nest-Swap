@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Serviceform from "../components/Serviceform";
 
 const ServiceForm = () => {
-  return (
-    <div>ServiceForm</div>
-  )
-}
+	return (
+		<>
+			<Serviceform />
+		</>
+	);
+};
 
-export default ServiceForm
+export default ServiceForm;
