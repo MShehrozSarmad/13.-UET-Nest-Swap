@@ -63,8 +63,8 @@ const Home = () => {
 		<>
 			<HeroSec />
 			{dormDeals && <Dealscontainer posts={dormDeals} link="/dormdeals" />}
-			{rntls && <Dealscontainer posts={rntls} link="/services" />}
-			{srvcs && <Dealscontainer posts={srvcs} link="/rentals" />}
+			{/* {rntls && <Dealscontainer posts={rntls} link="/services" />} */}
+			{/* {srvcs && <Dealscontainer posts={srvcs} link="/rentals" />} */}
 			<section className="flex flex-wrap">
 				<div className="p-2 w-[33.3%]">
 					<Link to={"/dormform"}>Post Deal</Link>

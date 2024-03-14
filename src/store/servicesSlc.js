@@ -4,7 +4,7 @@ const serviceSlc = createSlice({
     name : 'serviceSlc',
     initialState : [],
     reducers : {
-        setsrvcs : (action) => {
+        setsrvcs : (state, action) => {
             return action.payload;
         },
         clrsrvcs : () => {

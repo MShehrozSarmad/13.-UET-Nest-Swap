@@ -62,7 +62,10 @@ const App = () => {
 		async function getServices() {
 			try {
 				await dbService.getPostsServices().then((deals) => {
-					deals ? dispatch(setdorms(deals.documents)) : null;
+					deals
+						? dispatch(setsrvcs(deals.documents))
+						: console.log("services failed");
+					console.log("services", deals);
 				});
 			} catch (error) {
 				console.log("error", error.response.message);
@@ -72,20 +75,12 @@ const App = () => {
 		getuserData();
 		getDorms();
 		getRentals();
-		// getServices();
+		getServices();
 	}, [navigate, location]);
 
-	// return (loading && loading2) ? (<p>loading...</p>) : (
-	// 	<>
-	// 		<Header />
-	// 		<Outlet />
-	// 		<Footer />
-	// 	</>
-	// );
 	return loading && loading2 ? (
 		<div className=" w-5 h-5">
-			{" "}
-			<Lottie animationData={preloader} loop={true} />{" "}
+			<Lottie animationData={preloader} loop={true} />
 		</div>
 	) : (
 		<>
