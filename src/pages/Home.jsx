@@ -3,9 +3,9 @@ import HeroSec from "../components/HeroSec";
 import { useSelector } from "react-redux";
 import Dealscontainer from "../components/Dealscontainer";
 import { Link } from "react-router-dom";
-import { setdorms, clrdorms } from "../store/dormSlc";
-import { setrentals, clrrentals } from "../store/rentalSlc";
-import { setsrvcs, clrsrvcs } from "../store/servicesSlc";
+// import { setdorms, clrdorms } from "../store/dormSlc";
+// import { setrentals, clrrentals } from "../store/rentalSlc";
+// import { setsrvcs, clrsrvcs } from "../store/servicesSlc";
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
@@ -13,10 +13,10 @@ const Home = () => {
 	const dorms = useSelector((state) => state.dormslc);
 	const [dormDeals, setDormDeals] = useState(null);
 
-	// const rentals = useSelector(state => state.rentalslc);
+	const rentals = useSelector(state => state.rentalslc);
 	const [rntls, setRntls] = useState(null);
 
-	// const services = useSelector(state => state.serviceslc);
+	const services = useSelector(state => state.serviceslc);
 	const [srvcs, setsrvcs] = useState(null);
 
 	const selectRandomItems = (A) => {
@@ -36,35 +36,35 @@ const Home = () => {
 	};
 
 	useEffect(() => {
-		console.log("triggered", dorms);
+		// console.log("triggered", dorms);
 		if (dorms.length > 0) {
 			setDormDeals(selectRandomItems(dorms));
-			console.log(dormDeals);
+			console.log('dorms', dormDeals);
 		}
 	}, [dorms]);
 
-	// useEffect(() => {
-	// 	console.log("triggered", dorms);
-	// 	if (dorms.length > 0) {
-	// 		setDormDeals(selectRandomItems(dorms));
-	// 		console.log(dormDeals);
-	// 	}
-	// }, [dorms]);
+	useEffect(() => {
+		// console.log("triggered", rentals);
+		if (rentals.length > 0) {
+			setRntls(selectRandomItems(rentals));
+			console.log('rentals', rntls);
+		}
+	}, [rentals]);
 
-	// useEffect(() => {
-	// 	console.log("triggered", dorms);
-	// 	if (dorms.length > 0) {
-	// 		setDormDeals(selectRandomItems(dorms));
-	// 		console.log(dormDeals);
-	// 	}
-	// }, [dorms]);
+	useEffect(() => {
+		// console.log("triggered", services);
+		if (services.length > 0) {
+			setsrvcs(selectRandomItems(services));
+			console.log('services', services);
+		}
+	}, [services]);
 
 	return (
 		<>
 			<HeroSec />
-			{dormDeals && <Dealscontainer posts={dormDeals} link="/dormdeals" />}
-			{/* {rntls && <Dealscontainer posts={rntls} link="/services" />} */}
-			{/* {srvcs && <Dealscontainer posts={srvcs} link="/rentals" />} */}
+			{/* {dormDeals && <Dealscontainer posts={dormDeals} link="/dormdeals" />}
+			{rntls && <Dealscontainer posts={rntls} link="/services" />}
+			{srvcs && <Dealscontainer posts={srvcs} link="/rentals" />} */}
 			<section className="flex flex-wrap">
 				<div className="p-2 w-[33.3%]">
 					<Link to={"/dormform"}>Post Deal</Link>

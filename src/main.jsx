@@ -30,7 +30,7 @@ import AuthLayout from "./components/AuthLayout.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
 import Help from "./pages/Help.jsx";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Feedback from "./pages/Feedback.jsx";
 import Complaint from "./pages/Complaints.jsx";
 
@@ -101,23 +101,43 @@ const route = createBrowserRouter([
 			},
 			{
 				path: "/editdorm/:slug",
-				element: <EditDorm />,
+				element: (
+					<AuthLayout authentication>
+						<EditDorm />
+					</AuthLayout>
+				),
 			},
 			{
-				path: "/editdorm/:slug",
-				element: <EditService />,
+				path: "/editservice/:slug",
+				element: (
+					<AuthLayout authentication>
+						<EditService />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/editrental/:slug",
-				element: <EditRental />,
+				element: (
+					<AuthLayout authentication>
+						<EditRental />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/rentalform",
-				element: <RentalForm />,
+				element: (
+					<AuthLayout authentication>
+						<RentalForm />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/serviceform",
-				element: <ServiceForm />,
+				element: (
+					<AuthLayout authentication>
+						<ServiceForm />
+					</AuthLayout>
+				),
 			},
 			{
 				path: "/devs",

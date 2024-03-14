@@ -52,7 +52,6 @@ const App = () => {
 					deals
 						? dispatch(setrentals(deals.documents))
 						: console.log("rentals failed");
-					console.log("deals", deals);
 				});
 			} catch (error) {
 				console.log("error", error.response.message);
@@ -65,7 +64,6 @@ const App = () => {
 					deals
 						? dispatch(setsrvcs(deals.documents))
 						: console.log("services failed");
-					console.log("services", deals);
 				});
 			} catch (error) {
 				console.log("error", error.response.message);

@@ -29,7 +29,7 @@ const Rentals = () => {
 	return (
 		<>
 			<div className="w-full py-8">
-				<div>DormDeals</div>
+				<div>Rentals</div>
 				<div className="flex flex-wrap">
 					{rentals ? (
 						rentals.slice(page * 12 - 12, page * 12).map((deal) => (
