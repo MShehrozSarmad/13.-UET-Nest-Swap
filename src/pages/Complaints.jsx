@@ -2,10 +2,10 @@ import React from "react";
 
 const Complaint = () => {
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">Complaints</h1>
+        <div className="container mx-auto px-4 py-8 w-[95%] max-w-4xl">
+            <h1 className="text-3xl font-bold mb-4 text-purple-500">Complaint</h1>
             <p className="mb-4">
-                If you have any complaints regarding your experience with UET Nest Swap, please let us know. We take all complaints seriously and will strive to resolve them promptly.
+                If you have any complaint regarding your experience with UET Nest Swap, please let us know. We take all complaints seriously and will strive to resolve them promptly.
             </p>
             <h2 className="text-2xl font-bold mb-2">How to Submit a Complaint</h2>
             <p className="mb-4">

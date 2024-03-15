@@ -15,7 +15,7 @@ const Dealscontainer = ({posts, link}) => {
 				) : (
 					<p>No Data Found....</p>
 				)}
-                <Link to={link} className=" border">See More ➡️</Link>
+                <Link to={link} className=" border h-fit m-auto">More ➡️</Link>
 			</div>
 		</>
 	);

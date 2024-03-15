@@ -2,8 +2,8 @@ import React from "react";
 
 const Help = () => {
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">Welcome to UET Nest Swap Help Center</h1>
+        <div className="containerr mx-auto px-4 py-8 w-[95%] max-w-4xl">
+            <h1 className="text-3xl font-bold mb-4 text-purple-500">Welcome to UET Nest Swap Help Center</h1>
             <p className="mb-8">Find answers to commonly asked questions and learn how to make the most of your UET Nest Swap experience.</p>
 
             <div className="mb-8">

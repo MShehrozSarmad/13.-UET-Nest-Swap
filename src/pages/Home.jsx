@@ -13,10 +13,10 @@ const Home = () => {
 	const dorms = useSelector((state) => state.dormslc);
 	const [dormDeals, setDormDeals] = useState(null);
 
-	const rentals = useSelector(state => state.rentalslc);
+	const rentals = useSelector((state) => state.rentalslc);
 	const [rntls, setRntls] = useState(null);
 
-	const services = useSelector(state => state.serviceslc);
+	const services = useSelector((state) => state.serviceslc);
 	const [srvcs, setsrvcs] = useState(null);
 
 	const selectRandomItems = (A) => {
@@ -39,7 +39,7 @@ const Home = () => {
 		// console.log("triggered", dorms);
 		if (dorms.length > 0) {
 			setDormDeals(selectRandomItems(dorms));
-			console.log('dorms', dormDeals);
+			console.log("dorms", dormDeals);
 		}
 	}, [dorms]);
 
@@ -47,7 +47,7 @@ const Home = () => {
 		// console.log("triggered", rentals);
 		if (rentals.length > 0) {
 			setRntls(selectRandomItems(rentals));
-			console.log('rentals', rntls);
+			console.log("rentals", rntls);
 		}
 	}, [rentals]);
 
@@ -55,27 +55,65 @@ const Home = () => {
 		// console.log("triggered", services);
 		if (services.length > 0) {
 			setsrvcs(selectRandomItems(services));
-			console.log('services', services);
+			console.log("services", services);
 		}
 	}, [services]);
 
 	return (
 		<>
-			<HeroSec />
-			{/* {dormDeals && <Dealscontainer posts={dormDeals} link="/dormdeals" />}
-			{rntls && <Dealscontainer posts={rntls} link="/services" />}
-			{srvcs && <Dealscontainer posts={srvcs} link="/rentals" />} */}
-			<section className="flex flex-wrap">
-				<div className="p-2 w-[33.3%]">
-					<Link to={"/dormform"}>Post Deal</Link>
+			<div className="m-auto">
+				<HeroSec />
+				<div className="m-auto px-4 py-8 w-[95%] max-w-6xl">
+					<h3 id="target" className=" text-purple-500 text-2xl font-bold p-4 m-auto text-center">
+						Featured Deals
+					</h3>
+					<div className="my-5">
+						<div>
+							<h3 className="text-blue-400 text-xl font-semibold px-2">
+								Dorm Deals
+							</h3>
+							{dormDeals && (
+								<Dealscontainer
+									posts={dormDeals}
+									link="/dormdeals"
+								/>
+							)}
+						</div>
+
+						<div className="my-5">
+							<h3 className="text-blue-400 text-xl font-semibold px-2">
+								Rentals
+							</h3>
+							{rntls && (
+								<Dealscontainer
+									posts={rntls}
+									link="/services"
+								/>
+							)}
+						</div>
+
+						<div className="my-5">
+							<h3 className="text-blue-400 text-xl font-semibold px-2">
+								Services
+							</h3>
+							{srvcs && (
+								<Dealscontainer posts={srvcs} link="/rentals" />
+							)}
+						</div>
+					</div>
 				</div>
-				<div className="p-2 w-[33.3%]">
-					<Link to={"/rentalform"}>Post Rental</Link>
-				</div>
-				<div className="p-2 w-[33.3%]">
-					<Link to={"/serviceform"}>Post Service</Link>
-				</div>
-			</section>
+				<section className="flex flex-wrap">
+					<div className="p-2 w-[33.3%]">
+						<Link to={"/dormform"}>Post Deal</Link>
+					</div>
+					<div className="p-2 w-[33.3%]">
+						<Link to={"/rentalform"}>Post Rental</Link>
+					</div>
+					<div className="p-2 w-[33.3%]">
+						<Link to={"/serviceform"}>Post Service</Link>
+					</div>
+				</section>
+			</div>
 		</>
 	);
 };

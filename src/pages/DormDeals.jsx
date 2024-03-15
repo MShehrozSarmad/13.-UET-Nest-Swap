@@ -28,7 +28,7 @@ const DormDeals = () => {
 
 	return (
 		<>
-			<div className="w-full py-8">
+			<div className=" m-auto w-[95%] max-w-6xl border-2 border-red-500 py-8">
 				<div>DormDeals</div>
 				<div className="flex flex-wrap">
 					{deals ? (

@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: theme => ({
+        'hero-pattern': "url('./src/wave-haikei.svg')",
+        // 'hero-pattern': "url('../wave-haikei.svg')",
+      })
+    },
     screens: {
       'sm': '625px',
       'md': '768px',

@@ -45,8 +45,9 @@ const Header = () => {
 
 
 	return (
-		<header className="">
-			<div className="header bg-[#4696EC] text-white p-2">
+		// absolute w-full mb-[50vh]
+		<header className="border2 border-red-500">
+			<div className="header  bg[#34404F] bg-[#002233] text-white p-2">
 				<nav className="flex flex-wrap items-center justify-between">
 					<div className=" mx-2">
 						<Link to="/">
@@ -89,7 +90,7 @@ const Header = () => {
 								<li key={item.name}>
 									<button
 										onClick={() => navigate(item.slug)}
-										className="inline-block px-6 py-2 duration-200 hover:bg-blue100 hover:text-[#000001] rounded-full"
+										className="inline-block px-6 py-2 duration-200 hover:bg-blue100 hover:text-[#A9C5A0]"
 									>
 										{item.name}
 									</button>
@@ -101,8 +102,8 @@ const Header = () => {
 								<li className="ml-4">
 									<LogoutBtn />
 								</li>
-								<li className="inline-block px-6 py-2 duration-200 hover:text-[#053e7c] rounded-full" style={{ color: "white" }}>
-									<Link to={'userprofile'}>{(userData?.name).split(' ').slice(0, 2).join(' ')} </Link>
+								<li className="inline-block px-6 py-2 hover:text-[#053e7c] rounded-full" style={{ color: "white" }}>
+									<Link className="hover:text-[#A9C5A0] duration-200" to={'userprofile'}>{(userData?.name).split(' ').slice(0, 2).join(' ')} </Link>
 								</li>
 							</>
 						)}

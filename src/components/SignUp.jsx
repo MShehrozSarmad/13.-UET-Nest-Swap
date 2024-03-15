@@ -91,7 +91,7 @@ const SignUp = () => {
 				/>
 
 				<p>
-					By signing in, you agree to our{" "}
+					By creating account, you agree to our{" "}
 					<Link
 						to={"/terms"}
 						target="_blank"

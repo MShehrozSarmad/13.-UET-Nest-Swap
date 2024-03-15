@@ -2,8 +2,8 @@ import React from "react";
 
 const Feedback = () => {
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">Feedback</h1>
+        <div className="container mx-auto px-4 py-8 w-[95%] max-w-4xl">
+            <h1 className="text-3xl font-bold mb-4 text-purple-500">Feedback</h1>
             <p className="mb-4">
                 We value your feedback as it helps us improve UET Nest Swap. Whether you have a suggestion, found a bug, or just want to share your experience, we'd love to hear from you.
             </p>

@@ -2,8 +2,8 @@ import React from 'react';
 
 const Aboutus = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">About Us</h1>
+    <div className="container mx-auto px-4 py-8 w-[95%] max-w-4xl">
+      <h1 className="text-3xl font-bold mb-4 text-purple-500">About Us</h1>
       <p className="mb-8">
         Welcome to UET Nest Swap, student-driven online marketplace
         created specifically for residents of University of Engineering
@@ -62,7 +62,7 @@ const Aboutus = () => {
       <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
       <p className="mb-8">
         Have questions or feedback? We'd love to hear from you! Contact
-        us at <a href="https://wa.me/923424295275">Whatsapp</a> and let
+        us at <a className='text-blue-500' target='_blank' href="https://wa.me/923424295275">Whatsapp</a> and let
         us know how we can improve your experience on UET Nest Swap.
       </p>
 
