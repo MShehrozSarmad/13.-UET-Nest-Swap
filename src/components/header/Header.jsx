@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import LogoutBtn from "../LogoutBtn";
-import logo from "../../assets/logo.png";
+// import logo from "../../assets/logo.png";
+import logo from "../../assets/logoo.png";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
