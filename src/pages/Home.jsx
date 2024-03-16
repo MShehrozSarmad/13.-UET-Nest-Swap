@@ -63,13 +63,13 @@ const Home = () => {
 		<>
 			<div className="m-auto">
 				<HeroSec />
-				<div className="m-auto px-4 py-8 w-[95%] max-w-6xl">
-					<h3 id="target" className=" text-purple-500 text-2xl font-bold p-4 m-auto text-center">
+				<div className="m-auto px-2 md:px-5 py-8  md:w-[95%] max-w-6xl bg-[#002233] md:rounded-xl md:my-8 my-0">
+					<h3 id="target" className=" text-purple500 text-[#0066ff] text-2xl font-bold p-4 m-auto text-center ">
 						Featured Deals
 					</h3>
 					<div className="my-5">
 						<div>
-							<h3 className="text-blue-400 text-xl font-semibold px-2">
+							<h3 className="text-blue400 text-[#689250] text-xl font-semibold px-2">
 								Dorm Deals
 							</h3>
 							{dormDeals && (
@@ -81,7 +81,7 @@ const Home = () => {
 						</div>
 
 						<div className="my-5">
-							<h3 className="text-blue-400 text-xl font-semibold px-2">
+							<h3 className="text-blue400 text-[#689250] text-xl font-semibold px-2">
 								Rentals
 							</h3>
 							{rntls && (
@@ -93,7 +93,7 @@ const Home = () => {
 						</div>
 
 						<div className="my-5">
-							<h3 className="text-blue-400 text-xl font-semibold px-2">
+							<h3 className="text-blue400 text-[#689250] text-xl font-semibold px-2">
 								Services
 							</h3>
 							{srvcs && (

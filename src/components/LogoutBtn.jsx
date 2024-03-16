@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { logout } from '../../store/authSlc'
-import authService from '../../appwrite/authservices'
+import { logout } from '../store/authSlc'
+import authService from '../appwrite/authservices'
 import { toast } from 'react-toastify'
 
 const LogoutBtn = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import LogoutBtn from "./LogoutBtn";
+import LogoutBtn from "../LogoutBtn";
 import logo from "../../assets/logo.png";
 
 const Header = () => {
@@ -99,9 +99,9 @@ const Header = () => {
 						)}
 						{authStatus && (
 							<>
-								<li className="ml-4">
+								{/* <li className="ml-4">
 									<LogoutBtn />
-								</li>
+								</li> */}
 								<li className="inline-block px-6 py-2 hover:text-[#053e7c] rounded-full" style={{ color: "white" }}>
 									<Link className="hover:text-[#A9C5A0] duration-200" to={'userprofile'}>{(userData?.name).split(' ').slice(0, 2).join(' ')} </Link>
 								</li>

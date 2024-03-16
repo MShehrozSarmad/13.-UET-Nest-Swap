@@ -6,7 +6,7 @@ const Footer = () => {
 	return (
 		<>
 		{/* text-[#A9C5A0] */}
-			<div className=" text-center p-2 bg-[#34404F] text-gray-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+			<div className=" text-center p-2 bg-[#002233] text-gray-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 				<div className=" flex flex-col justify-evenly p-2 gap-2 sm:col-span-2 md:row-span-2 md:col-span-1 lg:row-span-1">
 					<p className=" w-fit m-auto">
 						<Link to={"/"}>

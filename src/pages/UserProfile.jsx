@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import { Link } from "react-router-dom";
+import LogoutBtn from "../components/LogoutBtn";
 
 const UserProfile = () => {
 	const [usrData, setUsrData] = useState(null);
@@ -38,6 +39,7 @@ const UserProfile = () => {
 							<span className=" text-green-600">Verified User</span>
 						) : (<span className=" text-red-600"> <Link to='/verify'>User Not Verified</Link> </span>)}
 					</p>
+					<LogoutBtn/>
 				</div>
 			) : null}
 			<div>Dashboard ---------------------</div>

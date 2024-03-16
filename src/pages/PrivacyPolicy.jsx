@@ -2,7 +2,9 @@ import React from "react";
 
 const PrivacyPolicy = () => {
 	return (
-		<div className="container mx-auto px-4 py-8 w-[95%] max-w-5xl">
+		// <div className="container mx-auto px-4 py-8 w-[95%] max-w-5xl">
+        <div className=" md:mx-auto text-sm md:text-base px-2 md:px-5 py-8 md:w-[95%] max-w-4xl text-justify bg-[#002233] text-white my-8 md:rounded-xl [&>h2]:text-[#A9C5A0] [&>h1]:text-[#0066FF]">
+
 			<h1 className="text-3xl font-bold mb-4 text-purple-500">
 				UET Nest Swap Privacy Policy
 			</h1>
@@ -11,7 +13,7 @@ const PrivacyPolicy = () => {
 				"our") collects, uses, and discloses your personal information
 				when you use our platform (the "Platform").
 			</p>
-			<h2 className="text-2xl font-bold">Information We Collect</h2>
+			<h2 className="text-2xl font-semibold">Information We Collect</h2>
 			<ul className="list-disc ml-8 mb-4">
 				<li>Information you provide directly:</li>
 				<ul className="list-disc ml-8">
@@ -39,7 +41,7 @@ const PrivacyPolicy = () => {
 					</li>
 				</ul>
 			</ul>
-			<h2 className="text-2xl font-bold">How We Use Your Information</h2>
+			<h2 className="text-2xl font-semibold">How We Use Your Information</h2>
 			<ul className="list-disc ml-8 mb-4">
 				<li>Provide and improve the Platform</li>
 				<li>Facilitate communication between users</li>
@@ -50,7 +52,7 @@ const PrivacyPolicy = () => {
 				</li>
 				<li>Comply with legal obligations</li>
 			</ul>
-			<h2 className="text-2xl font-bold">
+			<h2 className="text-2xl font-semibold">
 				Disclosure of Your Information
 			</h2>
 			<p className="mb-4">
@@ -60,13 +62,13 @@ const PrivacyPolicy = () => {
 				sell or share your personal information with third parties for
 				marketing purposes without your consent.
 			</p>
-			<h2 className="text-2xl font-bold">Your Rights</h2>
+			<h2 className="text-2xl font-semibold">Your Rights</h2>
 			<ul className="list-disc ml-8 mb-4">
 				<li>Access and update your personal information</li>
 				<li>Request deletion of your personal information</li>
 				<li>Object to the processing of your personal information</li>
 			</ul>
-			<h2 className="text-2xl font-bold">
+			<h2 className="text-2xl font-semibold">
 				Changes to This Privacy Policy
 			</h2>
 			<p className="mb-4">
@@ -74,7 +76,7 @@ const PrivacyPolicy = () => {
 				notify you of any changes by posting the new Privacy Policy on
 				the Platform or by other means.
 			</p>
-			<h2 className="text-2xl font-bold">Contact Us</h2>
+			<h2 className="text-2xl font-semibold">Contact Us</h2>
 			<p>
 				If you have any questions about this Privacy Policy, please
 				contact us at{" "}

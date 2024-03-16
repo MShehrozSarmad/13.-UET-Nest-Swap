@@ -2,7 +2,9 @@ import React from 'react';
 
 const Aboutus = () => {
   return (
-    <div className="container mx-auto px-4 py-8 w-[95%] max-w-4xl">
+    // <div className="container mx-auto px-4 py-8 w-[95%] max-w-4xl">
+        <div className=" md:mx-auto text-sm md:text-base px-2 md:px-5 py-8 md:w-[95%] max-w-4xl text-justify bg-[#002233] text-white my-8 md:rounded-xl [&>h2]:text-[#A9C5A0] [&>h1]:text-[#0066FF]">
+
       <h1 className="text-3xl font-bold mb-4 text-purple-500">About Us</h1>
       <p className="mb-8">
         Welcome to UET Nest Swap, student-driven online marketplace
@@ -15,7 +17,7 @@ const Aboutus = () => {
         Taxila hostel community.
       </p>
 
-      <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
+      <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
       <ul className="list-disc ml-8 mb-8">
         <li>Empower students to declutter and save money by reselling used items.</li>
         <li>Offer cost-effective options for new residents by connecting them with affordable furniture and supplies.</li>
@@ -24,7 +26,7 @@ const Aboutus = () => {
         <li>Provide ease to final year students leaving hostels by offering a platform to sell their used items.</li>
       </ul>
 
-      <h2 className="text-2xl font-bold mb-4">What We Offer</h2>
+      <h2 className="text-2xl font-semibold mb-4">What We Offer</h2>
       <p className="mb-8">
         For final year students who are preparing to leave the hostel,
         UET Nest Swap offers a platform to sell their used furniture,
@@ -42,7 +44,7 @@ const Aboutus = () => {
         providing a convenient transportation option for those in need.
       </p>
 
-      <h2 className="text-2xl font-bold mb-4">Our Community</h2>
+      <h2 className="text-2xl font-semibold mb-4">Our Community</h2>
       <p className="mb-8">
         At UET Nest Swap, we strive to create a community-driven
         marketplace that fosters a culture of sharing and sustainability
@@ -51,7 +53,7 @@ const Aboutus = () => {
         others, UET Nest Swap is the place to be!
       </p>
 
-      <h2 className="text-2xl font-bold mb-4">Join Our Community</h2>
+      <h2 className="text-2xl font-semibold mb-4">Join Our Community</h2>
       <p className="mb-8">
         Joining the UET Nest Swap community is easy. Simply create an
         account, browse listings, and start buying, selling, or trading.
@@ -59,7 +61,7 @@ const Aboutus = () => {
         ensuring a positive experience for all users.
       </p>
 
-      <h2 className="text-2xl font-bold mb-4">Get in Touch</h2>
+      <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
       <p className="mb-8">
         Have questions or feedback? We'd love to hear from you! Contact
         us at <a className='text-blue-500' target='_blank' href="https://wa.me/923424295275">Whatsapp</a> and let
