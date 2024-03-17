@@ -14,6 +14,7 @@
     "@reduxjs/toolkit": "^2.2.0",
     "@tinymce/tinymce-react": "^4.3.2",
     "appwrite": "^13.0.1",
+    "framer-motion": "^11.0.14",
     "html-react-parser": "^5.1.4",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",

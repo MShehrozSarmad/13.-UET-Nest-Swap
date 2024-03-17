@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import { Link } from "react-router-dom";
 import LogoutBtn from "../components/LogoutBtn";
+import UserProfileCard from "../components/UserProfileCard";
 
 const UserProfile = () => {
 	const [usrData, setUsrData] = useState(null);
@@ -29,18 +30,8 @@ const UserProfile = () => {
 
 	return (
 		<>
-			<div>UserProfile ---------------------</div>
 			{usrData ? (
-				<div>
-					<p> Name : {usrData.name}</p>
-					<p> Email : {usrData.email}</p>
-					<p>
-						{usrData.emailVerification ? (
-							<span className=" text-green-600">Verified User</span>
-						) : (<span className=" text-red-600"> <Link to='/verify'>User Not Verified</Link> </span>)}
-					</p>
-					<LogoutBtn/>
-				</div>
+				<UserProfileCard name={usrData.name} email={usrData.email} isVerified={usrData.emailVerification} />
 			) : null}
 			<div>Dashboard ---------------------</div>
 			<div className="flex flex-wrap">

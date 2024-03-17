@@ -11,7 +11,6 @@ const Dealscontainer = ({ posts, link }) => {
 					posts.map((post, index) => (
 						<div key={post.$id} className={`w-[48%] md:w-[30%] ${index == 2 ? 'hidden' : 'block'} md:block `}>
 							<DormCard {...post} />
-							{console.log(index)}
 						</div>
 					))
 				) : (
