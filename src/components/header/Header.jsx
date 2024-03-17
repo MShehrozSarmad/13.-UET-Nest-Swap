@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import LogoutBtn from "../LogoutBtn";
-// import logo from "../../assets/logo.png";
 import logo from "../../assets/logoo.png";
+import Dropdown from "./DropDown";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const authStatus = useSelector((state) => state.authslc.status);
 	const navigate = useNavigate();
-	const userData = useSelector(state => state.authslc.userData);
-    
+	const userData = useSelector((state) => state.authslc.userData);
+	const [dropDown, setDropDown] = useState(false);
+
 	const navItems = [
 		{
 			name: "Dorm Deals",
@@ -21,7 +21,7 @@ const Header = () => {
 		{
 			name: "Rentals",
 			slug: "/rentals",
-            active: true,
+			active: true,
 		},
 		{
 			name: "Services",
@@ -34,8 +34,9 @@ const Header = () => {
 			active: !authStatus,
 		},
 		{
-			name: "Add Post",
-			slug: "/dormform",
+			name: "Post Ad",
+			slug: "#",
+			// slug: "/dormform",
 			active: authStatus,
 		},
 	];
@@ -44,7 +45,6 @@ const Header = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
-
 	return (
 		// absolute w-full mb-[50vh]
 		<header className="border2 border-red-500">
@@ -52,7 +52,11 @@ const Header = () => {
 				<nav className="flex flex-wrap items-center justify-between">
 					<div className=" mx-2">
 						<Link to="/">
-							<img className="h-[3.2rem] drop-shadow-md" src={logo} alt="logo" />
+							<img
+								className="h-[3.2rem] drop-shadow-md"
+								src={logo}
+								alt="logo"
+							/>
 						</Link>
 					</div>
 					<div className="ml-auto">
@@ -88,20 +92,37 @@ const Header = () => {
 					>
 						{navItems.map((item) =>
 							item.active ? (
-								<li key={item.name}>
-									<button
-										onClick={() => navigate(item.slug)}
-										className="inline-block px-6 py-2 duration-200 hover:bg-blue100 hover:text-[#A9C5A0]"
-									>
-										{item.name}
-									</button>
-								</li>
+								item.name == "Post Ad" ? (
+									<li key={item.name}>
+										<Dropdown/>
+									</li>
+								) : (
+									<li key={item.name}>
+										<button
+											onClick={() => navigate(item.slug)}
+											className="inline-block px-6 py-2 duration-200 hover:bg-blue100 hover:text-[#A9C5A0]"
+										>
+											{item.name}
+										</button>
+									</li>
+								)
 							) : null
 						)}
 						{authStatus && (
 							<>
-								<li className="inline-block px-6 py-2 hover:text-[#053e7c] rounded-full" style={{ color: "white" }}>
-									<Link className="hover:text-[#A9C5A0] duration-200" to={'userprofile'}>{(userData?.name).split(' ').slice(0, 2).join(' ')} </Link>
+								<li
+									className="inline-block px-6 py-2 hover:text-[#053e7c] rounded-full"
+									style={{ color: "white" }}
+								>
+									<Link
+										className="hover:text-[#A9C5A0] duration-200"
+										to={"userprofile"}
+									>
+										{(userData?.name)
+											.split(" ")
+											.slice(0, 2)
+											.join(" ")}{" "}
+									</Link>
 								</li>
 							</>
 						)}
