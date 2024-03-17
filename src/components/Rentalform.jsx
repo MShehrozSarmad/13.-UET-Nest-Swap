@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 
 const Rentalform = ({ post }) => {
 	const navigate = useNavigate();
+	const [btnStat, setbtnStat] = useState(false);
 	const [error, seterror] = useState("");
 	const [imagePreviews, setImagePreviews] = useState({
 		image1: null,
@@ -66,10 +67,12 @@ const Rentalform = ({ post }) => {
 
 	const submit = async (data) => {
 		console.log("triggered");
+		setbtnStat(true);
 		console.log(data);
 
 		if (data.description.trim() === "") {
 			toast.warning("Description cant be empty!");
+			setbtnStat(false);
 			return;
 		}
 
@@ -85,6 +88,7 @@ const Rentalform = ({ post }) => {
 			} catch (error) {
 				console.log(error);
 				toast.error(error.response.message);
+				setbtnStat(false);
 			}
 		} else {
 			try {
@@ -104,6 +108,7 @@ const Rentalform = ({ post }) => {
 							date: getDate(),
 						});
 						toast.success("Deal Posted Successfully.");
+						navigate("/rentals");
 					} catch (error) {
 						console.log({ error });
 						toast.error(
@@ -111,14 +116,17 @@ const Rentalform = ({ post }) => {
 								? "Use different slug"
 								: error.response.message
 						);
+						setbtnStat(false);
 					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
 					toast.error("Failed to upload Images, Try Again");
+					setbtnStat(false);
 				}
 			} catch (error) {
 				toast.error(error.message);
+				setbtnStat(false);
 			}
 		}
 		console.log("exiting submit");
@@ -266,26 +274,6 @@ const Rentalform = ({ post }) => {
 					</div>
 
 					<div>
-						{/* <Controller
-							control={control}
-							name="condition"
-							rules={{ required: true }}
-							render={({ field }) => (
-								<Select
-									options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-									label="Condition: "
-									className="mb-4"
-									{...field}
-									onChange={(e) => {
-										field.onChange(
-											parseInt(e.target.value)
-										);
-									}}
-									disabled={post}
-								/>
-							)}
-						/> */}
-
 						<Controller
 							control={control}
 							name="status"
@@ -310,8 +298,11 @@ const Rentalform = ({ post }) => {
 						/>
 						<Button
 							type="submit"
+							disabled={btnStat}
 							children={post ? "Update Deal" : "Post Deal"}
-							className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+							className={`mt-4 text-white font-bold py-2 px-4 rounded w-full
+							${btnStat ? "bg-[#4b72c9]" : "bg-blue-500 hover:bg-blue-700"}
+							`}
 						/>
 						{error && <p className="text-red-500">{error}</p>}
 					</div>

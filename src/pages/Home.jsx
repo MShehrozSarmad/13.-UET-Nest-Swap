@@ -65,7 +65,7 @@ const Home = () => {
 				<HeroSec />
 				<div className="m-auto px-2 md:px-5 py-8  md:w-[95%] max-w-6xl bg-[#002233] md:rounded-xl md:my-8 my-0">
 				{/* <div className="m-auto px-2 md:px-5 py-8  md:w-[95%] max-w-6xl bg-gradient-to-r from-[#002233] to-[#0152ca] md:rounded-xl md:my-8 my-0"> */}
-					<h3 id="target" className=" text-purple500 text-[#0066ff] text-2xl font-bold p-4 m-auto text-center ">
+					<h3 id="target" className=" text-purple500 text-[#ffff] text-2xl font-bold p-4 m-auto text-center ">
 					{/* <h3 id="target" className=" text-purple500 text-[#ffff] text-2xl font-bold p-4 m-auto text-center "> */}
 						Featured Deals
 					</h3>

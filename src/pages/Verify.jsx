@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login as rdxlogin } from "../store/authSlc";
 import { toast } from "react-toastify";
+import UserProfileCard from "../components/UserProfileCard";
 
 const Verify = () => {
 	const [usrData, setusrData] = useState(null);
@@ -26,6 +27,9 @@ const Verify = () => {
 	};
 
 	useEffect(() => {
+		setTimeout(() => {
+			userData();
+		}, 3000);
 		userData();
 	}, []);
 
@@ -37,14 +41,14 @@ const Verify = () => {
 			navigate("/userprofile");
 		}
 	}, [usrData]);
-	
+
 	useEffect(() => {
 		console.log(params);
 		if (params.size > 0) {
 			verifyAccnt();
 		}
 	}, [params]);
-	
+
 	const verifyAccnt = async () => {
 		try {
 			const res = await authService.verifyAccount(id, secret);
@@ -52,31 +56,22 @@ const Verify = () => {
 			toast.success("Acoount Verified", { autoClose: 3000 });
 			navigate("/userprofile");
 		} catch (error) {
-			console.log("error => ", {error});
+			console.log("error => ", { error });
 			toast.error(error.response.message);
 		}
 	};
 
 	return (
 		<>
-			<div> ⚠️ Verify your account to continue</div>
-			<button
-				onClick={async () => {
-					try {
-						const verRes = await authService.createVerification();
-						if (verRes) {
-							toast.success("Email Sent, Check Your Inbox", {
-								autoClose: 5000,
-							});
-						}
-					} catch (error) {
-						console.log("error =>", { error });
-					}
-				}}
-				// disabled = {false}
-			>
-				Verify Here
-			</button>
+			<div className=" text-center font-semibold " > ⚠️ Verify your account to continue</div>
+			{usrData && (
+				<UserProfileCard
+					name={usrData.name}
+					email={usrData.email}
+					isVerified={usrData.emailVerification}
+
+				/>
+			)}
 			<br />
 		</>
 	);

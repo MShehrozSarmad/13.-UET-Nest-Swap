@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 const Dormform = ({ post }) => {
 	const navigate = useNavigate();
 	const [error, seterror] = useState("");
+	const [btnStat, setbtnStat] = useState(false);
+
 	const [imagePreviews, setImagePreviews] = useState({
 		image1: null,
 		image2: null,
@@ -60,10 +62,12 @@ const Dormform = ({ post }) => {
 
 	const submit = async (data) => {
 		console.log("triggered");
+		setbtnStat(true);
 		console.log(data);
 
 		if (data.description.trim() === "") {
 			toast.warning("Description cant be empty!");
+			setbtnStat(false);
 			return;
 		}
 
@@ -78,6 +82,7 @@ const Dormform = ({ post }) => {
 			} catch (error) {
 				console.log(error);
 				toast.error(error.response.message);
+				setbtnStat(false);
 			}
 		} else {
 			try {
@@ -99,6 +104,7 @@ const Dormform = ({ post }) => {
 							date: getDate(),
 						});
 						toast.success("Deal Posted Successfully.");
+						navigate("/dormdeals");
 					} catch (error) {
 						console.log({ error });
 						toast.error(
@@ -106,14 +112,17 @@ const Dormform = ({ post }) => {
 								? "Use different slug"
 								: error.response.message
 						);
+						setbtnStat(false);
 					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
 					toast.error("Failed to upload Images, Try Again");
+					setbtnStat(false);
 				}
 			} catch (error) {
 				toast.error(error.message);
+				setbtnStat(false);
 			}
 		}
 		console.log("exiting submit");
@@ -160,131 +169,6 @@ const Dormform = ({ post }) => {
 			reader.readAsDataURL(img);
 		}
 	};
-
-	// const [image, setImage] = useState();
-
-	// function handleChange(e) {
-	// 	console.log('triggered change')
-	// 	console.log(e.target.files);
-	// 	setImage(URL.createObjectURL(e.target.files[0]));
-	// }
-
-	// return (
-	// 	<div>
-	// 		<h2 className="text-red-600">All Fields are Required</h2>
-	// 		<form onSubmit={handleSubmit(submit)}>
-	// 			<Input
-	// 				label="Title :"
-	// 				placeholder="Title"
-	// 				className="mb-4"
-	// 				{...register("title", { required: true })}
-	// 				disabled={post}
-	// 			/>
-
-	// 			<Input
-	// 				label="Price :"
-	// 				type="number"
-	// 				placeholder="150"
-	// 				className="mb-4"
-	// 				{...register("price", {
-	// 					required: true,
-	// 				})}
-	// 			/>
-	// 			<Input
-	// 				label="Slug :"
-	// 				placeholder="Slug"
-	// 				className="mb-4"
-	// 				{...register("slug", { required: true })}
-	// 				onInput={(e) => {
-	// 					setValue("slug", slugTransform(e.currentTarget.value), {
-	// 						shouldValidate: true,
-	// 					});
-	// 				}}
-	// 				disabled={post}
-	// 			/>
-	// 			<Input
-	// 				label="Whatsapp No :"
-	// 				type="number"
-	// 				placeholder="923424295275"
-	// 				className="mb-4"
-	// 				{...register("phone", { required: true })}
-	// 			/>
-
-	// 			<Input
-	// 				label="Image 1:"
-	// 				type="file"
-	// 				className="mb-4"
-	// 				accept="image/png, image/jpg, image/jpeg, image/gif"
-	// 				{...register("image1", { required: !post })}
-	// 				disabled={post}
-	// 			/>
-
-	// 			<Input
-	// 				label="Image 2:"
-	// 				type="file"
-	// 				className="mb-4"
-	// 				accept="image/png, image/jpg, image/jpeg, image/gif"
-	// 				{...register("image2", { required: !post })}
-	// 				disabled={post}
-	// 			/>
-
-	// 			<Input
-	// 				label="Image 3:"
-	// 				type="file"
-	// 				className="mb-4"
-	// 				accept="image/png, image/jpg, image/jpeg, image/gif"
-	// 				{...register("image3", { required: !post })}
-	// 				disabled={post}
-	// 			/>
-
-	// 			<Controller
-	// 				control={control}
-	// 				name="condition"
-	// 				rules={{ required: true }}
-	// 				render={({ field }) => (
-	// 					<Select
-	// 						options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-	// 						label="Condition: "
-	// 						className="mb-4"
-	// 						{...field}
-	// 						onChange={(e) => {
-	// 							field.onChange(parseInt(e.target.value));
-	// 						}}
-	// 						disabled={post}
-	// 					/>
-	// 				)}
-	// 			/>
-
-	// 			<Controller
-	// 				control={control}
-	// 				name="status"
-	// 				rules={{ required: true }}
-	// 				render={({ field }) => (
-	// 					<Select
-	// 						options={["avialable", "sold"]}
-	// 						label="Status: "
-	// 						className="mb-4"
-	// 						{...field}
-	// 						disabled={!post}
-	// 					/>
-	// 				)}
-	// 			/>
-
-	// 			<RTE
-	// 				label="Description :"
-	// 				name="description"
-	// 				control={control}
-	// 				defaultValue={getValues("description")}
-	// 				rules={{ required: true }}
-	// 			/>
-	// 			<Button
-	// 				type="submit"
-	// 				children={post ? "Update Deal" : "Post Deal"}
-	// 			/>
-	// 			{error && <p>{error}</p>}
-	// 		</form>
-	// 	</div>
-	// );
 
 	return (
 		<div className=" w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md">
@@ -374,29 +258,28 @@ const Dormform = ({ post }) => {
 						/>
 
 						<div className=" border2 border-red-400 [&>*]:border2 [&>*]:max-w-[33%] [&>*]:aspect-square [&>*]:object-contain flex flex-row">
-						{imagePreviews.image1 && (
-							<img
-								src={imagePreviews.image1}
-								alt="preview"
-								className="w-full h-auto mb-4"
-							/>
-						)}
-						{imagePreviews.image2 && (
-							<img
-								src={imagePreviews.image2}
-								alt="preview"
-								className="w-full h-auto mb-4"
-							/>
-						)}
-						{imagePreviews.image3 && (
-							<img
-								src={imagePreviews.image3}
-								alt="preview"
-								className="w-full h-auto mb-4"
-							/>
-						)}
+							{imagePreviews.image1 && (
+								<img
+									src={imagePreviews.image1}
+									alt="preview"
+									className="w-full h-auto mb-4"
+								/>
+							)}
+							{imagePreviews.image2 && (
+								<img
+									src={imagePreviews.image2}
+									alt="preview"
+									className="w-full h-auto mb-4"
+								/>
+							)}
+							{imagePreviews.image3 && (
+								<img
+									src={imagePreviews.image3}
+									alt="preview"
+									className="w-full h-auto mb-4"
+								/>
+							)}
 						</div>
-
 					</div>
 
 					<div>
@@ -445,7 +328,9 @@ const Dormform = ({ post }) => {
 						<Button
 							type="submit"
 							children={post ? "Update Deal" : "Post Deal"}
-							className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+							className={`mt-4 text-white font-bold py-2 px-4 rounded w-full
+							${btnStat ? "bg-[#4b72c9]" : "bg-blue-500 hover:bg-blue-700"}
+							`}
 						/>
 						{error && <p className="text-red-500">{error}</p>}
 					</div>

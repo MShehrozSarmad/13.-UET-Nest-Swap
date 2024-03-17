@@ -13,6 +13,8 @@ import { toast } from "react-toastify";
 const Serviceform = ({ post }) => {
 	const navigate = useNavigate();
 	const [error, seterror] = useState("");
+	const [btnStat, setbtnStat] = useState(false);
+
 	const [imagePreviews, setImagePreviews] = useState({
 		image1: null,
 	});
@@ -37,15 +39,15 @@ const Serviceform = ({ post }) => {
 		},
 	});
 
-    function extractAmountAndItem(str) {
-        const amountMatch = str.match(/(\d+)PKR/);
-        const itemMatch = str.match(/PKR \/ (.+)/);
-    
-        const amnt = amountMatch ? parseFloat(amountMatch[1]) : null;
-        const itm = itemMatch ? itemMatch[1] : null;
-    
-        return { amnt, itm };
-    }
+	function extractAmountAndItem(str) {
+		const amountMatch = str.match(/(\d+)PKR/);
+		const itemMatch = str.match(/PKR \/ (.+)/);
+
+		const amnt = amountMatch ? parseFloat(amountMatch[1]) : null;
+		const itm = itemMatch ? itemMatch[1] : null;
+
+		return { amnt, itm };
+	}
 
 	const userData = useSelector((state) => state.authslc.userData);
 
@@ -65,10 +67,14 @@ const Serviceform = ({ post }) => {
 
 	const submit = async (data) => {
 		console.log("triggered");
+		setbtnStat(true);
+
 		console.log(data);
 
 		if (data.description.trim() === "") {
 			toast.warning("Description cant be empty!");
+			setbtnStat(false);
+
 			return;
 		}
 
@@ -84,6 +90,8 @@ const Serviceform = ({ post }) => {
 			} catch (error) {
 				console.log(error);
 				toast.error(error.response.message);
+				setbtnStat(false);
+
 			}
 		} else {
 			try {
@@ -95,12 +103,13 @@ const Serviceform = ({ post }) => {
 					try {
 						const dbPost = await dbService.createPostService({
 							...data,
-                            charges: data.amount + "PKR / " + data.item,
+							charges: data.amount + "PKR / " + data.item,
 							userId: userData.$id,
 							author: userData.name,
 							date: getDate(),
 						});
 						toast.success("Deal Posted Successfully.");
+						navigate('/services');
 					} catch (error) {
 						console.log({ error });
 						toast.error(
@@ -108,14 +117,20 @@ const Serviceform = ({ post }) => {
 								? "Use different slug"
 								: error.response.message
 						);
+				setbtnStat(false);
+
 					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
 					toast.error("Failed to upload Images, Try Again");
+				setbtnStat(false);
+
 				}
 			} catch (error) {
 				toast.error(error.message);
+				setbtnStat(false);
+
 			}
 		}
 		console.log("exiting submit");
@@ -270,7 +285,9 @@ const Serviceform = ({ post }) => {
 						<Button
 							type="submit"
 							children={post ? "Update Deal" : "Post Deal"}
-							className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
+							className={`mt-4 text-white font-bold py-2 px-4 rounded w-full
+							${btnStat ? "bg-[#4b72c9]" : "bg-blue-500 hover:bg-blue-700"}
+							`}
 						/>
 						{error && <p className="text-red-500">{error}</p>}
 					</div>

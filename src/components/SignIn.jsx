@@ -54,48 +54,192 @@ const SignIn = () => {
 			: console.log("nothing happened error");
 	}, [error]);
 
+	// return (
+	// 	<div>
+	// 		<form onSubmit={handleSubmit(login)}>
+	// 			<Input
+	// 				type="email"
+	// 				label="Email"
+	// 				placeholder="Enter your email"
+	// 				className=" text-slate-950 "
+	// 				{...register("email", {
+	// 					required: true,
+	// 					validate: {
+	// 						matchPattern: (value) =>
+	// 							/\.uettaxila\.edu\.pk$/.test(value) ||
+	// 							"Only in campus deals allowed, Use UET assigned email",
+	// 						// toast.warn("Only in campus deals allowed, Use UET assigned email" , {autoClose: 5000})
+	// 					},
+	// 				})}
+	// 			/>
+	// 			{errors.email && (
+	// 				<p className=" text-red-600">{errors.email.message}</p>
+	// 			)}
+	// 			<Input
+	// 				type="password"
+	// 				label="Password"
+	// 				placeholder="Enter your password"
+	// 				className=" text-slate-950 "
+	// 				{...register("password", {
+	// 					required: true,
+	// 				})}
+	// 			/>
+	// 			<p>
+	// 				By signing in, you agree to our{" "}
+	// 				<Link
+	// 					to={"/terms"}
+	// 					target="_blank"
+	// 					className=" text-blue-500"
+	// 				>
+	// 					Terms & Conditions
+	// 				</Link>{" "}
+	// 			</p>
+	// 			<Button type="submit" children="Sign In" disabled={btnStat} className={` ${ btnStat ? 'bg-blue-200' : null } `}/>
+	// 			{/* {error && <p className=" text-red-600">{error}</p>} */}
+	// 		</form>
+	// 	</div>
+	// );
+
+	// return (
+	// 	<div className="flex justify-center items-center h-screen">
+	// 		<form
+	// 			onSubmit={handleSubmit(login)}
+	// 			className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md"
+	// 		>
+	// 			<Input
+	// 				type="email"
+	// 				label="Email"
+	// 				placeholder="Enter your email"
+	// 				className="mb-4"
+	// 				{...register("email", {
+	// 					required: true,
+	// 					validate: {
+	// 						matchPattern: (value) =>
+	// 							/\.uettaxila\.edu\.pk$/.test(value) ||
+	// 							"Only in campus deals allowed, Use UET assigned email",
+	// 					},
+	// 				})}
+	// 			/>
+	// 			{errors.email && (
+	// 				<p className="text-red-500 text-xs italic">
+	// 					{errors.email.message}
+	// 				</p>
+	// 			)}
+	// 			<Input
+	// 				type="password"
+	// 				label="Password"
+	// 				placeholder="Enter your password"
+	// 				className="mb-6"
+	// 				{...register("password", { required: true })}
+	// 			/>
+	// 			<p className="text-gray-600 text-xs italic mb-4">
+	// 				By signing in, you agree to our{" "}
+	// 				<Link
+	// 					to={"/terms"}
+	// 					target="_blank"
+	// 					className="text-blue-500"
+	// 				>
+	// 					Terms & Conditions
+	// 				</Link>
+	// 			</p>
+	// 			<Button
+	// 				type="submit"
+	// 				disabled={btnStat}
+	// 				className={`${
+	// 					btnStat
+	// 						? "bg-blue-200"
+	// 						: "bg-blue-500 hover:bg-blue-700"
+	// 				} text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
+	// 			>
+	// 				Sign In
+	// 			</Button>
+	// 			{error && (
+	// 				<p className="text-red-500 text-xs italic mt-4">{error}</p>
+	// 			)}
+	// 		</form>
+	// 	</div>
+	// );
+
 	return (
-		<div>
-			<form onSubmit={handleSubmit(login)}>
-				<Input
-					type="email"
-					label="Email"
-					placeholder="Enter your email"
-					className=" text-slate-950 "
-					{...register("email", {
-						required: true,
-						validate: {
-							matchPattern: (value) =>
-								/\.uettaxila\.edu\.pk$/.test(value) ||
-								"Only in campus deals allowed, Use UET assigned email",
-							// toast.warn("Only in campus deals allowed, Use UET assigned email" , {autoClose: 5000})
-						},
-					})}
-				/>
-				{errors.email && (
-					<p className=" text-red-600">{errors.email.message}</p>
-				)}
-				<Input
-					type="password"
-					label="Password"
-					placeholder="Enter your password"
-					className=" text-slate-950 "
-					{...register("password", {
-						required: true,
-					})}
-				/>
-				<p>
+		<div className="flex justify-center items-center h-[85vh] md:h-dvh">
+			<form
+				onSubmit={handleSubmit(login)}
+				className="bg-gradient-to-r from-blue-900 to-blue-600 shadow-md md:rounded px-8 pt-6 pb-8 w-full max-w-md text-white h-full md:h-auto"
+			>
+				<h1 className=" font-bold text-2xl m-2 mb-6 text-center">
+					Welcome back to family!
+				</h1>
+
+				<div className="mb-6">
+					<Input
+						type="email"
+						label="Email"
+						placeholder="Enter your email"
+						// className="mb-4"
+						className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						lblClass="text-sm font-semibold mb-2"
+						{...register("email", {
+							required: true,
+							validate: {
+								matchPattern: (value) =>
+									/\.uettaxila\.edu\.pk$/.test(value) ||
+									"Only in-campus deals allowed, use UET assigned email",
+							},
+						})}
+					/>
+					{errors.email && (
+						<p className="text-red-500 text-xs italic">
+							{errors.email.message}
+						</p>
+					)}
+				</div>
+
+				<div className="mb-6">
+					<Input
+						type="password"
+						label="Password"
+						placeholder="Enter your password"
+						// className="mb-6"
+						className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+						lblClass="text-sm font-semibold mb-2"
+						{...register("password", { required: true })}
+					/>
+				</div>
+
+				<p className="text-gray-400 text-xs italic mb-4">
 					By signing in, you agree to our{" "}
 					<Link
 						to={"/terms"}
 						target="_blank"
-						className=" text-blue-500"
+						className="text-blue-300"
 					>
 						Terms & Conditions
-					</Link>{" "}
+					</Link>
 				</p>
-				<Button type="submit" children="Sign In" disabled={btnStat} className={` ${ btnStat ? 'bg-blue-200' : null } `}/>
-				{/* {error && <p className=" text-red-600">{error}</p>} */}
+				{error && (
+					<p className="text-red-500 text-xs italic mt-4">{error}</p>
+				)}
+
+				<Button
+					type="submit"
+					disabled={btnStat}
+					className={`${
+						btnStat
+							? "bg-[#788c6e] text-gray-200"
+							: "bg-blue-500 hover:bg-[#689250] transition duration-300"
+					} text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
+				>
+					Sign In
+				</Button>
+
+				<div className="text-gray-400 text-sm mt-4">
+					<p>
+						Don't have an account?{" "}
+						<Link to={"/signup"} className="text-blue-300">
+							Sign up here
+						</Link>
+					</p>
+				</div>
 			</form>
 		</div>
 	);
