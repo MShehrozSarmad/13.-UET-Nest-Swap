@@ -59,10 +59,10 @@ const Home = () => {
 
 	return (
 		<>
-			<div className="m-auto border-4 border-red-500">
+			<div className="m-auto border4 border-red-500">
 				<HeroSec />
 				<div className="bg-[#002233]">
-					<div className=" border-2 border-green-500 m-auto px-2 md:px-5 py-8 md:w-[95%] max-w-4xl bg[#002233] bg-transparent md:my8 my-0">
+					<div className=" border2 border-green-500 m-auto px-2 md:px-5 py-8 md:w-[95%] max-w-4xl bg[#002233] bg-transparent md:my8 my-0">
 						{/* <div className="m-auto px-2 md:px-5 py-8  md:w-[95%] max-w-6xl bg-gradient-to-r from-[#002233] to-[#0152ca] md:rounded-xl md:my-8 my-0"> */}
 						<h3
 							id="target"
@@ -113,7 +113,7 @@ const Home = () => {
 							Get started As
 						</h3>
 
-						<div className="flex flex-col gap-5 p-4 md:flex-row items-center justify-between border-2 m-auto md:w-[95%] max-w-6xl bg[#002233] bg-transparent my-0">
+						<div className="flex flex-col gap-5 p-4 md:flex-row items-center justify-between border2 m-auto md:w-[95%] max-w-6xl bg[#002233] bg-transparent my-0">
 							<LinkCard
 								clsnm="border2 w-full md:w-[25%]"
 								image={dormpng}

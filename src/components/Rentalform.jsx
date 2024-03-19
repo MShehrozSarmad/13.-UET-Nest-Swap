@@ -299,7 +299,7 @@ const Rentalform = ({ post }) => {
 						<Button
 							type="submit"
 							disabled={btnStat}
-							children={post ? "Update Deal" : "Post Deal"}
+							children={post ? "Update Deal" : "Rent Out"}
 							className={`mt-4 text-white font-bold py-2 px-4 rounded w-full
 							${btnStat ? "bg-[#4b72c9]" : "bg-blue-500 hover:bg-blue-700"}
 							`}
