@@ -7,17 +7,27 @@
     min-height: 30px !important;
     line-height: normal !important;
     border-radius: 50% !important;
+    color: rgb(134, 134, 134) !important;
 }
 
-.rec-pagination{
-
+.rec-arrow:hover {
+    background-color: #0066FF !important;
 }
 
-.rec-dot_active{
-    /* background-color: red !important; */
+.rec-arrow:focus:enabled {
+    color: rgb(255, 255, 255);
+    background-color: #1774ffda !important;
+    box-shadow: rgb(51, 51, 51) 0px 0px 2px 0px;
 }
 
-.rec-carousel-wrapper{
+.rec-pagination {}
+
+.rec-dot_active {
+    background-color: #0066FF !important;
+    box-shadow: #247cff 0px 0px 1px 3px !important;
+}
+
+.rec-carousel-wrapper {
     /* border: 2px solid purple; */
     /* display: flex;
     justify-content: center;
@@ -25,16 +35,16 @@
     /* height: fit-content; */
     /* margin: auto 0 auto 0; */
 }
-.rec-carousel{
+
+.rec-carousel {
     /* max-height: 625px; */
     /* max-width: 625px; */
     /* border: 2px solid black; */
 }
 
-.rec-slider-container{
+.rec-slider-container {
     /* border: 2px solid red; */
     /* width: 100% !important; */
     /* height: 100% !important; */
     /* object-fit: contain; */
 }
-

@@ -14,7 +14,7 @@ const DormCard = ({ image1, image, $id, price, charges, rent, title }) => {
 			//  className=" aspect-square object-cover overflow-hidden"
 			// className=" "
 		>
-			<div className="w-full bg-gray-100 bg-[#] rounded-xl p3 pb2 overflow-hidden hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] transition duration-200">
+			<div className="w-full bg-gray-100 rounded-xl p3 pb2 overflow-hidden hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] transition duration-200">
 				<div className="w-full justify-center">
 					<img
 						src={dbService.previewFile(image1 || image)}
@@ -22,7 +22,7 @@ const DormCard = ({ image1, image, $id, price, charges, rent, title }) => {
 						className=" rounded-tmd aspect-square object-cover"
 					/>
 				</div>
-				<div className=" [&>*]:px-0 md:[&>*]:px-2  flex justify-between items-center font-semibold p-2 text-gray-600 text-xs md:text-sm lg:text-base">
+				<div className=" [&>*]:px-0 md:[&>*]:px-2  flex justify-between items-center p-2 text-gray-600 text-xs md:text-sm lg:text-base">
 					<p className="">{title}</p>
 					<p className="">
 						{price ||
