@@ -1,0 +1,9 @@
+.fds {
+    transition: all 300ms linear;
+    filter: drop-shadow(2px 3px 6px black);
+}
+
+.fds:hover {
+    filter: drop-shadow(0 3px 12px rgba(8, 112, 184, 0.7));
+    transition: all 300ms linear;
+}
