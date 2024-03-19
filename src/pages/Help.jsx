@@ -2,7 +2,7 @@ import React from "react";
 
 const Help = () => {
     return (
-        <div className="my-0 md:my-8 md:mx-auto text-sm md:text-base px-2 md:px-5 py-8 md:w-[95%] max-w-4xl text-justify bg-[#002233] text-white md:rounded-xl [&>div>h2]:text-[#A9C5A0] [&>h1]:text-[#0066FF]">
+        <div className="my-0 md:my-8 md:mx-auto text-sm md:text-base px-2 md:px-5 py-8 md:w-[95%] max-w-4xl text-justify bg-[#002233] text-white md:rounded-xl [&>div>h2]:text-[#A9C5A0] [&>h1]:text[#0066FF]">
             <h1 className="text-3xl font-bold mb-4 text-left">Welcome to UET Nest Swap Help Center</h1>
             <p className="mb-8">Find answers to commonly asked questions and learn how to make the most of your UET Nest Swap experience.</p>
 

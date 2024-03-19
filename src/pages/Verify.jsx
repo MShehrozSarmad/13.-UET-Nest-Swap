@@ -63,7 +63,7 @@ const Verify = () => {
 
 	return (
 		<>
-			<div className=" text-center font-semibold " > ⚠️ Verify your account to continue</div>
+			<div className=" text-center font-semibold text-white" > ⚠️ Verify your account to continue</div>
 			{usrData && (
 				<UserProfileCard
 					name={usrData.name}
