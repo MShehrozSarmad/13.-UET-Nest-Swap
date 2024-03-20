@@ -10,7 +10,6 @@ const Header = () => {
 	const authStatus = useSelector((state) => state.authslc.status);
 	const navigate = useNavigate();
 	const userData = useSelector((state) => state.authslc.userData);
-	const [dropDown, setDropDown] = useState(false);
 
 	const navItems = [
 		{
@@ -87,8 +86,8 @@ const Header = () => {
 					</div>
 					<ul
 						className={`${
-							isMenuOpen ? "block" : "hidden"
-						} md:flex md:flex-wrap md:items-center md:ml-auto`}
+							!isMenuOpen ? "block" : "hidden"
+						} md:flex md:flex-wrap md:items-center md:ml-auto transition duration-700`}
 					>
 						{navItems.map((item) =>
 							item.active ? (

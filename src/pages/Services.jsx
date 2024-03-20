@@ -43,7 +43,7 @@ const Services = () => {
 		}
 	};
 
-	return !flag ? (
+	return flag ? (
 		<Preloader />
 	) : (
 		<>
