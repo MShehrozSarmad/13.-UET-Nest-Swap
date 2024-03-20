@@ -155,15 +155,16 @@ const DormDeal = () => {
 						{deal.status !== "sold" && (
 							<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
 								<a
-									href={`https://wa.me/923424295275?text=i%20am%20interested%20in%20this%20deal%20https://localhost:5173/dormdeal/${deal.$id}%20and%20i%20offer%20you%20${deal.price}PKR`}
+									href={`https://wa.me/${deal.phone}?text=Hey!%20${deal.author}%20I%20spotted%20your%20dorm%20deal%20at%20UET%20Nest%20Swap%20and%20I'm%20intrigued!%20Could%20you%20tell%20me%20more%20about%20it?%20Here's%20the%20link%3A%20https%3A%2F%2Flocalhost%3A5173%2Fdormdeal%2F${deal.$id}`}
 									target="_blank"
 									rel="noreferrer"
 									className="hover:text-white cursor-pointer"
 								>
-									Make an Offer
+									Reserve Now
 								</a>
 							</button>
 						)}
+						{console.log({deal})}
 					</div>
 				</div>
 			</div>

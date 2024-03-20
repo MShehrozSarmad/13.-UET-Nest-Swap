@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import { Link } from "react-router-dom";
-import LogoutBtn from "../components/LogoutBtn";
 import UserProfileCard from "../components/UserProfileCard";
 // import Preloader from '../components/Preloader'
 import Preloader from "../components/Preloader";
@@ -17,12 +16,23 @@ const UserProfile = () => {
 	const [services, setservices] = useState(null);
 	const srvcsData = useSelector((state) => state.serviceslc);
 
-	// const [response, setResponse] = useState("Loading...");
-	// const [flag, setFlag] = useState(true);
-	// const [flag1, setFlag1] = useState(true);
-	// const [flag2, setFlag2] = useState(true);
-	// const [flag3, setFlag3] = useState(true);
 	const [loading, setLoading] = useState(true);
+	
+	const flag1 = useSelector((state) => state.preloadslc.flag1);
+	const flag2 = useSelector((state) => state.preloadslc.flag2);
+	const flag3 = useSelector((state) => state.preloadslc.flag3);
+	const flag4 = useSelector((state) => state.preloadslc.flag4);
+	const [flag, setFlag] = useState(true);
+
+	useEffect(() => {
+		if (!flag1 && !flag2 && !flag3 && !flag4) {
+			setFlag(false);
+			console.log('set to false!');
+		} else {
+			setFlag(true);
+			console.log('till true!');
+		}
+	}, [flag1, flag2, flag3, flag4]);
 
 	useEffect(() => {
 		if (userData) {
@@ -44,7 +54,6 @@ const UserProfile = () => {
 		if (usrData && rntlsData) {
 			setrentals(rntlsData.filter((item) => item.userId === usrData.$id));
 		} else {
-			// console.log("rntls failed");
 		}
 	}, [rntlsData, usrData]);
 
@@ -54,11 +63,10 @@ const UserProfile = () => {
 				srvcsData.filter((item) => item.userId === usrData.$id)
 			);
 		} else {
-			// console.log("services failed");
 		}
 	}, [srvcsData, usrData]);
 
-	return loading ? (
+	return flag ? (
 		<Preloader />
 	) : (
 		<>

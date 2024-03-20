@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import "../components/pagination.css";
+import Preloader from "../components/Preloader";
 
 const Services = () => {
 	const [services, setServices] = useState(null);
@@ -11,6 +12,22 @@ const Services = () => {
 	const navigate = useNavigate();
 
 	const [page, setPage] = useState(1);
+
+	const flag1 = useSelector((state) => state.preloadslc.flag1);
+	const flag2 = useSelector((state) => state.preloadslc.flag2);
+	const flag3 = useSelector((state) => state.preloadslc.flag3);
+	const flag4 = useSelector((state) => state.preloadslc.flag4);
+	const [flag, setFlag] = useState(true);
+
+	useEffect(() => {
+		if (!flag1 && !flag2 && !flag3 && !flag4) {
+			setFlag(false);
+			console.log("set to false!");
+		} else {
+			setFlag(true);
+			console.log("till true!");
+		}
+	}, [flag1, flag2, flag3, flag4]);
 
 	useEffect(() => {
 		setServices(srvcs);
@@ -26,7 +43,9 @@ const Services = () => {
 		}
 	};
 
-	return (
+	return !flag ? (
+		<Preloader />
+	) : (
 		<>
 			<div className="w-full bg-[#002233]">
 				<div className=" m-auto w-[95%] max-w-6xl py-8">

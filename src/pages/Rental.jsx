@@ -21,7 +21,6 @@ const Rental = () => {
 	const allPosts = useSelector((state) => state.rentalslc);
 
 	useEffect(() => {
-		// if (slug) {
 		if (slug && allPosts.length > 0) {
 			const myDeal = allPosts.filter((item) => item.$id == slug)[0];
 			myDeal ? setDeal(myDeal) : setresponse("Deal not found");
@@ -132,13 +131,13 @@ const Rental = () => {
 						{deal.status == "available" && (
 							<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
 								<a
-									href={`https://wa.me/923424295275?text=i%20am%20interested%20in%20this%20deal%20https://localhost:5173/dormdeal/${deal.$id}%20and%20i%20offer%20you%20${deal.price}PKR`}
+									href={`https://wa.me/${deal.phone}?text=Hi%20${deal.author}!%20Your%20rental%20listing%20at%20UET%20Nest%20Swap%20caught%20my%20eye.%20Can%20we%20chat%20about%20the%20details?%20Here's%20the%20link%3A%20https%3A%2F%2Flocalhost%3A5173%2Frental%2F${deal.$id}`}
 									target="_blank"
 									rel="noreferrer"
 									className="hover:text-white cursor-pointer"
 									aria-disabled={true}
 								>
-									Hire
+									Book Now
 								</a>
 							</button>
 						)}

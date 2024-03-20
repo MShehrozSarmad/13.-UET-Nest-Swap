@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import "../components/pagination.css";
+import Preloader from '../components/Preloader';
 
 const DormDeals = () => {
 	const [deals, setDeals] = useState(null);
@@ -11,6 +12,22 @@ const DormDeals = () => {
 	const navigate = useNavigate();
 
 	const [page, setPage] = useState(1);
+
+	const flag1 = useSelector((state) => state.preloadslc.flag1);
+	const flag2 = useSelector((state) => state.preloadslc.flag2);
+	const flag3 = useSelector((state) => state.preloadslc.flag3);
+	const flag4 = useSelector((state) => state.preloadslc.flag4);
+	const [flag, setFlag] = useState(true);
+
+	useEffect(() => {
+		if (!flag1 && !flag2 && !flag3 && !flag4) {
+			setFlag(false);
+			console.log("set to false!");
+		} else {
+			setFlag(true);
+			console.log("till true!");
+		}
+	}, [flag1, flag2, flag3, flag4]);
 
 	useEffect(() => {
 		setDeals(dorms);
@@ -26,11 +43,15 @@ const DormDeals = () => {
 		}
 	};
 
-	return (
+	return flag ? (
+		<Preloader />
+	) : (
 		<>
 			<div className="w-full bg-[#002233]">
 				<div className=" m-auto w-[95%] max-w-6xl py-8">
-					<h1 className="text-white text-center font-bold text-3xl mb-8">DormDeals</h1>
+					<h1 className="text-white text-center font-bold text-3xl mb-8">
+						DormDeals
+					</h1>
 					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3">
 						{deals ? (
 							deals

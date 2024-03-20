@@ -20,6 +20,7 @@ const Footer = () => {
 							<a
 								href="https://wa.me/923424295275"
 								target="_blank"
+								className="hover:text-[#A9C5A0]"
 							>
 								Muhammad Shehroz Sarmad
 							</a>
@@ -29,35 +30,35 @@ const Footer = () => {
 				</div>
 				<div className=" [&>*]:bgred-400 [&>*]:m-auto [&>*]:text-justify [&>*]:w-[10rem] bgblue-800 flex flex-col justify-evenly p-2 gap-3 ">
 					<p>
-						<Link to="help" className="">
+						<Link to="help" className="hover:text-[#A9C5A0]">
 							Help
 						</Link>
 					</p>
 					<p>
-						<Link to="/aboutus" className="">
+						<Link to="/aboutus" className="hover:text-[#A9C5A0]">
 							About Us
 						</Link>
 					</p>
 					<p>
-						<Link to="/feedback" className="">
+						<Link to="/feedback" className="hover:text-[#A9C5A0]">
 							Feedback
 						</Link>
 					</p>
 				</div>
 				<div className="bggreen-800 flex flex-col justify-evenly p-2 gap-3 [&>*]:bgred-400 [&>*]:m-auto [&>*]:text-justify [&>*]:w-[10rem]">
 					<p>
-						<Link to="/complaint" className="">
+						<Link to="/complaint" className="hover:text-[#A9C5A0]">
 							Complaints
 						</Link>
 					</p>
 					<p>
-						<Link to="/privacy" className="">
+						<Link to="/privacy" className="hover:text-[#A9C5A0]">
 							Privacy Policy
 						</Link>
 					</p>
 
 					<p>
-						<Link to="/terms" className="">
+						<Link to="/terms" className="hover:text-[#A9C5A0]">
 							Terms and Conditions
 						</Link>
 					</p>

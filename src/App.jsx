@@ -5,13 +5,15 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import dbService from "./appwrite/dbservices";
+import { setflag1, setflag2, setflag3, setflag4 } from "./store/preloadSlc";
+import { login } from "./store/authSlc";
 import { setdorms } from "./store/dormSlc";
 import { setrentals } from "./store/rentalSlc";
 import { setsrvcs } from "./store/servicesSlc";
 import authService from "./appwrite/authservices";
-import { login } from "./store/authSlc";
-import Lottie from "lottie-react";
-import preloader from "./loading.json";
+// import Lottie from "lottie-react";
+// import preloader from "./loading.json";
+import Preloader from "./components/Preloader";
 
 const App = () => {
 	const navigate = useNavigate();
@@ -24,7 +26,8 @@ const App = () => {
 			try {
 				const userData = await authService
 					.getCurrentUser()
-					.then(setLoading2(false));
+					.then(setLoading2(false))
+					.then(dispatch(setflag1(false)));
 				userData ? dispatch(login(userData)) : null;
 			} catch (error) {
 				console.log(error);
@@ -40,7 +43,8 @@ const App = () => {
 							? dispatch(setdorms(deals.documents))
 							: console.log("failed to set");
 					})
-					.then(setLoading(false));
+					.then(setLoading(false))
+					.then(dispatch(setflag2(false)));
 			} catch (error) {
 				console.log("error", error);
 			}
@@ -48,11 +52,14 @@ const App = () => {
 
 		async function getRentals() {
 			try {
-				await dbService.getPostsRentals().then((deals) => {
-					deals
-						? dispatch(setrentals(deals.documents))
-						: console.log("rentals failed");
-				});
+				await dbService
+					.getPostsRentals()
+					.then((deals) => {
+						deals
+							? dispatch(setrentals(deals.documents))
+							: console.log("rentals failed");
+					})
+					.then(dispatch(setflag3(false)));
 			} catch (error) {
 				console.log("error", error.response.message);
 			}
@@ -60,11 +67,14 @@ const App = () => {
 
 		async function getServices() {
 			try {
-				await dbService.getPostsServices().then((deals) => {
-					deals
-						? dispatch(setsrvcs(deals.documents))
-						: console.log("services failed");
-				});
+				await dbService
+					.getPostsServices()
+					.then((deals) => {
+						deals
+							? dispatch(setsrvcs(deals.documents))
+							: console.log("services failed");
+					})
+					.then(dispatch(setflag4(false)));
 			} catch (error) {
 				console.log("error", error.response.message);
 			}
@@ -76,10 +86,25 @@ const App = () => {
 		getServices();
 	}, [navigate, location]);
 
-	return loading && loading2 ? (
-		<div className=" w-5 h-5">
-			<Lottie animationData={preloader} loop={true} />
-		</div>
+	const flag1 = useSelector((state) => state.preloadslc.flag1);
+	const flag2 = useSelector((state) => state.preloadslc.flag2);
+	const flag3 = useSelector((state) => state.preloadslc.flag3);
+	const flag4 = useSelector((state) => state.preloadslc.flag4);
+	const [flag, setFlag] = useState(true);
+
+	useEffect(() => {
+		if (!flag1 && !flag2 && !flag3 && !flag4) {
+			setFlag(false);
+			console.log('set to false!');
+		} else {
+			setFlag(true);
+			console.log('till true!');
+		}
+	}, [flag1, flag2, flag3, flag4]);
+
+	// return loading && loading2 ? (
+	return flag ? (
+		<Preloader/>
 	) : (
 		<>
 			<Header />
