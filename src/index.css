@@ -75,5 +75,6 @@ button:focus-visible {
 @layer base {
   html {
       @apply bg-[#002233];
+      /* overflow-x: hidden; */
   }
 }

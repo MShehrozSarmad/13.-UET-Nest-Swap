@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logoo.png";
 import Dropdown from "./DropDown";
+import { motion } from "framer-motion";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,7 +47,13 @@ const Header = () => {
 
 	return (
 		// absolute w-full mb-[50vh]
-		<header className="border2 border-red-500">
+		<motion.header
+			// initial={{ height: '0' }}
+			initial={{ height: 'auto' }}
+			animate={{ height: isMenuOpen ? "auto" : '8vh' }}
+			transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
+			className="border2 border-red-500"
+		>
 			<div className="header  bg[#34404F] bg-[#002233] text-white p-2">
 				<nav className="flex flex-wrap items-center justify-between">
 					<div className=" mx-2">
@@ -72,7 +79,7 @@ const Header = () => {
 									<path
 										fillRule="evenodd"
 										clipRule="evenodd"
-										d="M19 12H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2zm0-7H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2zm0 14H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z"
+										d="M5.707 5.293a1 1 0 011.414 0L12 10.586l4.879-4.879a1 1 0 111.414 1.414L13.414 12l4.879 4.879a1 1 0 11-1.414 1.414L12 13.414l-4.879 4.879a1 1 0 01-1.414-1.414L10.586 12 5.707 7.121a1 1 0 010-1.414z"
 									/>
 								) : (
 									<path
@@ -84,16 +91,23 @@ const Header = () => {
 							</svg>
 						</button>
 					</div>
-					<ul
+					<motion.ul
+						// initial={{ x: "100%" }}
+						// animate={{ x: isMenuOpen ? "0%" : "100%" }}
+						// transition={{
+						// 	type: "spring",
+						// 	stiffness: 60,
+						// 	damping: 20,
+						// }}
 						className={`${
-							!isMenuOpen ? "block" : "hidden"
-						} md:flex md:flex-wrap md:items-center md:ml-auto transition duration-700`}
+							isMenuOpen ? "block" : "hidden"
+						} md:flex md:flex-wrap md:items-center md:ml-auto`}
 					>
 						{navItems.map((item) =>
 							item.active ? (
 								item.name == "Post Ad" ? (
 									<li key={item.name}>
-										<Dropdown/>
+										<Dropdown />
 									</li>
 								) : (
 									<li key={item.name}>
@@ -125,10 +139,10 @@ const Header = () => {
 								</li>
 							</>
 						)}
-					</ul>
+					</motion.ul>
 				</nav>
 			</div>
-		</header>
+		</motion.header>
 	);
 };
 
