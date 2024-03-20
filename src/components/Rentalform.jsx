@@ -184,14 +184,14 @@ const Rentalform = ({ post }) => {
 						<Input
 							label="Title :"
 							placeholder="Title"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("title", { required: true })}
 							disabled={post}
 						/>
 						<Input
 							label="Slug :"
 							placeholder="Slug"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("slug", { required: true })}
 							onInput={(e) => {
 								setValue(
@@ -213,7 +213,7 @@ const Rentalform = ({ post }) => {
 									type="number"
 									placeholder="300"
 									lblClass="text-sm text-xs"
-									className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+									className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 									{...register("amount", { required: true })}
 								/>
 								<Input
@@ -222,7 +222,7 @@ const Rentalform = ({ post }) => {
 									placeholder="1"
 									step="any"
 									lblClass="text-sm text-xs"
-									className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+									className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 									{...register("time", { required: true })}
 								/>
 							</div>
@@ -232,7 +232,7 @@ const Rentalform = ({ post }) => {
 							label="Whatsapp No :"
 							type="number"
 							placeholder="923424295275"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("phone", { required: true })}
 						/>
 						<Input

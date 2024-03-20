@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Preloader from "./Preloader";
 
 export default function AuthLayout({ children, authentication = true }) {
 	const navigate = useNavigate();
@@ -8,10 +9,8 @@ export default function AuthLayout({ children, authentication = true }) {
 	const [authStts, setAuthStts] = useState(null);
 	const [loader, setLoader] = useState(true);
 	const [response, setresponse] = useState("loading...");
-	const usrData = useSelector(state => state.authslc.userData);
+	const usrData = useSelector((state) => state.authslc.userData);
 	const [userData, setUserData] = useState(null);
-
-
 
 	useEffect(() => {
 		setAuthStts(authStatus);
@@ -22,12 +21,6 @@ export default function AuthLayout({ children, authentication = true }) {
 	}, [usrData]);
 
 	useEffect(() => {
-		// setLoader(authentication && !authStts);
-		// if (authentication) {
-		// 	authStts ? null : setresponse("SignIn to Continue !");
-		// } else if (authStts) {
-		// 	navigate("/");
-		// }
 		setLoader(authentication && !authStts);
 		if (authentication) {
 			if (authStts) {
@@ -42,5 +35,15 @@ export default function AuthLayout({ children, authentication = true }) {
 		}
 	}, [authentication, authStatus, authStts, navigate]);
 
-	return loader ? <h1>{response}</h1> : <>{children}</>;
+	return loader ? (
+		response == "loading..." ? (
+			<Preloader />
+		) : (
+			<div className=" font-semibold flex w-full h-screen justify-center items-center text-red-500">
+				<p>{response}</p>
+			</div>
+		)
+	) : (
+		<>{children}</>
+	);
 }

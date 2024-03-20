@@ -58,62 +58,6 @@ const SignUp = () => {
 			: console.log("nothing happened error");
 	}, [error]);
 
-	// return (
-	// 	<div>
-	// 		<form onSubmit={handleSubmit(signup)}>
-	// 			<Input
-	// 				type="text"
-	// 				label="Name"
-	// 				placeholder="Enter your Full name"
-	// 				className=" text-slate-950 "
-	// 				{...register("name", {
-	// 					required: true,
-	// 				})}
-	// 			/>
-	// 			<Input
-	// 				type="email"
-	// 				label="Email"
-	// 				placeholder="Enter your email"
-	// 				className=" text-slate-950 "
-	// 				{...register("email", {
-	// 					required: true,
-	// 					validate: {
-	// 						matchPattern: (value) =>
-	// 							/\.uettaxila\.edu\.pk$/.test(value) ||
-	// 							"Only in campus deals allowed, use UET assigned email",
-	// 					},
-	// 				})}
-	// 			/>
-	// 			{errors.email && (
-	// 				<p className=" text-red-500">{errors.email.message}</p>
-	// 			)}
-	// 			<Input
-	// 				type="password"
-	// 				label="Password"
-	// 				placeholder="Enter your password"
-	// 				className=" text-slate-950 "
-	// 				{...register("password", {
-	// 					required: true,
-	// 				})}
-	// 			/>
-
-	// 			<p>
-	// 				By creating account, you agree to our{" "}
-	// 				<Link
-	// 					to={"/terms"}
-	// 					target="_blank"
-	// 					className=" text-blue-500"
-	// 				>
-	// 					Terms & Conditions
-	// 				</Link>{" "}
-	// 			</p>
-
-	// 			<Button type="submit" children="Sign Up" />
-	// 			{error && <p className=" text-red-500">{error}</p>}
-	// 		</form>
-	// 	</div>
-	// );
-
 	return (
 		<div className="flex justify-center items-center h-[85vh] md:h-dvh">
 			<form

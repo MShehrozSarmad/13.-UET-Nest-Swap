@@ -51,7 +51,7 @@ const Rental = () => {
 	};
 
 	return loading ? (
-		<div>{response == "Loading..." ? <Preloader /> : response}</div>
+		<div>{response == "Loading..." ? <Preloader /> : <p className=" flex w-full h-screen justify-center items-center text-red-500">{response}</p>}</div>
 	) : (
 		<>
 			<div className="w-full bg-[#002233] p-8">

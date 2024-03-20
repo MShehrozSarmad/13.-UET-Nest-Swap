@@ -91,7 +91,6 @@ const Serviceform = ({ post }) => {
 				console.log(error);
 				toast.error(error.response.message);
 				setbtnStat(false);
-
 			}
 		} else {
 			try {
@@ -109,7 +108,7 @@ const Serviceform = ({ post }) => {
 							date: getDate(),
 						});
 						toast.success("Deal Posted Successfully.");
-						navigate('/services');
+						navigate("/services");
 					} catch (error) {
 						console.log({ error });
 						toast.error(
@@ -117,20 +116,17 @@ const Serviceform = ({ post }) => {
 								? "Use different slug"
 								: error.response.message
 						);
-				setbtnStat(false);
-
+						setbtnStat(false);
 					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
 					console.log("file is not uploaded");
 					toast.error("Failed to upload Images, Try Again");
-				setbtnStat(false);
-
+					setbtnStat(false);
 				}
 			} catch (error) {
 				toast.error(error.message);
 				setbtnStat(false);
-
 			}
 		}
 		console.log("exiting submit");
@@ -172,8 +168,10 @@ const Serviceform = ({ post }) => {
 	};
 
 	return (
-		<div className=" w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md">
-			<h1 className=" text-purple-500 text-center text-2xl font-semibold m-4 ">
+		// <div className=" w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md">
+		<div className="bg-gradient-to-r from-[#184b65] to-[#033a8d] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
+			{/* <h1 className=" text-purple-500 text-center text-2xl font-semibold m-4 "> */}
+			<h1 className=" text-center text-2xl font-bold m-4 ">
 				Service Form
 			</h1>
 			<h2 className="text-red-600 text-md  mb-4">
@@ -188,14 +186,14 @@ const Serviceform = ({ post }) => {
 						<Input
 							label="Title :"
 							placeholder="Title"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("title", { required: true })}
 							disabled={post}
 						/>
 						<Input
 							label="Slug :"
 							placeholder="Slug"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("slug", { required: true })}
 							onInput={(e) => {
 								setValue(
@@ -215,17 +213,17 @@ const Serviceform = ({ post }) => {
 								<Input
 									label="Amount(PKR) "
 									type="number"
-									placeholder="7000"
+									placeholder="10"
 									lblClass="text-sm text-xs"
-									className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+									className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 									{...register("amount", { required: true })}
 								/>
 								<Input
 									label="Service"
 									type="text"
-									placeholder="1 month tution"
+									placeholder="4 photocopies"
 									lblClass="text-sm text-xs"
-									className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+									className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 									{...register("item", { required: true })}
 								/>
 							</div>
@@ -235,7 +233,7 @@ const Serviceform = ({ post }) => {
 							label="Whatsapp No :"
 							type="number"
 							placeholder="923424295275"
-							className="mb-4 border-[1px] border-gray-200 rounded-md p-1 w-full"
+							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("phone", { required: true })}
 						/>
 						<Input

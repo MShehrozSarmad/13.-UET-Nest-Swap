@@ -4,6 +4,8 @@ import DormCard from "../components/DormCard";
 import { Link } from "react-router-dom";
 import LogoutBtn from "../components/LogoutBtn";
 import UserProfileCard from "../components/UserProfileCard";
+// import Preloader from '../components/Preloader'
+import Preloader from "../components/Preloader";
 
 const UserProfile = () => {
 	const [usrData, setUsrData] = useState(null);
@@ -15,43 +17,26 @@ const UserProfile = () => {
 	const [services, setservices] = useState(null);
 	const srvcsData = useSelector((state) => state.serviceslc);
 
-	// const [response, setResponse] = useState('Loading...');
+	// const [response, setResponse] = useState("Loading...");
+	// const [flag, setFlag] = useState(true);
+	// const [flag1, setFlag1] = useState(true);
+	// const [flag2, setFlag2] = useState(true);
+	// const [flag3, setFlag3] = useState(true);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setUsrData(userData);
+		if (userData) {
+			setUsrData(userData);
+			setLoading(false);
+		} else {
+			setLoading(true);
+		}
 	}, [userData]);
-
-	// useEffect(() => {
-	// 	if (usrData) {
-	// 		if (dormsData) {
-	// 			setDeals(
-	// 				dormsData.filter((item) => item.userId == usrData.$id)
-	// 			);
-	// 		} else {
-	// 			console.log("dorms failed");
-	// 		}
-	// 		if (rntlsData) {
-	// 			setrentals(
-	// 				rntlsData.filter((item) => item.userId == usrData.$id)
-	// 			);
-	// 		}else{
-	// 			console.log('rntls failed')
-	// 		}
-	// 		if (srvcsData) {
-	// 			setservices(
-	// 				srvcsData.filter((item) => item.userId == usrData.$id)
-	// 			);
-	// 		}else{
-	// 			console.log('services failed')
-	// 		}
-	// 	}
-	// }, [dormsData, usrData, rntlsData, srvcsData]);
 
 	useEffect(() => {
 		if (usrData && dormsData) {
 			setDeals(dormsData.filter((item) => item.userId === usrData.$id));
 		} else {
-			console.log("dorms failed");
 		}
 	}, [dormsData, usrData]);
 
@@ -59,7 +44,7 @@ const UserProfile = () => {
 		if (usrData && rntlsData) {
 			setrentals(rntlsData.filter((item) => item.userId === usrData.$id));
 		} else {
-			console.log("rntls failed");
+			// console.log("rntls failed");
 		}
 	}, [rntlsData, usrData]);
 
@@ -69,11 +54,13 @@ const UserProfile = () => {
 				srvcsData.filter((item) => item.userId === usrData.$id)
 			);
 		} else {
-			console.log("services failed");
+			// console.log("services failed");
 		}
 	}, [srvcsData, usrData]);
 
-	return (
+	return loading ? (
+		<Preloader />
+	) : (
 		<>
 			{usrData ? (
 				<UserProfileCard
@@ -90,42 +77,51 @@ const UserProfile = () => {
 					<div>
 						<h3 className="text-bold text-2xl p-2">Dorm Deals</h3>
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3">
-							{deals ? (
-								deals?.map((deal) => (
+							{deals?.length > 0 ? (
+								deals.map((deal) => (
 									<div key={deal.$id} className="p-2">
 										<DormCard {...deal} />
 									</div>
 								))
 							) : (
-								<p className="p-2 text-yellow-600"> ⚠️ No Deal</p>
+								<p className="p-2 text-yellow-600">
+									{" "}
+									⚠️ No Ad Posted
+								</p>
 							)}
 						</div>
 					</div>
 					<div className="my-8">
 						<h3 className="text-bold text-2xl p-2">Rentals</h3>
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3">
-							{rentals ? (
-								rentals?.map((deal) => (
+							{rentals?.length > 0 ? (
+								rentals.map((deal) => (
 									<div key={deal.$id} className="p-2">
 										<DormCard {...deal} />
 									</div>
 								))
 							) : (
-								<p className="p-2 text-yellow-600"> ⚠️ No Deal</p>
+								<p className="p-2 text-yellow-600">
+									{" "}
+									⚠️ No Ad Posted
+								</p>
 							)}
 						</div>
 					</div>
 					<div>
 						<h3 className="text-bold text-2xl p-2">Services</h3>
 						<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 lg:gap-3">
-							{services ? (
-								services?.map((deal) => (
+							{services?.length > 0 ? (
+								services.map((deal) => (
 									<div key={deal.$id} className="p-2">
 										<DormCard {...deal} />
 									</div>
 								))
 							) : (
-								<p className="p-2 text-yellow-600"> ⚠️ No Deal</p>
+								<p className="p-2 text-yellow-600">
+									{" "}
+									⚠️ No Ad Posted
+								</p>
 							)}
 						</div>
 					</div>

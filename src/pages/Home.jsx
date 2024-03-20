@@ -116,6 +116,7 @@ const Home = () => {
 						<div className="flex flex-col gap-5 p-4 md:flex-row items-center justify-between border2 m-auto md:w-[95%] max-w-6xl bg[#002233] bg-transparent my-0">
 							<LinkCard
 								clsnm="border2 w-full md:w-[25%]"
+								lnk='/dormform'
 								image={dormpng}
 								title={"A seller"}
 								description={
@@ -124,6 +125,7 @@ const Home = () => {
 							/>
 							<LinkCard
 								clsnm="border2 w-full md:w-[25%]"
+								lnk='/rentalform'
 								image={rentalsvg}
 								title={"A vehicle owner"}
 								description={
@@ -132,6 +134,7 @@ const Home = () => {
 							/>
 							<LinkCard
 								clsnm="border2 w-full md:w-[25%]"
+								lnk='/serviceform'
 								image={servicesvg}
 								title={"A service provider"}
 								description={

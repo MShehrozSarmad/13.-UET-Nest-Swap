@@ -9,7 +9,7 @@ const Dropdown = () => {
     };
 
     const dropdownMenu = (
-        <ul onClick={() => setIsOpen(false)} className=" bg-white mr-5 absolute py-2 text-sm text-black " aria-labelledby="dropdownDefaultButton">
+        <ul onClick={() => setIsOpen(false)}  className=" bg-white mr-5 absolute text-sm text-black " aria-labelledby="dropdownDefaultButton">
             <li>
                 <Link to={'/dormform'} className=" hover:text-white transition duration-200 block px-4 py-2 hover:bg-[#0066FF]">Dorm Deal</Link>
             </li>

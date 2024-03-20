@@ -147,7 +147,6 @@ const Dormform = ({ post }) => {
 		};
 	}, [watch, slugTransform, setValue]);
 
-
 	const handleFileChange = (e, imageNumber) => {
 		if (e.target.files && e.target.files[0]) {
 			let img = e.target.files[0];
@@ -163,9 +162,9 @@ const Dormform = ({ post }) => {
 	};
 
 	return (
-		// <div className="bg-[#024499] w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md bg-[#002233] text-white [&>form]:text-[#689250]">
-		<div className=" w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md bg-[#002233] text-white [&>form]:text-[#a8cc94]">
-			<h1 className=" text-white text-center text-2xl font-semibold m-4 ">
+		<div className="bg-gradient-to-r from-[#184b65] to-[#033a8d] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
+			{/* <h1 className=" text-white text-center text-2xl font-semibold m-4 "> */}
+			<h1 className=" text-center text-2xl font-bold m-4 ">
 				Dorm Deal Form
 			</h1>
 			<h2 className="text-red-600 text-md  mb-4">
@@ -225,10 +224,6 @@ const Dormform = ({ post }) => {
 							// onChange={handleFileChange}
 							onChange={(e) => handleFileChange(e, 1)}
 						/>
-
-						{/* {
-							image && <img src={image} alt="preview" />
-						} */}
 
 						<Input
 							label="Image 2:"

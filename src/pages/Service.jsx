@@ -50,7 +50,15 @@ const Service = () => {
 	};
 
 	return loading ? (
-		<div>{response == "Loading..." ? <Preloader /> : response}</div>
+		<div>
+			{response == "Loading..." ? (
+				<Preloader />
+			) : (
+				<p className=" flex w-full h-screen justify-center items-center text-red-500">
+					{response}
+				</p>
+			)}
+		</div>
 	) : (
 		<>
 			<div className="w-full bg-[#002233] p-8">
@@ -92,9 +100,7 @@ const Service = () => {
 						</div>
 						<div className="mb-4">
 							<p className="">By: {deal.author}</p>
-							<p className="">
-								Date Posted: {deal.date}
-							</p>
+							<p className="">Date Posted: {deal.date}</p>
 							<p></p>
 							<p className="">
 								Current Status:{" "}
