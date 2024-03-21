@@ -123,6 +123,14 @@ const SignUp = () => {
 					>
 						Terms & Conditions
 					</Link>
+					{" "}and {" "}
+					<Link
+						to={"/privacy"}
+						target="_blank"
+						className="text-blue-300"
+					> {" "}
+						Privacy Policy
+					</Link>
 				</p>
 				{error && (
 					<p className="text-red-500 text-xs italic mt-4">{error}</p>

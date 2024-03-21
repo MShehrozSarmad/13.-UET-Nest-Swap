@@ -6,14 +6,20 @@ import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import { toast } from "react-toastify";
-// import Lottie from "lottie-react";
-// import preloader from "../loading.json";
 import Preloader from "../components/Preloader";
 import "./carousalstyle.css";
+import shareicon from "../share.svg";
+import {
+	FacebookShareButton,
+	WhatsappShareButton,
+	WhatsappIcon,
+	FacebookIcon,
+} from "react-share";
 
 const DormDeal = () => {
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [btnStat, setbtnStat] = useState(false);
 	const { slug } = useParams();
 	const navigate = useNavigate();
 	const [response, setresponse] = useState("Loading...");
@@ -21,6 +27,7 @@ const DormDeal = () => {
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.dormslc);
+	const shareUrl = `https://localhost.com/dormdeal/${deal?.$id}`;
 
 	useEffect(() => {
 		// if (slug) {
@@ -54,13 +61,20 @@ const DormDeal = () => {
 	};
 
 	return loading ? (
-		<div>{response == "Loading..." ? <Preloader /> : <p className=" flex w-full h-screen justify-center items-center text-red-500">{response}</p>}</div>
-
+		<div>
+			{response == "Loading..." ? (
+				<Preloader />
+			) : (
+				<p className=" flex w-full h-screen justify-center items-center text-red-500">
+					{response}
+				</p>
+			)}
+		</div>
 	) : (
 		<>
-			<div className="w-full bg-[#002233] p-8">
+			<div className="w-full bg-[#002233] p-4">
 				<div className=" [&>*]:border4 [&>*]:lg:bg-red400 bg-gradient-to-r from-[#184b65] to-[#033a8d] [&>*]:border-blue-500 border[1px] border-gray-400 grid lg:grid-flow-col w-[95%] max-w-5xl mx-auto p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
-					<div className=" my-auto p-4">
+					<div className=" my-auto px-2 py-4 md:p-4">
 						{deal ? (
 							<Carousel className="">
 								<div>
@@ -89,21 +103,38 @@ const DormDeal = () => {
 					</div>
 
 					<div className="p-4 my-auto text-white">
-						{isAuthor && (
-							<div className="flex justify-end mb-4">
-								<Link to={`/editdorm/${deal.$id}`}>
-									<button className="bg-green-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-green-600 focus:outline-none">
-										Edit
+						<div className="flex justify-end items-center mb-4 gap-2">
+							{isAuthor && (
+								<>
+									<Link to={`/editdorm/${deal.$id}`}>
+										<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
+											Edit
+										</button>
+									</Link>
+									<button
+										className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
+											btnStat
+												? " blur-sm hover:bg-red-500"
+												: "blur-0"
+										}`}
+										onClick={() => {
+											setbtnStat(true);
+											deleteDeal();
+										}}
+										disabled={btnStat}
+									>
+										Delete
 									</button>
-								</Link>
-								<button
-									className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none"
-									onClick={deleteDeal}
-								>
-									Delete
-								</button>
-							</div>
-						)}
+								</>
+							)}
+							<WhatsappShareButton
+								url={shareUrl}
+								quote={"hello world"}
+								className="border"
+							>
+								<WhatsappIcon size={35} round={false} className="rounded-md" />
+							</WhatsappShareButton>
+						</div>
 
 						<div className="mb-4">
 							<h1 className="text-3xl font-bold">{deal.title}</h1>
@@ -115,9 +146,7 @@ const DormDeal = () => {
 						</div>
 						<div className="mb-4">
 							<p className="">By: {deal.author}</p>
-							<p className="">
-								Date Posted: {deal.date}
-							</p>
+							<p className="">Date Posted: {deal.date}</p>
 							<p>
 								Condition:{" "}
 								<span
@@ -164,7 +193,6 @@ const DormDeal = () => {
 								</a>
 							</button>
 						)}
-						{console.log({deal})}
 					</div>
 				</div>
 			</div>

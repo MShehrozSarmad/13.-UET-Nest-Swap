@@ -74,7 +74,22 @@ button:focus-visible {
 
 @layer base {
   html {
-      @apply bg-[#002233];
-      /* overflow-x: hidden; */
+    @apply bg-[#002233];
+    /* overflow-x: hidden; */
+
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
   }
 }
+
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 200 to 1000 */
+
+/* .nunito-<uniquifier> {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */

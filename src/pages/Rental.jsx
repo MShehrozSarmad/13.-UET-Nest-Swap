@@ -12,6 +12,7 @@ import Preloader from "../components/Preloader";
 const Rental = () => {
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
+	const [btnStat, setBtnStat] = useState(false);
 	const { slug } = useParams();
 	const navigate = useNavigate();
 	const [response, setresponse] = useState("Loading...");
@@ -50,12 +51,20 @@ const Rental = () => {
 	};
 
 	return loading ? (
-		<div>{response == "Loading..." ? <Preloader /> : <p className=" flex w-full h-screen justify-center items-center text-red-500">{response}</p>}</div>
+		<div>
+			{response == "Loading..." ? (
+				<Preloader />
+			) : (
+				<p className=" flex w-full h-screen justify-center items-center text-red-500">
+					{response}
+				</p>
+			)}
+		</div>
 	) : (
 		<>
-			<div className="w-full bg-[#002233] p-8">
+			<div className="w-full bg-[#002233] p-4">
 				<div className=" [&>*]:border4 [&>*]:lg:bg-red400 bg-gradient-to-r from-[#184b65] to-[#033a8d] [&>*]:border-blue-500 border[1px] border-gray-400 grid lg:grid-flow-col w-[95%] max-w-5xl mx-auto p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
-					<div className="my-auto p-4">
+					<div className="my-auto px-2 py-4 md:p-4">
 						{deal ? (
 							<Carousel className="">
 								<div>
@@ -78,19 +87,27 @@ const Rental = () => {
 
 					<div className=" bg-transparent p-4 my-auto text-white">
 						{isAuthor && (
-							<div className="flex justify-end mb-4">
-								<Link to={`/editrental/${deal.$id}`}>
-									<button className="bg-green-500 text-white py-2 px-4 mr-2 rounded-md hover:bg-green-600 focus:outline-none">
+							<>
+								<Link to={`/editdorm/${deal.$id}`}>
+									<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
 										Edit
 									</button>
 								</Link>
 								<button
-									className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none"
-									onClick={deleteDeal}
+									className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
+										btnStat
+											? " blur-sm hover:bg-red-500"
+											: "blur-0"
+									}`}
+									onClick={() => {
+										setBtnStat(true);
+										deleteDeal();
+									}}
+									disabled={btnStat}
 								>
 									Delete
 								</button>
-							</div>
+							</>
 						)}
 
 						<div className="mb-4">
@@ -103,9 +120,7 @@ const Rental = () => {
 						</div>
 						<div className="mb-4">
 							<p className="">By: {deal.author}</p>
-							<p className="">
-								Date Posted: {deal.date}
-							</p>
+							<p className="">Date Posted: {deal.date}</p>
 							<p></p>
 							<p className="">
 								Current Status:{" "}
