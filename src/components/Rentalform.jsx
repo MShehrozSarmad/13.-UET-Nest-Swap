@@ -6,11 +6,13 @@ import Button from "./Button";
 import RTE from "./RTE";
 import Select from "./Select";
 import dbService from "../appwrite/dbservices";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authService from "../appwrite/authservices";
 import { toast } from "react-toastify";
+import { setrntlflg } from "../store/preloadSlc";
 
 const Rentalform = ({ post }) => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [btnStat, setbtnStat] = useState(false);
 	const [error, seterror] = useState("");
@@ -84,6 +86,7 @@ const Rentalform = ({ post }) => {
 					date: getDate(),
 				});
 				toast.success("Updated successfully");
+				dispatch(setrntlflg());
 				navigate(`/rental/${post.$id}`);
 			} catch (error) {
 				console.log(error);
@@ -108,6 +111,7 @@ const Rentalform = ({ post }) => {
 							date: getDate(),
 						});
 						toast.success("Deal Posted Successfully.");
+						dispatch(setrntlflg());
 						navigate("/rentals");
 					} catch (error) {
 						console.log({ error });

@@ -1,5 +1,5 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/authSlc";
 import authService from "../appwrite/authservices";
 import { toast } from "react-toastify";
@@ -54,6 +54,7 @@ const UserProfileCard = ({ name, email, isVerified }) => {
 					Verify Account
 				</button>
 			)}
+			{/* <button onClick={() => dispatch(setflag())} >flag check</button> */}
 		</div>
 	);
 };

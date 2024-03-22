@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
@@ -8,8 +8,10 @@ import { toast } from "react-toastify";
 import Preloader from "../components/Preloader";
 import "./carousalstyle.css";
 import { WhatsappShareButton, WhatsappIcon } from "react-share";
+import { setdormflg } from "../store/preloadSlc";
 
 const DormDeal = () => {
+	const dispatch = useDispatch();
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [btnStat, setbtnStat] = useState(false);
@@ -40,6 +42,7 @@ const DormDeal = () => {
 	}, [deal]);
 
 	const deleteDeal = () => {
+		// dispatch(setflag2(true));
 		dbService.delPostDorm(deal.$id).then((status) => {
 			if (status) {
 				dbService
@@ -47,6 +50,7 @@ const DormDeal = () => {
 					.then(dbService.delFile(deal.image2))
 					.then(dbService.delFile(deal.image3))
 					.then(console.log("deleted images"));
+				dispatch(setdormflg());
 				toast.success("Deleted successfully");
 				navigate("/dormdeals");
 			}
@@ -105,10 +109,10 @@ const DormDeal = () => {
 										</button>
 									</Link>
 									<button
-										className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
+										className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md focus:outline-none  ${
 											btnStat
-												? " blur-sm hover:bg-red-500"
-												: "blur-0"
+												? " blur-sm"
+												: "blur-0 hover:bg-red-600"
 										}`}
 										onClick={() => {
 											setbtnStat(true);

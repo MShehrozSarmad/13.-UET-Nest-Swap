@@ -22,10 +22,8 @@ const Rentals = () => {
 	useEffect(() => {
 		if (!flag1 && !flag2 && !flag3 && !flag4) {
 			setFlag(false);
-			console.log("set to false!");
 		} else {
 			setFlag(true);
-			console.log("till true!");
 		}
 	}, [flag1, flag2, flag3, flag4]);
 
@@ -59,7 +57,6 @@ const Rentals = () => {
 								.map((deal) => (
 									<div key={deal.$id} className="p-2">
 										<DormCard {...deal} />
-										{console.log({ deal })}
 									</div>
 								))
 						) : (

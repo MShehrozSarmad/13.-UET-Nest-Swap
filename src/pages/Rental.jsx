@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "../components/Button";
 import parse from "html-react-parser";
@@ -9,8 +9,10 @@ import { toast } from "react-toastify";
 import "./carousalstyle.css";
 import Preloader from "../components/Preloader";
 import { WhatsappShareButton, WhatsappIcon } from "react-share";
+import { setrntlflg } from "../store/preloadSlc";
 
 const Rental = () => {
+	const dispatch = useDispatch();
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [btnStat, setBtnStat] = useState(false);
@@ -46,6 +48,7 @@ const Rental = () => {
 					.delFile(deal.image1)
 					.then(dbService.delFile(deal.image2))
 					.then(console.log("deleted images"));
+				dispatch(setrntlflg());
 				toast.success("Deleted successfully");
 				navigate("/rentals");
 			}
@@ -91,7 +94,7 @@ const Rental = () => {
 						<div className="flex justify-end items-center mb-4 gap-2">
 							{isAuthor && (
 								<>
-									<Link to={`/editdorm/${deal.$id}`}>
+									<Link to={`/editrental/${deal.$id}`}>
 										<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
 											Edit
 										</button>

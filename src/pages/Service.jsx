@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import { toast } from "react-toastify";
 import "./carousalstyle.css";
 import Preloader from "../components/Preloader";
-import {
-	WhatsappShareButton,
-	WhatsappIcon
-} from "react-share";
+import { WhatsappShareButton, WhatsappIcon } from "react-share";
+import { setsrvcflg } from "../store/preloadSlc";
 
 const Service = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const [deal, setDeal] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [btnStat, setbtnStat] = useState(false);
 	const { slug } = useParams();
-	const navigate = useNavigate();
 	const [response, setresponse] = useState("Loading...");
-
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.serviceslc);
-	// console.log("all posts", allPosts);
 	const shareUrl = `https://localhost.com/service/${deal?.$id}`;
 
 	useEffect(() => {
@@ -49,6 +46,7 @@ const Service = () => {
 					.delFile(deal.image)
 					.then(console.log("deleted images"));
 				toast.success("Deleted successfully");
+				dispatch(setsrvcflg());
 				navigate("/services");
 			}
 		});
@@ -79,10 +77,10 @@ const Service = () => {
 					</div>
 
 					<div className="text-white p-4 my-auto">
-					<div className="flex justify-end items-center mb-4 gap-2">
+						<div className="flex justify-end items-center mb-4 gap-2">
 							{isAuthor && (
 								<>
-									<Link to={`/editdorm/${deal.$id}`}>
+									<Link to={`/editservice/${deal.$id}`}>
 										<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
 											Edit
 										</button>
@@ -103,10 +101,12 @@ const Service = () => {
 									</button>
 								</>
 							)}
-							<WhatsappShareButton
-								url={shareUrl}
-							>
-								<WhatsappIcon size={35} round={false} className="rounded-md" />
+							<WhatsappShareButton url={shareUrl}>
+								<WhatsappIcon
+									size={35}
+									round={false}
+									className="rounded-md"
+								/>
 							</WhatsappShareButton>
 						</div>
 

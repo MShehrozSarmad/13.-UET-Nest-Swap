@@ -11,100 +11,101 @@ import { setdorms } from "./store/dormSlc";
 import { setrentals } from "./store/rentalSlc";
 import { setsrvcs } from "./store/servicesSlc";
 import authService from "./appwrite/authservices";
-// import Lottie from "lottie-react";
-// import preloader from "./loading.json";
 import Preloader from "./components/Preloader";
 
 const App = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const [loading, setLoading] = useState(true);
-	const [loading2, setLoading2] = useState(true);
-
-	useEffect(() => {
-		async function getuserData() {
-			try {
-				const userData = await authService
-					.getCurrentUser()
-					.then(setLoading2(false))
-					.then(dispatch(setflag1(false)));
-				userData ? dispatch(login(userData)) : null;
-			} catch (error) {
-				console.log(error);
-			}
-		}
-
-		async function getDorms() {
-			try {
-				await dbService
-					.getPostsDorms()
-					.then((deals) => {
-						deals
-							? dispatch(setdorms(deals.documents))
-							: console.log("failed to set");
-					})
-					.then(setLoading(false))
-					.then(dispatch(setflag2(false)));
-			} catch (error) {
-				console.log("error", error);
-			}
-		}
-
-		async function getRentals() {
-			try {
-				await dbService
-					.getPostsRentals()
-					.then((deals) => {
-						deals
-							? dispatch(setrentals(deals.documents))
-							: console.log("rentals failed");
-					})
-					.then(dispatch(setflag3(false)));
-			} catch (error) {
-				console.log("error", error.response.message);
-			}
-		}
-
-		async function getServices() {
-			try {
-				await dbService
-					.getPostsServices()
-					.then((deals) => {
-						deals
-							? dispatch(setsrvcs(deals.documents))
-							: console.log("services failed");
-					})
-					.then(dispatch(setflag4(false)));
-			} catch (error) {
-				console.log("error", error.response.message);
-			}
-		}
-
-		getuserData();
-		getDorms();
-		getRentals();
-		getServices();
-	}, [navigate, location]);
-
+	const dormflg = useSelector((state) => state.preloadslc.dorm);
+	const rntlflg = useSelector((state) => state.preloadslc.rntl);
+	const srvcflg = useSelector((state) => state.preloadslc.srvc);
 	const flag1 = useSelector((state) => state.preloadslc.flag1);
 	const flag2 = useSelector((state) => state.preloadslc.flag2);
 	const flag3 = useSelector((state) => state.preloadslc.flag3);
 	const flag4 = useSelector((state) => state.preloadslc.flag4);
 	const [flag, setFlag] = useState(true);
 
+	const getuserData = async () => {
+		try {
+			const userData = await authService.getCurrentUser();
+			if (userData) {
+				dispatch(login(userData));
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		dispatch(setflag1(false));
+	};
+
+	const getDorms = async () => {
+		try {
+			const deals = await dbService.getPostsDorms();
+			if (deals) {
+				dispatch(setdorms(deals.documents));
+				dispatch(setflag2(false));
+			}
+		} catch (error) {
+			console.log("error", error);
+		}
+	};
+
+	const getRentals = async () => {
+		try {
+			const deals = await dbService.getPostsRentals();
+			if (deals) {
+				dispatch(setrentals(deals.documents));
+				dispatch(setflag3(false));
+			}
+		} catch (error) {
+			console.log("error", error);
+		}
+	};
+
+	const getServices = async () => {
+		try {
+			const deals = await dbService.getPostsServices();
+			if (deals) {
+				dispatch(setsrvcs(deals.documents));
+				dispatch(setflag4(false));
+			}
+		} catch (error) {
+			console.log("error", error);
+		}
+	};
+
 	useEffect(() => {
+		getuserData();
+		getDorms();
+		getRentals();
+		getServices();
+	}, []);
+
+	useEffect(() => {
+		console.log('effected dorm')
+		getDorms();
+	}, [dormflg]);
+	useEffect(() => {
+		console.log('effected rntl')
+		getRentals();
+	}, [rntlflg]);
+	useEffect(() => {
+		console.log('effected srvc')
+		getServices();
+	}, [srvcflg]);
+
+	useEffect(() => {
+		console.log("flag diary: ", flag1, flag2, flag3, flag4);
 		if (!flag1 && !flag2 && !flag3 && !flag4) {
 			setFlag(false);
-			console.log('set to false!');
+			console.log("flag is false");
 		} else {
 			setFlag(true);
-			console.log('till true!');
+			console.log("flag is false");
 		}
 	}, [flag1, flag2, flag3, flag4]);
 
-	// return loading && loading2 ? (
 	return flag ? (
-		<Preloader/>
+		<Preloader />
 	) : (
 		<>
 			<Header />

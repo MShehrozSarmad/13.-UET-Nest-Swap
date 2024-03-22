@@ -6,11 +6,13 @@ import Button from "./Button";
 import RTE from "./RTE";
 import Select from "./Select";
 import dbService from "../appwrite/dbservices";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authService from "../appwrite/authservices";
 import { toast } from "react-toastify";
+import { setsrvcflg } from "../store/preloadSlc";
 
 const Serviceform = ({ post }) => {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [error, seterror] = useState("");
 	const [btnStat, setbtnStat] = useState(false);
@@ -86,6 +88,7 @@ const Serviceform = ({ post }) => {
 					date: getDate(),
 				});
 				toast.success("Updated successfully");
+				dispatch(setsrvcflg());
 				navigate(`/service/${post.$id}`);
 			} catch (error) {
 				console.log(error);
@@ -108,6 +111,7 @@ const Serviceform = ({ post }) => {
 							date: getDate(),
 						});
 						toast.success("Deal Posted Successfully.");
+						dispatch(setsrvcflg());
 						navigate("/services");
 					} catch (error) {
 						console.log({ error });
