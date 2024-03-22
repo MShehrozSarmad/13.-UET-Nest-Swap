@@ -25,7 +25,9 @@ const EditRental = () => {
 		</>
 	) : (
 		<>
-			<p>Deal not found</p>
+			<div className=" font-semibold flex w-full h-screen justify-center items-center text-red-500">
+				<p>Ad Not Found!</p>
+			</div>
 		</>
 	);
 };

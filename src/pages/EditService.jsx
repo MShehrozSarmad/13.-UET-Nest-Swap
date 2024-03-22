@@ -25,7 +25,9 @@ const EditService = () => {
 		</>
 	) : (
 		<>
-			<p>Deal not found</p>
+			<div className=" font-semibold flex w-full h-screen justify-center items-center text-red-500">
+				<p>Service Not Found!</p>
+			</div>
 		</>
 	);
 };
