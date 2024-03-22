@@ -8,6 +8,7 @@ import Carousel from "@itseasy21/react-elastic-carousel";
 import { toast } from "react-toastify";
 import "./carousalstyle.css";
 import Preloader from "../components/Preloader";
+import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const Rental = () => {
 	const [deal, setDeal] = useState(null);
@@ -20,6 +21,7 @@ const Rental = () => {
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.rentalslc);
+	const shareUrl = `https://localhost.com/rental/${deal?.$id}`;
 
 	useEffect(() => {
 		if (slug && allPosts.length > 0) {
@@ -86,29 +88,38 @@ const Rental = () => {
 					</div>
 
 					<div className=" bg-transparent p-4 my-auto text-white">
-						{isAuthor && (
-							<>
-								<Link to={`/editdorm/${deal.$id}`}>
-									<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
-										Edit
+						<div className="flex justify-end items-center mb-4 gap-2">
+							{isAuthor && (
+								<>
+									<Link to={`/editdorm/${deal.$id}`}>
+										<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
+											Edit
+										</button>
+									</Link>
+									<button
+										className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
+											btnStat
+												? " blur-sm hover:bg-red-500"
+												: "blur-0"
+										}`}
+										onClick={() => {
+											setBtnStat(true);
+											deleteDeal();
+										}}
+										disabled={btnStat}
+									>
+										Delete
 									</button>
-								</Link>
-								<button
-									className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
-										btnStat
-											? " blur-sm hover:bg-red-500"
-											: "blur-0"
-									}`}
-									onClick={() => {
-										setBtnStat(true);
-										deleteDeal();
-									}}
-									disabled={btnStat}
-								>
-									Delete
-								</button>
-							</>
-						)}
+								</>
+							)}
+							<WhatsappShareButton url={shareUrl}>
+								<WhatsappIcon
+									size={35}
+									round={false}
+									className="rounded-md"
+								/>
+							</WhatsappShareButton>
+						</div>
 
 						<div className="mb-4">
 							<h1 className="text-3xl font-bold">{deal.title}</h1>

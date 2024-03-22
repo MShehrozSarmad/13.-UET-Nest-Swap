@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Button from "../components/Button";
 import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import { toast } from "react-toastify";
 import "./carousalstyle.css";
 import Preloader from "../components/Preloader";
+import {
+	WhatsappShareButton,
+	WhatsappIcon
+} from "react-share";
 
 const Service = () => {
 	const [deal, setDeal] = useState(null);
@@ -19,7 +22,8 @@ const Service = () => {
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.serviceslc);
-	console.log("all posts", allPosts);
+	// console.log("all posts", allPosts);
+	const shareUrl = `https://localhost.com/service/${deal?.$id}`;
 
 	useEffect(() => {
 		// if (slug) {
@@ -75,29 +79,36 @@ const Service = () => {
 					</div>
 
 					<div className="text-white p-4 my-auto">
-						{isAuthor && (
-							<>
-								<Link to={`/editdorm/${deal.$id}`}>
-									<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
-										Edit
+					<div className="flex justify-end items-center mb-4 gap-2">
+							{isAuthor && (
+								<>
+									<Link to={`/editdorm/${deal.$id}`}>
+										<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
+											Edit
+										</button>
+									</Link>
+									<button
+										className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
+											btnStat
+												? " blur-sm hover:bg-red-500"
+												: "blur-0"
+										}`}
+										onClick={() => {
+											setbtnStat(true);
+											deleteDeal();
+										}}
+										disabled={btnStat}
+									>
+										Delete
 									</button>
-								</Link>
-								<button
-									className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
-										btnStat
-											? " blur-sm hover:bg-red-500"
-											: "blur-0"
-									}`}
-									onClick={() => {
-										setbtnStat(true);
-										deleteDeal();
-									}}
-									disabled={btnStat}
-								>
-									Delete
-								</button>
-							</>
-						)}
+								</>
+							)}
+							<WhatsappShareButton
+								url={shareUrl}
+							>
+								<WhatsappIcon size={35} round={false} className="rounded-md" />
+							</WhatsappShareButton>
+						</div>
 
 						<div className="mb-4">
 							<h1 className="text-3xl font-bold">{deal.title}</h1>

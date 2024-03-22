@@ -282,9 +282,10 @@ const Serviceform = ({ post }) => {
 						/>
 						<Button
 							type="submit"
+							disabled={btnStat}
 							children={post ? "Update Service" : "Offer Service"}
 							className={`mt-4 text-white font-bold py-2 px-4 rounded w-full
-							${btnStat ? "bg-[#4b72c9]" : "bg-blue-500 hover:bg-blue-700"}
+							${btnStat ? "bg-[#547acd]" : "bg-blue-600 hover:bg-blue-700"}
 							`}
 						/>
 						{error && <p className="text-red-500">{error}</p>}

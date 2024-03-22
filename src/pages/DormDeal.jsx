@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Button from "../components/Button";
 import parse from "html-react-parser";
 import dbService from "../appwrite/dbservices";
 import Carousel from "@itseasy21/react-elastic-carousel";
 import { toast } from "react-toastify";
 import Preloader from "../components/Preloader";
 import "./carousalstyle.css";
-import shareicon from "../share.svg";
-import {
-	FacebookShareButton,
-	WhatsappShareButton,
-	WhatsappIcon,
-	FacebookIcon,
-} from "react-share";
+import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const DormDeal = () => {
 	const [deal, setDeal] = useState(null);
@@ -127,12 +120,12 @@ const DormDeal = () => {
 									</button>
 								</>
 							)}
-							<WhatsappShareButton
-								url={shareUrl}
-								quote={"hello world"}
-								className="border"
-							>
-								<WhatsappIcon size={35} round={false} className="rounded-md" />
+							<WhatsappShareButton url={shareUrl}>
+								<WhatsappIcon
+									size={35}
+									round={false}
+									className="rounded-md"
+								/>
 							</WhatsappShareButton>
 						</div>
 
