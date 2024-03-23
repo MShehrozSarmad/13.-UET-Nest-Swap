@@ -22,7 +22,7 @@ const DormDeal = () => {
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.dormslc);
-	const shareUrl = `https://localhost.com/dormdeal/${deal?.$id}`;
+	const shareUrl = `https://www.uetnestswap.live/dormdeal/${deal?.$id}`;
 
 	useEffect(() => {
 		// if (slug) {
@@ -181,7 +181,7 @@ const DormDeal = () => {
 						{deal.status !== "sold" && (
 							<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
 								<a
-									href={`https://wa.me/${deal.phone}?text=Hey!%20${deal.author}%20I%20spotted%20your%20dorm%20deal%20at%20UET%20Nest%20Swap%20and%20I'm%20intrigued!%20Could%20you%20tell%20me%20more%20about%20it?%20Here's%20the%20link%3A%20https%3A%2F%2Flocalhost%3A5173%2Fdormdeal%2F${deal.$id}`}
+									href={`https://wa.me/${deal.phone}?text=Hey!%20${deal.author}%20I%20spotted%20your%20dorm%20deal%20at%20UET%20Nest%20Swap%20and%20I'm%20intrigued!%20Could%20you%20tell%20me%20more%20about%20it?%20Here's%20the%20link%3A%20https%3A%2F%https://www.uetnestswap.live%3A5173%2Fdormdeal%2F${deal.$id}`}
 									target="_blank"
 									rel="noreferrer"
 									className="hover:text-white cursor-pointer"

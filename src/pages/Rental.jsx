@@ -23,7 +23,7 @@ const Rental = () => {
 	const userData = useSelector((state) => state.authslc.userData);
 	const isAuthor = deal && userData ? deal.userId === userData.$id : false;
 	const allPosts = useSelector((state) => state.rentalslc);
-	const shareUrl = `https://localhost.com/rental/${deal?.$id}`;
+	const shareUrl = `https://www.uetnestswap.live/rental/${deal?.$id}`;
 
 	useEffect(() => {
 		if (slug && allPosts.length > 0) {
@@ -160,7 +160,7 @@ const Rental = () => {
 						{deal.status == "available" && (
 							<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
 								<a
-									href={`https://wa.me/${deal.phone}?text=Hi%20${deal.author}!%20Your%20rental%20listing%20at%20UET%20Nest%20Swap%20caught%20my%20eye.%20Can%20we%20chat%20about%20the%20details?%20Here's%20the%20link%3A%20https%3A%2F%2Flocalhost%3A5173%2Frental%2F${deal.$id}`}
+									href={`https://wa.me/${deal.phone}?text=Hi%20${deal.author}!%20Your%20rental%20listing%20at%20UET%20Nest%20Swap%20caught%20my%20eye.%20Can%20we%20chat%20about%20the%20details?%20Here's%20the%20link%3A%20https%3A%2F%https://www.uetnestswap.live%3A5173%2Frental%2F${deal.$id}`}
 									target="_blank"
 									rel="noreferrer"
 									className="hover:text-white cursor-pointer"
