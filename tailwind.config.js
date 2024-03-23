@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        'hero-pattern': "url('./src/wave-haikei.svg')",
+        'hero-pattern': "url('./wave-haikei.svg')",
+        // 'hero-pattern': "url('./src/wave-haikei.svg')",
         // 'hero-pattern': "url('../wave-haikei.svg')",
       })
     },
