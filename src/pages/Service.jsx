@@ -146,7 +146,7 @@ const Service = () => {
 						{deal.status == "available" && (
 							<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
 								<a
-									href={`https://wa.me/${deal.phone}?text=Hello%20${deal.author}!%20I'm%20interested%20in%20your%20service%20offer%20at%20UET%20Nest%20Swap.%20Could%20you%20provide%20more%20information%20about%20it?%20Here's%20the%20link%3A%20https%3A%2F%https://www.uetnestswap.live%3A5173%2Fservice%2F${deal.$id}`}
+									href={`https://wa.me/${deal.phone}?text=Hello%20${deal.author}!%20I'm%20interested%20in%20your%20service%20offer%20at%20UET%20Nest%20Swap.%20Could%20you%20provide%20more%20information%20about%20it?%20Here's%20the%20link%20https://www.uetnestswap.live%2Fservice%2F${deal.$id}`}
 									target="_blank"
 									rel="noreferrer"
 									className="hover:text-white cursor-pointer"
