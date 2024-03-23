@@ -12,6 +12,7 @@ import { setrentals } from "./store/rentalSlc";
 import { setsrvcs } from "./store/servicesSlc";
 import authService from "./appwrite/authservices";
 import Preloader from "./components/Preloader";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 const App = () => {
 	const navigate = useNavigate();
@@ -81,15 +82,15 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log('effected dorm')
+		console.log("effected dorm");
 		getDorms();
 	}, [dormflg]);
 	useEffect(() => {
-		console.log('effected rntl')
+		console.log("effected rntl");
 		getRentals();
 	}, [rntlflg]);
 	useEffect(() => {
-		console.log('effected srvc')
+		console.log("effected srvc");
 		getServices();
 	}, [srvcflg]);
 
@@ -108,6 +109,7 @@ const App = () => {
 		<Preloader />
 	) : (
 		<>
+			<SpeedInsights />
 			<Header />
 			<Outlet />
 			<Footer />

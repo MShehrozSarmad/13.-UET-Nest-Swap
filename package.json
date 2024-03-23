@@ -13,6 +13,7 @@
     "@itseasy21/react-elastic-carousel": "^0.12.3",
     "@reduxjs/toolkit": "^2.2.0",
     "@tinymce/tinymce-react": "^4.3.2",
+    "@vercel/speed-insights": "^1.0.10",
     "appwrite": "^13.0.1",
     "framer-motion": "^11.0.14",
     "html-react-parser": "^5.1.4",
