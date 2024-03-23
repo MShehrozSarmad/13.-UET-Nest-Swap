@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logoo.png";
 import Dropdown from "./DropDown";
 import { motion } from "framer-motion";
+import '../fds.css';
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +49,6 @@ const Header = () => {
 	return (
 		// absolute w-full mb-[50vh]
 		<motion.header
-			// initial={{ height: '0' }}
 			initial={{ height: 'auto' }}
 			animate={{ height: isMenuOpen ? "auto" : '8vh' }}
 			transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
@@ -59,7 +59,7 @@ const Header = () => {
 					<div className=" mx-2">
 						<Link to="/">
 							<img
-								className="h-[3.2rem] drop-shadow-md"
+								className="h-[3.2rem] fdslogo"
 								src={logo}
 								alt="logo"
 							/>

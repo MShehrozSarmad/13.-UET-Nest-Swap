@@ -3,7 +3,7 @@ import React from "react";
 const PrivacyPolicy = () => {
 	return (
 		// <div className="container mx-auto px-4 py-8 w-[95%] max-w-5xl">
-        <div className=" md:mx-auto text-sm md:text-base px-2 md:px-5 py-8 md:w-[95%] max-w-4xl text-justify bg-[#002233] text-white my-0 md:my-8 md:rounded-xl [&>h2]:text-[#A9C5A0] [&>h1]:text[#0066FF]">
+        <div className=" md:mx-auto text-sm md:text-base px-4 md:px-5 py-8 md:w-[95%] max-w-4xl text-justify bg-[#002233] text-white my-0 md:my-8 md:rounded-xl [&>h2]:text-[#A9C5A0] [&>h1]:text[#0066FF]">
 
 			<h1 className="text-3xl font-bold mb-4 text-left">
 				UET Nest Swap Privacy Policy

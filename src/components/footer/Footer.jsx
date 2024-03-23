@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import logo from "../../assets/logo.png";
 import logo from "../../assets/logoo.png";
+import '../fds.css';
 
 const Footer = () => {
 	return (
@@ -11,7 +12,7 @@ const Footer = () => {
 				<div className=" flex flex-col justify-evenly p-2 gap-8 sm:col-span-2 md:row-span-2 md:col-span-1 lg:row-span-1">
 					<p className=" w-fit m-auto">
 						<Link to={"/"}>
-							<img src={logo} alt="Logo" className="h-[3.2rem]" />
+							<img src={logo} alt="Logo" className="h-[3.2rem] fdslogo" />
 						</Link>
 					</p>
 					<p className="">
