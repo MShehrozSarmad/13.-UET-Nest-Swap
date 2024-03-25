@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import { Link } from "react-router-dom";
 import UserProfileCard from "../components/UserProfileCard";
-// import Preloader from '../components/Preloader'
 import Preloader from "../components/Preloader";
 
 const UserProfile = () => {

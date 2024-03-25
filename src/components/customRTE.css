@@ -1,0 +1,93 @@
+.tox-tinymce {
+    border:none !important;
+    /* border: 1px solid gray !important; */
+    color: white !important;
+}
+
+.tox :not(svg):not(rect) {
+    /* background-color: #033c93 !important; */
+    color: white !important;
+}
+
+.tox .tox-textfield{
+    background-color: #143973 !important;
+}
+
+.tox .tox-button--secondary {
+    background-color: #3484fb !important;
+    border: none !important;
+}
+
+.tox .tox-menubar {
+    background-color: #033d96 !important;
+}
+.tox:not(.tox-tinymce-inline) .tox-editor-header {
+    background-color: #033d96 !important;
+    /* background-color: #023179 !important; */
+}
+
+.tox.tox-tinymce-inline .tox-editor-header {
+    /* border: 14px solid yellow !important; */
+    border: 0 !important;
+    /* background-color: #023179 !important; */
+}
+
+.tox .tox-toolbar__primary {
+    background-color: #033d96 !important;
+}
+
+.tox .tox-toolbar{
+    /* background-color: rgb(47, 255, 0) !important; */
+}
+
+.tox .tox-statusbar{
+    background-color: #033d96 !important;
+}
+
+.tox.tox-tinymce-aux .tox-toolbar__overflow{
+    background-color: #033d96 !important;
+}
+
+.tox .tox-tbtn svg {
+    fill: white !important;
+}
+
+.tox .tox-menu {
+    background-color: #033d96 !important;
+}
+
+.tox .tox-collection--list .tox-collection__item--enabled{
+    background-color: #0356d1 !important;
+}
+
+.tox .tox-collection--list .tox-collection__item--active {
+    background-color: #3484fb !important;
+}
+
+.tox .tox-tbtn--bespoke {
+    background-color: #0356d1 !important;
+}
+
+.tox .tox-tbtn--enabled{
+    background-color: rgb(0, 110, 255) !important;
+}
+
+.tox .tox-tbtn--:hover{
+    /* background-color: burlywood !important; */
+}
+
+.tox .tox-toolbar-overlord {
+    background-color: transparent !important;
+}
+
+.tox .tox-mbtn--active {
+    background-color: #3484fb !important;
+}
+
+.tox .tox-dialog-wrap__backdrop {
+    background-color: transparent !important;
+}
+
+.tox .tox-dialog, .tox, .tox .tox-dialog__header, .tox .tox-dialog__footer {
+    background-color: #033d96 !important;
+}

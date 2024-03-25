@@ -18,7 +18,9 @@ const UserProfileCard = ({ name, email, isVerified }) => {
 	};
 
 	return (
-		<div className="bg-gradient-to-r from-[#000133e6] to-[#044dba] md:rounded-lg shadow-lg p-6 w-full  md:max-w-sm mx-auto my-4">
+		// <div className="bg-gradient-to-r from-[#000133e6] to-[#044dba] md:rounded-lg shadow-lg p-6 w-full  md:max-w-sm mx-auto my-4">
+		// <div className="bg-gradient-to-r from-[#0072ad] to-[#033a8d] md:rounded-lg shadow-lg p-6 w-full  md:max-w-sm mx-auto my-4">
+		<div className="bg-gradient-to-r from-[#0079b8] to-[#023179] md:rounded-lg shadow-lg p-6 w-full  md:max-w-sm mx-auto my-4">
 			<h2 className="text-lg lg:text-2xl font-bold text-white mb-4">{name}</h2>
 			<p className="text-sm lg:text-lg text-white mb-2">{email}</p>
 			<p

@@ -1,18 +1,19 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
+import './customRTE.css';
 
 const RTE = ({ name, control, label, defaultValue }) => {
 	return (
 		<div className="w-full">
 			{label && <label className="mb-1 inline-block pl-1">{label}</label>}
-			
+
 			<Controller
 				name={name || "description"}
 				control={control}
 				render={({ field: { onChange } }) => (
 					<Editor
-						apiKey='tiuh2q97tz38fz5tljyqww3quf7dm7h9vsh7qu1hb9p0jfgl'
+						apiKey="tiuh2q97tz38fz5tljyqww3quf7dm7h9vsh7qu1hb9p0jfgl"
 						initialValue={defaultValue}
 						init={{
 							branding: false,
@@ -43,9 +44,9 @@ const RTE = ({ name, control, label, defaultValue }) => {
 							toolbar:
 								"undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
 							content_style:
-								"body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+								"body { font-family:Helvetica,Arial,sans-serif; font-size:14px; background:#054bb6; color: white !important;}",
 						}}
-                        onEditorChange={onChange}
+						onEditorChange={onChange} 
 					/>
 				)}
 			/>

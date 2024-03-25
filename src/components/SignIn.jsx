@@ -58,10 +58,10 @@ const SignIn = () => {
 		<div className="flex justify-center items-center h-[85vh] md:h-dvh">
 			<form
 				onSubmit={handleSubmit(login)}
-				className="bg-gradient-to-r from-blue-900 to-blue-600 shadow-md md:rounded px-8 pt-6 pb-8 w-full max-w-md text-white h-full md:h-auto"
+				className="bg-gradient-to-r from-[#0079b8] to-[#023179] shadow-md md:rounded px-8 pt-6 pb-8 w-full max-w-md text-white h-full md:h-auto"
 			>
 				<h1 className=" font-bold text-2xl m-2 mb-6 text-center">
-					Welcome back to family!
+					Welcome back to UNS!
 				</h1>
 
 				<div className="mb-6">

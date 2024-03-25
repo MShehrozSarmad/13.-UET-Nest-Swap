@@ -10,6 +10,13 @@ import "./carousalstyle.css";
 import Preloader from "../components/Preloader";
 import { WhatsappShareButton, WhatsappIcon } from "react-share";
 import { setrntlflg } from "../store/preloadSlc";
+import authorsvg from "../assets/author.svg";
+import calendersvg from "../assets/calender.svg";
+import statussvg from "../assets/status.svg";
+import dollarsvg from "../assets/dollar.svg";
+import deletesvg from "../assets/delete.svg";
+import editsvg from "../assets/edit.svg";
+import sharesvg from "../assets/share.svg";
 
 const Rental = () => {
 	const dispatch = useDispatch();
@@ -67,8 +74,8 @@ const Rental = () => {
 		</div>
 	) : (
 		<>
-			<div className="w-full bg-[#002233] p-4">
-				<div className=" [&>*]:border4 [&>*]:lg:bg-red400 bg-gradient-to-r from-[#184b65] to-[#033a8d] [&>*]:border-blue-500 border[1px] border-gray-400 grid lg:grid-flow-col w-[95%] max-w-5xl mx-auto p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
+			<div className="w-full bg-[#002233] py-14">
+				<div className=" [&>*]:border4 [&>*]:lg:bg-red400 bg-gradient-to-r from-[#0079b8] to-[#023179] [&>*]:border-blue-500 border[1px] border-gray-400 grid lg:grid-flow-col w-[95%] max-w-5xl mx-auto p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
 					<div className="my-auto px-2 py-4 md:p-4">
 						{deal ? (
 							<Carousel className="">
@@ -94,16 +101,15 @@ const Rental = () => {
 						<div className="flex justify-end items-center mb-4 gap-2">
 							{isAuthor && (
 								<>
-									<Link to={`/editrental/${deal.$id}`}>
-										<button className="bg-green-500 text-white py-2 px-4 mr2 rounded-md hover:bg-green-600 focus:outline-none">
-											Edit
-										</button>
+									<Link
+										to={`/editrental/${deal.$id}`}
+										className=" h-[24px]"
+									>
+										<img src={editsvg} alt="edit" />
 									</Link>
 									<button
-										className={`bg-red-500 text-white py-2 px-4 mr2 rounded-md hover:bg-red-600 focus:outline-none  ${
-											btnStat
-												? " blur-sm hover:bg-red-500"
-												: "blur-0"
+										className={` focus:outline-none  ${
+											btnStat ? " blur-sm" : "blur-0"
 										}`}
 										onClick={() => {
 											setBtnStat(true);
@@ -111,33 +117,42 @@ const Rental = () => {
 										}}
 										disabled={btnStat}
 									>
-										Delete
+										<img src={deletesvg} alt="delete" />
 									</button>
 								</>
 							)}
 							<WhatsappShareButton url={shareUrl}>
-								<WhatsappIcon
+								{/* <WhatsappIcon
 									size={35}
 									round={false}
 									className="rounded-md"
-								/>
+								/> */}
+								<img src={sharesvg} alt="share" />
 							</WhatsappShareButton>
 						</div>
 
 						<div className="mb-4">
-							<h1 className="text-3xl font-bold">{deal.title}</h1>
+							<h1 className="text-3xl font-bold">
+								{deal.title.charAt(0).toUpperCase() +
+									deal.title.slice(1)}
+							</h1>
 						</div>
 						<div className="mb-4">
-							<h2 className="text-xl font-semibold">
-								Rent: {deal.rent}
-							</h2>
-						</div>
-						<div className="mb-4">
-							<p className="">By: {deal.author}</p>
-							<p className="">Date Posted: {deal.date}</p>
+							<div className="flex gap-2">
+								<img src={dollarsvg} alt="rent" />{" "}
+								<span>{deal.rent} PKR</span>
+							</div>
+							<div className="flex gap-2">
+								<img src={authorsvg} alt="author" />
+								<span>{deal.author}</span>
+							</div>
+							<div className="flex gap-2">
+								<img src={calendersvg} alt="date" />
+								<span>{deal.date}</span>
+							</div>
 							<p></p>
-							<p className="">
-								Current Status:{" "}
+							<div className="flex gap-2">
+								<img src={statussvg} alt="availability" />
 								<span
 									className={`${
 										deal.status != "available"
@@ -147,18 +162,21 @@ const Rental = () => {
 								>
 									{deal.status}
 								</span>
-							</p>
+							</div>
 						</div>
 						<div className="mb-4">
-							<p>Description: </p>
-							<div className="">
+							<span className="font-semibold">Description: </span>
+							<div
+								style={{
+									overflowWrap: "break-word",
+									wordWrap: "break-word",
+								}}
+							>
 								{parse(deal.description)}
-								{/* Description: {parse(deal.description)} */}
-								{/* <div className="" dangerouslySetInnerHTML={{ __html: deal.description }} /> */}
 							</div>
 						</div>
 						{deal.status == "available" && (
-							<button className=" cursor-default bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none">
+							<button className=" cursor-default bg-[#03a9f4] hover:bg-[#2196f3] text-white py-2 px-4 rounded-md focus:outline-none">
 								<a
 									href={`https://wa.me/${deal.phone}?text=Hi%20${deal.author}!%20Your%20rental%20listing%20at%20UET%20Nest%20Swap%20caught%20my%20eye.%20Can%20we%20chat%20about%20the%20details?%20Here's%20the%20link%20https://www.uetnestswap.live%2Frental%2F${deal.$id}`}
 									target="_blank"

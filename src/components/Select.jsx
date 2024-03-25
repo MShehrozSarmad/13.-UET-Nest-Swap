@@ -6,7 +6,7 @@ const Select = ({ options, label, className, ...props }, ref) => {
 	return(
         <div className="w-full">
             {label && <label htmlFor={id} className="">{label}</label>}
-            <select {...props} id={id} className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-gray-200 w-full ${className}`}>
+            <select {...props} id={id} className={`px-3 py-2 rounded-lg outline-none bg-[#054bb6e6] focus:bg-[#0144aae6] text-white duration-200  w-full ${className} ${props.disabled ? 'filter contrast-[.7]' : null}`}>
                 {
                     options?.map(option => (
                         <option key={option} value={option}>

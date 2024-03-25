@@ -68,7 +68,7 @@ const Home = () => {
 							id="target"
 							className=" text-purple500 text-[#ffff] text-3xl font-bold p-4 m-auto text-center "
 						>
-							Featured Deals
+							Featured Ads
 						</h3>
 						<div className="my-5">
 							<div>

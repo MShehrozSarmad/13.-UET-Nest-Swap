@@ -173,12 +173,12 @@ const Serviceform = ({ post }) => {
 
 	return (
 		// <div className=" w-[95%] max-w-5xl border-2 p-6 my-6 shadow-md mx-auto rounded-md">
-		<div className="bg-gradient-to-r from-[#184b65] to-[#033a8d] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
+		<div className="bg-[#023179] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
 			{/* <h1 className=" text-purple-500 text-center text-2xl font-semibold m-4 "> */}
 			<h1 className=" text-center text-2xl font-bold m-4 ">
 				Service Form
 			</h1>
-			<h2 className="text-red-600 text-md  mb-4">
+			<h2 className="text-[#ff0e0e] text-md  mb-4">
 				* All Input Fields are Required
 			</h2>
 			<form
