@@ -160,14 +160,20 @@ const Serviceform = ({ post }) => {
 	const handleFileChange = (e, imageNumber) => {
 		if (e.target.files && e.target.files[0]) {
 			let img = e.target.files[0];
-			let reader = new FileReader();
-			reader.onload = function (e) {
-				setImagePreviews((prev) => ({
-					...prev,
-					[`image${imageNumber}`]: e.target.result,
-				}));
-			};
-			reader.readAsDataURL(img);
+			if (img.size > 2 * 1024 * 1024) {
+				toast.error("File size exceeds 2MB");
+				e.target.value = null; // Reset the input value
+				return;
+			} else {
+				let reader = new FileReader();
+				reader.onload = function (e) {
+					setImagePreviews((prev) => ({
+						...prev,
+						[`image${imageNumber}`]: e.target.result,
+					}));
+				};
+				reader.readAsDataURL(img);
+			}
 		}
 	};
 
