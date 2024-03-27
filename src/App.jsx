@@ -13,6 +13,7 @@ import { setsrvcs } from "./store/servicesSlc";
 import authService from "./appwrite/authservices";
 import Preloader from "./components/Preloader";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { HelmetProvider } from "react-helmet-async";
 
 const App = () => {
 	const navigate = useNavigate();
@@ -110,9 +111,11 @@ const App = () => {
 	) : (
 		<>
 			<SpeedInsights />
-			<Header />
-			<Outlet />
-			<Footer />
+			<HelmetProvider>
+				<Header />
+				<Outlet />
+				<Footer />
+			</HelmetProvider>
 		</>
 	);
 };
