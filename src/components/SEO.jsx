@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import dbService from "../appwrite/dbservices";
 export default function SEO({ title, description, name, type, ogimage, image1 }) {
 
 	const htmlToPlainText = (html) => {
@@ -13,7 +14,7 @@ export default function SEO({ title, description, name, type, ogimage, image1 })
 			<title>{title}</title>
 			<meta property="og:title" content={title} />
 			<meta property="og:type" content='website' />
-			<meta property="og:image" itemprop="image" content={ogimage || image1} />
+			<meta property="og:image" itemprop="image" content={ogimage || dbService.previewFile(image1)} />
 			<meta name="description" content={htmlToPlainText(description)} />
 			<meta property="og:description" content={htmlToPlainText(description)} />
 			{/* <meta name="twitter:creator" content={name} />
