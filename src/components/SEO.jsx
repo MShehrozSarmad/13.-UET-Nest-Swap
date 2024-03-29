@@ -1,23 +1,25 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-export default function SEO({ title, description, name, type }) {
+export default function SEO({ title, description, name, type, ogimage, image1 }) {
+
+	const htmlToPlainText = (html) => {
+		var parser = new DOMParser();
+		var dom = parser.parseFromString(html, 'text/html');
+		return dom.body.textContent || "";
+	}
+
 	return (
 		<Helmet>
-			{/* Standard metadata tags */}
 			<title>{title}</title>
-			<meta name="description" content={description} />
-			{/* End standard metadata tags */}
-			{/* Facebook tags */}
-			<meta property="og:type" content={type} />
 			<meta property="og:title" content={title} />
-			<meta property="og:description" content={description} />
-			{/* End Facebook tags */}
-			{/* Twitter tags */}
-			<meta name="twitter:creator" content={name} />
+			<meta property="og:type" content='website' />
+			<meta property="og:image" itemprop="image" content={ogimage || image1} />
+			<meta name="description" content={htmlToPlainText(description)} />
+			<meta property="og:description" content={htmlToPlainText(description)} />
+			{/* <meta name="twitter:creator" content={name} />
 			<meta name="twitter:card" content={type} />
 			<meta name="twitter:title" content={title} />
-			<meta name="twitter:description" content={description} />
-			{/* End Twitter tags */}
+			<meta name="twitter:description" content={description} /> */}
 		</Helmet>
 	);
 }

@@ -17,6 +17,7 @@ import deletesvg from "../assets/delete.svg";
 import editsvg from "../assets/edit.svg";
 import sharesvg from "../assets/share.svg";
 import shieldsvg from "../assets/shield.svg";
+import SEO from "../components/SEO";
 
 const DormDeal = () => {
 	const dispatch = useDispatch();
@@ -77,6 +78,7 @@ const DormDeal = () => {
 		</div>
 	) : (
 		<>
+			<SEO {...deal} />
 			<div className="w-full bg-[#002233] py-14">
 				<div className=" [&>*]:border4 [&>*]:lg:bg-red400 bg-gradient-to-r from-[#0079b8] to-[#023179] [&>*]:border-blue-500 border[1px] border-gray-400 grid lg:grid-flow-col w-[95%] max-w-5xl mx-auto p-2 rounded-lg shadow-xl grid-cols-1 lg:grid-cols-2">
 					<div className=" my-auto px-2 py-4 md:p-4">
@@ -118,9 +120,8 @@ const DormDeal = () => {
 										<img src={editsvg} alt="edit" />
 									</Link>
 									<button
-										className={` focus:outline-none  ${
-											btnStat ? " blur-sm" : "blur-0"
-										}`}
+										className={` focus:outline-none  ${btnStat ? " blur-sm" : "blur-0"
+											}`}
 										onClick={() => {
 											setbtnStat(true);
 											deleteDeal();
@@ -161,11 +162,10 @@ const DormDeal = () => {
 							<div className="flex gap-2">
 								<img src={shieldsvg} alt="condition" />
 								<span
-									className={`  ${
-										deal.condition < 5
+									className={`  ${deal.condition < 5
 											? "text-red-500"
 											: "text-white"
-									} `}
+										} `}
 								>
 									{deal.condition}
 								</span>
@@ -174,11 +174,10 @@ const DormDeal = () => {
 							<div className="flex gap-2">
 								<img src={statussvg} alt="availability" />
 								<span
-									className={`${
-										deal.status === "sold"
+									className={`${deal.status === "sold"
 											? "text-red-500"
 											: "text-green-500"
-									}`}
+										}`}
 								>
 									{deal.status}
 								</span>
