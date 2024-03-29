@@ -7,6 +7,8 @@ import rentalsvg from "../rental.svg";
 import servicesvg from "../service.svg";
 import dormpng from "../dorm.png";
 import LinkCard from "../components/LinkCard";
+import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
@@ -59,6 +61,7 @@ const Home = () => {
 
 	return (
 		<>
+			<SEO title={'Home - UET Nest Swap'} descHome={"UET Nest Swap is the go-to platform for UET Taxila students to buy, sell, rent items, and post services, all within the campus community."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
 			<div className="m-auto border4 border-red-500">
 				<HeroSec />
 				<div className="bg-[#002233]">
