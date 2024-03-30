@@ -11,7 +11,7 @@ export default function SEO({ title, descHome, description, name, type, ogimage,
 
 	return (
 		<Helmet>
-			<title>{title}</title>
+			{/* <title>{title}</title> */}
 			<meta property="og:title" content={title} />
 			<meta property="og:image" itemprop="image" content={ogimage || dbService.previewFile(image1)} />
 			<meta name="description" content={htmlToPlainText(description) || descHome} />
