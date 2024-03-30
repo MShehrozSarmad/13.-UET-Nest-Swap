@@ -61,7 +61,7 @@ const Home = () => {
 
 	return (
 		<>
-			<SEO title={'Home - UET Nest Swap'} descHome={"UET Nest Swap is the go-to platform for UET Taxila students to buy, sell, rent items, and post services, all within the campus community."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
+			<SEO title={'UET Nest Swap'} descHome={"UET Nest Swap is the go-to platform for UET Taxila students to buy, sell, rent items, and post services, all within the campus community."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
 			<div className="m-auto border4 border-red-500">
 				<HeroSec />
 				<div className="bg-[#002233]">
