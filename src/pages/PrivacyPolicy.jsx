@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
 			<p className="mb-4">
 				This Privacy Policy describes how UET Nest Swap ("we", "us", or
 				"our") collects, uses, and discloses your personal information
-				when you use our platform (the "Platform").
+				when you use our platform (UET Nest Swap).
 			</p>
 			<h2 className="text-2xl font-semibold">Information We Collect</h2>
 			<ul className="list-disc ml-8 mb-4">

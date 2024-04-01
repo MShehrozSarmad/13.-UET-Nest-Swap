@@ -41,27 +41,27 @@ const Home = () => {
 	useEffect(() => {
 		if (dorms.length > 0) {
 			setDormDeals(selectRandomItems(dorms));
-			console.log("dorms", dormDeals);
+			// console.log("dorms", dormDeals);
 		}
 	}, [dorms]);
 
 	useEffect(() => {
 		if (rentals.length > 0) {
 			setRntls(selectRandomItems(rentals));
-			console.log("rentals", rntls);
+			// console.log("rentals", rntls);
 		}
 	}, [rentals]);
 
 	useEffect(() => {
 		if (services.length > 0) {
 			setsrvcs(selectRandomItems(services));
-			console.log("services", services);
+			// console.log("services", services);
 		}
 	}, [services]);
 
 	return (
 		<>
-			<SEO title={'UET Nest Swap'} descHome={"UET Nest Swap is the go-to platform for UET Taxila students to buy, sell, rent items, and post services, all within the campus community."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
+			<SEO title={'UET Nest Swap'} desc={"UET Nest Swap is the go-to platform for UET Taxila students to buy, sell, rent items, and post services, all within the campus community."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
 			<div className="m-auto border4 border-red-500">
 				<HeroSec />
 				<div className="bg-[#002233]">

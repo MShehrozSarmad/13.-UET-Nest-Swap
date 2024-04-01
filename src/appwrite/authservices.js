@@ -32,10 +32,10 @@ export class AuthService {
 
     async createVerification(){
         try {
-            console.log(this.account)
+            // console.log(this.account)
             // const link = await this.account.createVerification('http://localhost:5173/verify');
             const link = await this.account.createVerification('https://www.uetnestswap.live/verify');
-            console.log('email sent', link)
+            // console.log('email sent', link)
             return link;
         } catch (error) {
             throw error
@@ -56,7 +56,7 @@ export class AuthService {
     async verifyAccount(id, secret){
         try {
             const verify = await this.account.updateVerification(id, secret);
-            console.log(verify);
+            // console.log(verify);
         } catch (error) {
             throw error;
         }

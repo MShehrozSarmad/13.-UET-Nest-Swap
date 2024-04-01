@@ -55,7 +55,7 @@ const Serviceform = ({ post }) => {
 
 	const getcurrent = async () => {
 		const data = await authService.getCurrentUser();
-		console.log(data);
+		// console.log(data);
 		return data;
 	};
 
@@ -68,10 +68,10 @@ const Serviceform = ({ post }) => {
 	};
 
 	const submit = async (data) => {
-		console.log("triggered");
+		// console.log("triggered");
 		setbtnStat(true);
 
-		console.log(data);
+		// console.log(data);
 
 		if (data.description.trim() === "") {
 			toast.warning("Description cant be empty!");
@@ -91,7 +91,7 @@ const Serviceform = ({ post }) => {
 				dispatch(setsrvcflg());
 				navigate(`/service/${post.$id}`);
 			} catch (error) {
-				console.log(error);
+				// console.log(error);
 				toast.error(error.response.message);
 				setbtnStat(false);
 			}
@@ -114,7 +114,7 @@ const Serviceform = ({ post }) => {
 						dispatch(setsrvcflg());
 						navigate("/services");
 					} catch (error) {
-						console.log({ error });
+						// console.log({ error });
 						toast.error(
 							error.type == "document_already_exists"
 								? "Use different slug"
@@ -124,7 +124,7 @@ const Serviceform = ({ post }) => {
 					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
-					console.log("file is not uploaded");
+					// console.log("file is not uploaded");
 					toast.error("Failed to upload Images, Try Again");
 					setbtnStat(false);
 				}
@@ -133,7 +133,7 @@ const Serviceform = ({ post }) => {
 				setbtnStat(false);
 			}
 		}
-		console.log("exiting submit");
+		// console.log("exiting submit");
 	};
 
 	const slugTransform = useCallback((value) => {

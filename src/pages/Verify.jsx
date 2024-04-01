@@ -12,7 +12,7 @@ const Verify = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [params] = useSearchParams();
-	console.log(params);
+	// console.log(params);
 	const secret = params.get("secret");
 	const id = params.get("userId");
 	// console.log(secret);
@@ -35,7 +35,7 @@ const Verify = () => {
 
 	useEffect(() => {
 		if (usrData && usrData.emailVerification) {
-			console.log("useeffect user data ", usrData);
+			// console.log("useeffect user data ", usrData);
 			// toast.success("Acoount Verified", { autoClose: 3000 });
 			dispatch(rdxlogin(usrData));
 			navigate("/userprofile");
@@ -43,7 +43,7 @@ const Verify = () => {
 	}, [usrData]);
 
 	useEffect(() => {
-		console.log(params);
+		// console.log(params);
 		if (params.size > 0) {
 			verifyAccnt();
 		}

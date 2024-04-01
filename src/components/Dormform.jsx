@@ -48,7 +48,7 @@ const Dormform = ({ post }) => {
 
 	const getcurrent = async () => {
 		const data = await authService.getCurrentUser();
-		console.log(data);
+		// console.log(data);
 		return data;
 	};
 
@@ -61,9 +61,9 @@ const Dormform = ({ post }) => {
 	};
 
 	const submit = async (data) => {
-		console.log("triggered");
+		// console.log("triggered");
 		setbtnStat(true);
-		console.log(data);
+		// console.log(data);
 
 		if (data.description.trim() === "") {
 			toast.warning("Description cant be empty!");
@@ -81,7 +81,7 @@ const Dormform = ({ post }) => {
 				dispatch(setdormflg());
 				navigate(`/dormdeal/${post.$id}`);
 			} catch (error) {
-				console.log(error);
+				// console.log(error);
 				toast.error(error.response.message);
 				setbtnStat(false);
 			}
@@ -108,7 +108,7 @@ const Dormform = ({ post }) => {
 						dispatch(setdormflg());
 						navigate("/dormdeals");
 					} catch (error) {
-						console.log({ error });
+						// console.log({ error });
 						toast.error(
 							error.type == "document_already_exists"
 								? "Use different slug"
@@ -118,7 +118,7 @@ const Dormform = ({ post }) => {
 					}
 					// dbPost ? navigate(`/dormdeal/${data.slug}`) : null;
 				} else {
-					console.log("file is not uploaded");
+					// console.log("file is not uploaded");
 					toast.error("Failed to upload Images, Try Reloading");
 					setbtnStat(false);
 				}
@@ -127,7 +127,7 @@ const Dormform = ({ post }) => {
 				setbtnStat(false);
 			}
 		}
-		console.log("exiting submit");
+		// console.log("exiting submit");
 	};
 
 	const slugTransform = useCallback((value) => {

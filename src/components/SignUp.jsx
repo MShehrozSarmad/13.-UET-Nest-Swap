@@ -40,7 +40,7 @@ const SignUp = () => {
 				navigate("/verify");
 			}
 		} catch (err) {
-			console.log("catch it => ", err.response.message);
+			// console.log("catch it => ", err.response.message);
 			seterror(err.response.message);
 			setbtnStat(false);
 		}
@@ -49,13 +49,13 @@ const SignUp = () => {
 	useEffect(() => {
 		errors.email
 			? toast.warn(errors.email.message, { autoClose: 5000 })
-			: console.log("nothing happened email");
+			: null;
 	}, [errors]);
 
 	useEffect(() => {
 		error
 			? toast.error(error, { autoClose: 5000 })
-			: console.log("nothing happened error");
+			: null;
 	}, [error]);
 
 	return (

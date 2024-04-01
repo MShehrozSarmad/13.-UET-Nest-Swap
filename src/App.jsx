@@ -83,26 +83,26 @@ const App = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log("effected dorm");
+		// console.log("effected dorm");
 		getDorms();
 	}, [dormflg]);
 	useEffect(() => {
-		console.log("effected rntl");
+		// console.log("effected rntl");
 		getRentals();
 	}, [rntlflg]);
 	useEffect(() => {
-		console.log("effected srvc");
+		// console.log("effected srvc");
 		getServices();
 	}, [srvcflg]);
 
 	useEffect(() => {
-		console.log("flag diary: ", flag1, flag2, flag3, flag4);
+		// console.log("flag diary: ", flag1, flag2, flag3, flag4);
 		if (!flag1 && !flag2 && !flag3 && !flag4) {
 			setFlag(false);
-			console.log("flag is false");
+			// console.log("flag is false");
 		} else {
 			setFlag(true);
-			console.log("flag is false");
+			// console.log("flag is false");
 		}
 	}, [flag1, flag2, flag3, flag4]);
 

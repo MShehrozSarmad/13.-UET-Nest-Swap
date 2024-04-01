@@ -16,7 +16,7 @@ const EditRental = () => {
 		} else {
 			console.log("slug not found");
 		}
-		console.log("deal", deal);
+		// console.log("deal", deal);
 	}, [slug, allPosts, deal]);
 
 	return deal ? (

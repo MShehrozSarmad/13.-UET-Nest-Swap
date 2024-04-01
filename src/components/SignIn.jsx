@@ -25,17 +25,17 @@ const SignIn = () => {
 		seterror("");
 		try {
 			const session = await authService.loginAccount(data);
-			console.log("session => ", session);
+			// console.log("session => ", session);
 			if (session) {
 				const userData = await authService.getCurrentUser();
-				console.log("user data => ", userData);
+				// console.log("user data => ", userData);
 				setUdata(userData);
 				dispatch(storeLogin(userData));
 				toast.success("Signed in successfully");
 				navigate("/");
 			}
 		} catch (err) {
-			console.log(err.message);
+			// console.log(err.message);
 			seterror(err.message);
 			setbtnStat(false);
 			// register[pass]
@@ -45,13 +45,13 @@ const SignIn = () => {
 	useEffect(() => {
 		errors.email
 			? toast.warn(errors.email.message, { autoClose: 10000 })
-			: console.log("nothing happened email");
+			: null;
 	}, [errors]);
 
 	useEffect(() => {
 		error
 			? toast.error(error, { autoClose: 5000 })
-			: console.log("nothing happened error");
+			: null
 	}, [error]);
 
 	return (
