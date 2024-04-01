@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import "../components/pagination.css";
 import Preloader from '../components/Preloader';
+import SEO from "../components/SEO";
 
 const DormDeals = () => {
 	const [deals, setDeals] = useState(null);
@@ -47,6 +48,7 @@ const DormDeals = () => {
 		<Preloader />
 	) : (
 		<>
+			<SEO title={'Dorm Deals'} desc={"Buy or Sell within UET Taxila using UET Nest Swap."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
 			<div className="w-full bg-[#002233]">
 				<div className=" m-auto w-[95%] max-w-6xl py-8">
 					<h1 className="text-white text-center font-bold text-3xl mb-8">
@@ -83,9 +85,9 @@ const DormDeals = () => {
 										<span
 											key={i}
 											className={
-												page === i + 1
-													? "pagination__selected"
-													: ""
+												`${page > 1 ? "" : "pagination__disable"}
+												${page === i + 1 ? "pagination__selected" : ""}
+												`
 											}
 											onClick={() =>
 												selectPageHandler(i + 1)
