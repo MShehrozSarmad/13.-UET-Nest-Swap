@@ -13,7 +13,9 @@ export default function SEO({ title, desc, description, ogimage, image1, image }
 		<Helmet>
 			<title>{title}</title>
 			<meta property="og:title" content={title} />
-			{/* <meta property="og:image" itemprop="image" content={ogimage || dbService.previewFile(image1 || image)} /> */}
+			<meta property="og:image" itemprop="image" content={ogimage || dbService.previewFile(image1 || image)} />
+			<meta property="og:image:width" content="800" />
+			<meta property="og:image:height" content="600" />
 			<meta property="og:description" content={desc || htmlToPlainText(description)} />
 			<meta property="og:url" content="https://www.uetnestswap.live" />
 			<meta name="description" content={desc || htmlToPlainText(description)} />
