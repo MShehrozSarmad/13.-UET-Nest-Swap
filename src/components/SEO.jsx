@@ -22,6 +22,9 @@ export default function SEO({ title, desc, description, ogimage, image1, image }
 			<meta name="twitter:card" content={type} />
 			<meta name="twitter:title" content={title} />
 			<meta name="twitter:description" content={description} /> */}
+
+			{/* <!-- <meta name="description" --> */}
+			{/* // <!-- content="UET Nest Swap is the platform for UET Taxila students to buy, sell, and rent items, post services, and find vehicle rentals within the campus community." /> --> */}
 		</Helmet>
 	);
 }
