@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import authService from "../appwrite/authservices";
 import { toast } from "react-toastify";
 import { setrntlflg } from "../store/preloadSlc";
+import Frominfo from "./Frominfo";
 
 const Rentalform = ({ post }) => {
 	const dispatch = useDispatch();
@@ -245,6 +246,8 @@ const Rentalform = ({ post }) => {
 							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("phone", { required: true })}
 						/>
+						<Frominfo/>
+
 						<Input
 							label="Image 1:"
 							type="file"
@@ -290,7 +293,7 @@ const Rentalform = ({ post }) => {
 							rules={{ required: true }}
 							render={({ field }) => (
 								<Select
-									options={["avialable", "unavailable"]}
+									options={["available", "unavailable"]}
 									label="Status: "
 									className="mb-4"
 									{...field}

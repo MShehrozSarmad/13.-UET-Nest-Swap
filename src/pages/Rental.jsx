@@ -36,7 +36,7 @@ const Rental = () => {
 	useEffect(() => {
 		if (slug && allPosts.length > 0) {
 			const myDeal = allPosts.filter((item) => item.$id == slug)[0];
-			myDeal ? setDeal(myDeal) : setresponse("Deal not found");
+			myDeal ? setDeal(myDeal) : setresponse("Ad not found!");
 		} else {
 			// console.log("Post not found");
 			setresponse("Loading...");
@@ -124,11 +124,6 @@ const Rental = () => {
 								</>
 							)}
 							<WhatsappShareButton url={shareUrl}>
-								{/* <WhatsappIcon
-									size={35}
-									round={false}
-									className="rounded-md"
-								/> */}
 								<img src={sharesvg} alt="share" />
 							</WhatsappShareButton>
 						</div>
@@ -142,7 +137,7 @@ const Rental = () => {
 						<div className="mb-4">
 							<div className="flex gap-2">
 								<img src={dollarsvg} alt="rent" />{" "}
-								<span>{deal.rent} PKR</span>
+								<span>{deal.rent}</span>
 							</div>
 							<div className="flex gap-2">
 								<img src={authorsvg} alt="author" />
@@ -157,11 +152,14 @@ const Rental = () => {
 								<img src={statussvg} alt="availability" />
 								<span
 									className={`${
-										deal.status != "available"
+										deal.status !== "available"
 											? "text-red-500"
 											: "text-green-500"
 									}`}
 								>
+									{
+										console.log(deal.status)
+									}
 									{deal.status}
 								</span>
 							</div>

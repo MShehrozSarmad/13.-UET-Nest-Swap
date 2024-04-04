@@ -34,7 +34,7 @@ const Service = () => {
 		// if (slug) {
 		if (slug && allPosts.length > 0) {
 			const myDeal = allPosts.filter((item) => item.$id == slug)[0];
-			myDeal ? setDeal(myDeal) : setresponse("Deal not found");
+			myDeal ? setDeal(myDeal) : setresponse("Ad not found!");
 		} else {
 			// console.log("Post not found");
 			setresponse("Loading...");

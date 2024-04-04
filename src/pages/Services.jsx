@@ -48,7 +48,7 @@ const Services = () => {
 		<Preloader />
 	) : (
 		<>
-			<SEO title={'Services'} desc={"Provide services within UET Taxila campus community."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
+			<SEO title={'Services'} desc={"Provide services within UET Taxila campus community."} />
 			<div className="w-full bg-[#002233]">
 				<div className=" m-auto w-[95%] max-w-6xl py-8">
 					<h1 className="text-white text-center font-bold text-3xl mb-8">

@@ -48,7 +48,7 @@ const DormDeals = () => {
 		<Preloader />
 	) : (
 		<>
-			<SEO title={'Dorm Deals'} desc={"Buy or Sell within UET Taxila using UET Nest Swap."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
+			<SEO title={'Dorm Deals'} desc={"Buy or Sell within UET Taxila using UET Nest Swap."} />
 			<div className="w-full bg-[#002233]">
 				<div className=" m-auto w-[95%] max-w-6xl py-8">
 					<h1 className="text-white text-center font-bold text-3xl mb-8">

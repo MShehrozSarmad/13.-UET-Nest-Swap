@@ -4,6 +4,7 @@ import DormCard from "../components/DormCard";
 import { Link } from "react-router-dom";
 import UserProfileCard from "../components/UserProfileCard";
 import Preloader from "../components/Preloader";
+import SEO from "../components/SEO";
 
 const UserProfile = () => {
 	const [usrData, setUsrData] = useState(null);
@@ -69,6 +70,7 @@ const UserProfile = () => {
 		<Preloader />
 	) : (
 		<>
+		<SEO title={'User Profile'} />
 			{usrData ? (
 				<UserProfileCard
 					name={usrData.name}

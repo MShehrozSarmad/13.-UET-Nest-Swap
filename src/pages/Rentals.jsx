@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import dbService from "../appwrite/dbservices";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DormCard from "../components/DormCard";
 import "../components/pagination.css";
@@ -46,7 +45,7 @@ const Rentals = () => {
 		<Preloader />
 	) : (
 		<>
-			<SEO title={'Rentals'} desc={"Rent out vehicles to your fellow students at UET Taxila students to earn side income."} ogimage={'https://www.uetnestswap.live/assets/logoo-KGXI23dv.png'} />
+			<SEO title={'Rentals'} desc={"Rent out vehicles to your fellow students at UET Taxila students to earn side income."} />
 			<div className="w-full bg-[#002233]">
 				<div className=" m-auto w-[95%] max-w-6xl py-8">
 					<h1 className="text-white text-center font-bold text-3xl mb-8">

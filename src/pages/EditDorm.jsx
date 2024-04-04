@@ -26,7 +26,7 @@ const EditDorm = () => {
 	) : (
 		<>
 			<div className=" font-semibold flex w-full h-screen justify-center items-center text-red-500">
-				<p>Dorm Deal Not Found!</p>
+				<p>Ad Not Found!</p>
 			</div>
 		</>
 	);

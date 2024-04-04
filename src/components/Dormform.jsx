@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import authService from "../appwrite/authservices";
 import { toast } from "react-toastify";
 import { setdormflg } from "../store/preloadSlc";
+import Frominfo from "./Frominfo";
 
 const Dormform = ({ post }) => {
 	const navigate = useNavigate();
@@ -225,6 +226,9 @@ const Dormform = ({ post }) => {
 							className="mb-4 border-[1px] border-gray-200 rounded-md px-2 py-1 w-full"
 							{...register("phone", { required: true })}
 						/>
+
+						<Frominfo/>
+
 						<Input
 							label="Image 1:"
 							type="file"
@@ -307,7 +311,7 @@ const Dormform = ({ post }) => {
 							rules={{ required: true }}
 							render={({ field }) => (
 								<Select
-									options={["avialable", "sold"]}
+									options={["available", "sold"]}
 									label="Status: "
 									className="mb-4"
 									{...field}
