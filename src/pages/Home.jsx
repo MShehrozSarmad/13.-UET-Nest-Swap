@@ -7,6 +7,7 @@ import rentalsvg from "../rental.svg";
 import servicesvg from "../service.svg";
 import dormpng from "../dorm.png";
 import LinkCard from "../components/LinkCard";
+import SEO from '../components/SEO';
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
@@ -59,6 +60,7 @@ const Home = () => {
 
 	return (
 		<>
+		<SEO title={'UET Nest Swap'}/>
 			<div className="m-auto border4 border-red-500">
 				<HeroSec />
 				<div className="bg-[#002233]">

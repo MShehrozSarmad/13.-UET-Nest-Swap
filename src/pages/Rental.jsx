@@ -82,18 +82,22 @@ const Rental = () => {
 						{deal ? (
 							<Carousel className="">
 								<div>
-									<img
-										src={dbService.previewFile(deal.image1)}
-										alt={deal.title}
-										className="rounded-xl w-full"
-									/>
+									<a target="_blank" className="cursor-zoom-in" href={(dbService.previewFile(deal.image1)).href}>
+										<img
+											src={dbService.previewFile(deal.image1)}
+											alt={deal.title}
+											className="rounded-xl w-full"
+										/>
+									</a>
 								</div>
 								<div>
-									<img
-										src={dbService.previewFile(deal.image2)}
-										alt={deal.title}
-										className="rounded-xl w-full"
-									/>
+									<a target="_blank" className="cursor-zoom-in" href={(dbService.previewFile(deal.image2)).href}>
+										<img
+											src={dbService.previewFile(deal.image2)}
+											alt={deal.title}
+											className="rounded-xl w-full"
+										/>
+									</a>
 								</div>
 							</Carousel>
 						) : null}
@@ -110,9 +114,8 @@ const Rental = () => {
 										<img src={editsvg} alt="edit" />
 									</Link>
 									<button
-										className={` focus:outline-none  ${
-											btnStat ? " blur-sm" : "blur-0"
-										}`}
+										className={` focus:outline-none  ${btnStat ? " blur-sm" : "blur-0"
+											}`}
 										onClick={() => {
 											setBtnStat(true);
 											deleteDeal();
@@ -151,15 +154,11 @@ const Rental = () => {
 							<div className="flex gap-2">
 								<img src={statussvg} alt="availability" />
 								<span
-									className={`${
-										deal.status !== "available"
-											? "text-red-500"
-											: "text-green-500"
-									}`}
+									className={`${deal.status !== "available"
+										? "text-red-500"
+										: "text-green-500"
+										}`}
 								>
-									{
-										console.log(deal.status)
-									}
 									{deal.status}
 								</span>
 							</div>

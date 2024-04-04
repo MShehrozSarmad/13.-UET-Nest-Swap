@@ -85,25 +85,31 @@ const DormDeal = () => {
 						{deal ? (
 							<Carousel className="">
 								<div>
-									<img
-										src={dbService.previewFile(deal.image1)}
-										alt={deal.title}
-										className="rounded-xl w-full"
-									/>
+									<a target="_blank" className="cursor-zoom-in" href={(dbService.previewFile(deal.image1)).href}>
+										<img
+											src={dbService.previewFile(deal.image1)}
+											alt={deal.title}
+											className="rounded-xl w-full"
+										/>
+									</a>
 								</div>
 								<div>
-									<img
-										src={dbService.previewFile(deal.image2)}
-										alt={deal.title}
-										className="rounded-xl w-full"
-									/>
+									<a target="_blank" className="cursor-zoom-in" href={(dbService.previewFile(deal.image2)).href}>
+										<img
+											src={dbService.previewFile(deal.image2)}
+											alt={deal.title}
+											className="rounded-xl w-full"
+										/>
+									</a>
 								</div>
 								<div>
-									<img
-										src={dbService.previewFile(deal.image3)}
-										alt={deal.title}
-										className="rounded-xl w-full"
-									/>
+									<a target="_blank" className="cursor-zoom-in" href={(dbService.previewFile(deal.image3)).href}>
+										<img
+											src={dbService.previewFile(deal.image3)}
+											alt={deal.title}
+											className="rounded-xl w-full"
+										/>
+									</a>
 								</div>
 							</Carousel>
 						) : null}
@@ -163,8 +169,8 @@ const DormDeal = () => {
 								<img src={shieldsvg} alt="condition" />
 								<span
 									className={`  ${deal.condition < 5
-											? "text-red-500"
-											: "text-white"
+										? "text-red-500"
+										: "text-white"
 										} `}
 								>
 									{deal.condition}
@@ -175,8 +181,8 @@ const DormDeal = () => {
 								<img src={statussvg} alt="availability" />
 								<span
 									className={`${deal.status === "sold"
-											? "text-red-500"
-											: "text-green-500"
+										? "text-red-500"
+										: "text-green-500"
 										}`}
 								>
 									{deal.status}
