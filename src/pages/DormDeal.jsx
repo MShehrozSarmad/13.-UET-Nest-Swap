@@ -190,7 +190,7 @@ const DormDeal = () => {
 							</div>
 						</div>
 						<div className="mb-4">
-							<span className="font-semibold">Description: </span>
+							<span className="font-bold">Description: </span>
 							<div
 								style={{
 									overflowWrap: "break-word",

@@ -149,7 +149,7 @@ const Service = () => {
 							</div>
 						</div>
 						<div className="mb-4">
-							<span className=" font-semibold">
+							<span className=" font-bold">
 								Description:{" "}
 							</span>
 							<div
