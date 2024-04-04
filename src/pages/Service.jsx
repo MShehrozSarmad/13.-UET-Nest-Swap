@@ -160,7 +160,7 @@ const Service = () => {
 							>
 								{parse(deal.description)}
 								{/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla debitis eaque sed voluptatibus doloremque earum ipsa praesentium voluptas impedit. Molestias minus illo ea a neque.</p> */}
-								{console.log(deal.description)}
+								{/* {console.log(deal.description)} */}
 							</div>
 						</div>
 						{deal.status == "available" && (

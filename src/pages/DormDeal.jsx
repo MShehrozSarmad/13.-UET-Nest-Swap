@@ -139,11 +139,6 @@ const DormDeal = () => {
 								</>
 							)}
 							<WhatsappShareButton url={shareUrl}>
-								{/* <WhatsappIcon
-									size={35}
-									round={false}
-									className="rounded-md"
-								/> */}
 								<img src={sharesvg} alt="share" />
 							</WhatsappShareButton>
 						</div>

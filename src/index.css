@@ -13,4 +13,21 @@
     font-style: normal;
 
   }
+
+  ::-webkit-scrollbar {
+    width: .4vw;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #002233;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #0066FF;
+    border-radius: 2rem;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A9C5A0;
+  }
 }
