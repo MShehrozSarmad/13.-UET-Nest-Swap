@@ -14,6 +14,14 @@ import authService from "./appwrite/authservices";
 import Preloader from "./components/Preloader";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { HelmetProvider } from "react-helmet-async";
+import ReactGA from 'react-ga4';
+
+ReactGA.initialize('G-H66C5RRN4C');
+
+ReactGA.send({
+	hitType: 'pageview',
+	page: window.location.pathname,
+})
 
 const App = () => {
 	const navigate = useNavigate();

@@ -32,7 +32,7 @@ import Help from "./pages/Help.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Feedback from "./pages/Feedback.jsx";
-import Complaint from "./pages/Complaints.jsx";
+import Complaints from "./pages/Complaints.jsx";
 
 const route = createBrowserRouter([
 	{
@@ -149,7 +149,7 @@ const route = createBrowserRouter([
 			},
 			{
 				path: "/complaint",
-				element: <Complaint />,
+				element: <Complaints />,
 			},
 			{
 				path: "/verify",
