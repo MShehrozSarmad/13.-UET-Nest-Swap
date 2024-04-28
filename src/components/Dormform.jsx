@@ -64,7 +64,7 @@ const Dormform = ({ post }) => {
 	const submit = async (data) => {
 		// console.log("triggered");
 		setbtnStat(true);
-		// console.log(data);
+		console.log(data);
 
 		if (data.description.trim() === "") {
 			toast.warning("Description cant be empty!");
@@ -74,6 +74,7 @@ const Dormform = ({ post }) => {
 
 		if (post) {
 			try {
+				data.price = parseInt(data.price);
 				const postUpdate = await dbService.updatePostDorm(post.$id, {
 					...data,
 					date: getDate(),
@@ -94,6 +95,7 @@ const Dormform = ({ post }) => {
 				const file3 = await dbService.uploadFile(data.image3[0]);
 
 				if (file1 && file2 && file3) {
+					data.price = parseInt(data.price);
 					data.image1 = file1.$id;
 					data.image2 = file2.$id;
 					data.image3 = file3.$id;
