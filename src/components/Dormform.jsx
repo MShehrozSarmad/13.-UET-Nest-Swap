@@ -11,6 +11,7 @@ import authService from "../appwrite/authservices";
 import { toast } from "react-toastify";
 import { setdormflg } from "../store/preloadSlc";
 import Frominfo from "./Frominfo";
+import AdsenseCmpnt from "./AdsenseCmpnt";
 
 const Dormform = ({ post }) => {
 	const navigate = useNavigate();
@@ -176,7 +177,8 @@ const Dormform = ({ post }) => {
 
 	return (
 		// <div className="bg-gradient-to-r from-[#00669d] to-[#023179] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
-		<div className="bg-[#023179] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
+<>
+<div className="bg-[#023179] w-[95%] max-w-5xl text-white p-6 my-6 shadow-md mx-auto rounded-md">
 			{/* <h1 className=" text-white text-center text-2xl font-semibold m-4 "> */}
 			<h1 className=" text-center text-2xl font-bold m-4 ">
 				Dorm Deal Form
@@ -342,6 +344,8 @@ const Dormform = ({ post }) => {
 				</div>
 			</form>
 		</div>
+		<AdsenseCmpnt/>
+</>
 	);
 };
 

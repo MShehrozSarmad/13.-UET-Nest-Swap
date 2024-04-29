@@ -30,18 +30,22 @@
 // export default Complaints;
 
 import React from "react";
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const Complaints = () => {
 	return (
-		<div className="w-full h-screen flex flex-col items-center justify-center text-yellow-500 gap-2 text-lg">
-			<p className="">
-				Oops! we are not currently accepting complaints, you can notify
-				us at
-			</p>
-			<p>
-				<a className="" href="mailto:shehrozm107@gmail.com">shehrozm107@gmail.com</a>
-			</p>
-		</div>
+		<>
+			<div className="w-full h-screen flex flex-col items-center justify-center text-yellow-500 gap-2 text-lg">
+				<p className="">
+					Oops! we are not currently accepting complaints, you can notify
+					us at
+				</p>
+				<p>
+					<a className="" href="mailto:shehrozm107@gmail.com">shehrozm107@gmail.com</a>
+				</p>
+			</div>
+			<AdsenseCmpnt />
+		</>
 	);
 };
 

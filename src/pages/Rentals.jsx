@@ -5,6 +5,7 @@ import DormCard from "../components/DormCard";
 import "../components/pagination.css";
 import Preloader from "../components/Preloader";
 import SEO from "../components/SEO";
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const Rentals = () => {
 	const [rentals, setRentals] = useState(null);
@@ -110,6 +111,7 @@ const Rentals = () => {
 					)}
 				</div>
 			</div>
+			<AdsenseCmpnt/>
 		</>
 	);
 };

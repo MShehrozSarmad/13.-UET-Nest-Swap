@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import UserProfileCard from "../components/UserProfileCard";
 import Preloader from "../components/Preloader";
 import SEO from "../components/SEO";
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const UserProfile = () => {
 	const [usrData, setUsrData] = useState(null);
@@ -136,6 +137,7 @@ const UserProfile = () => {
 					</div>
 				</div>
 			</div>
+			<AdsenseCmpnt/>
 		</>
 	);
 };

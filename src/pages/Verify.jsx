@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { login as rdxlogin } from "../store/authSlc";
 import { toast } from "react-toastify";
 import UserProfileCard from "../components/UserProfileCard";
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const Verify = () => {
 	const [usrData, setusrData] = useState(null);
@@ -73,6 +74,7 @@ const Verify = () => {
 				/>
 			)}
 			<br />
+			<AdsenseCmpnt />
 		</>
 	);
 };

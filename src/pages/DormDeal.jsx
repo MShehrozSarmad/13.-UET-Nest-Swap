@@ -18,6 +18,7 @@ import editsvg from "../assets/edit.svg";
 import sharesvg from "../assets/share.svg";
 import shieldsvg from "../assets/shield.svg";
 import SEO from "../components/SEO";
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const DormDeal = () => {
 	const dispatch = useDispatch();
@@ -212,6 +213,7 @@ const DormDeal = () => {
 					</div>
 				</div>
 			</div>
+			<AdsenseCmpnt/>
 		</>
 	);
 };

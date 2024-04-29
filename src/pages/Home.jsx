@@ -8,6 +8,7 @@ import servicesvg from "../service.svg";
 import dormpng from "../dorm.png";
 import LinkCard from "../components/LinkCard";
 import SEO from '../components/SEO';
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const Home = () => {
 	const [loading, setLoading] = useState(true);
@@ -147,6 +148,7 @@ const Home = () => {
 					</div>
 				</div>
 			</div>
+			<AdsenseCmpnt/>
 		</>
 	);
 };

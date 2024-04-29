@@ -16,6 +16,7 @@ import deletesvg from "../assets/delete.svg";
 import editsvg from "../assets/edit.svg";
 import sharesvg from "../assets/share.svg";
 import SEO from "../components/SEO";
+import AdsenseCmpnt from "../components/AdsenseCmpnt";
 
 const Service = () => {
 	const navigate = useNavigate();
@@ -179,6 +180,7 @@ const Service = () => {
 					</div>
 				</div>
 			</div>
+			<AdsenseCmpnt/>
 		</>
 	);
 };
