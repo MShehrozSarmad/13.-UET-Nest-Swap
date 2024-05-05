@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -42,9 +42,29 @@ const Header = () => {
 		},
 	];
 
+	const navRef = useRef(); // Create a ref for the navigation menu
+
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
+
+	useEffect(() => {
+		// Function to handle click events
+		const handleClickOutside = (event) => {
+			if (navRef.current && !navRef.current.contains(event.target)) {
+				setIsMenuOpen(false); // Close the menu if the click was outside the navigation menu
+			}
+		};
+
+		// Add the event listener when the component mounts
+		document.addEventListener('mousedown', handleClickOutside);
+
+		// Remove the event listener when the component unmounts
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []); // Empty dependency array means this effect runs once on mount and cleanup on unmount
+
 
 	return (
 		// absolute w-full mb-[50vh]
@@ -52,6 +72,7 @@ const Header = () => {
 			initial={{ height: 'auto' }}
 			animate={{ height: isMenuOpen ? "auto" : '8vh' }}
 			transition={{ duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] }}
+			ref={navRef}
 			className="border2 border-red-500"
 		>
 			<div className="header  bg[#34404F] bg-[#002233] text-white p-2">
@@ -99,20 +120,22 @@ const Header = () => {
 						// 	stiffness: 60,
 						// 	damping: 20,
 						// }}
-						className={`${
-							isMenuOpen ? "block" : "hidden"
-						} md:flex md:flex-wrap md:items-center md:ml-auto`}
+						className={`${isMenuOpen ? "block" : "hidden"
+							} md:flex md:flex-wrap md:items-center md:ml-auto`}
 					>
 						{navItems.map((item) =>
 							item.active ? (
 								item.name == "Post Ad" ? (
 									<li key={item.name}>
-										<Dropdown />
+										<Dropdown setIsMenuOpen={setIsMenuOpen}/>
 									</li>
 								) : (
 									<li key={item.name}>
 										<button
-											onClick={() => navigate(item.slug)}
+											onClick={() => {
+												navigate(item.slug)
+												setIsMenuOpen(false)
+											}}
 											className="inline-block px-6 py-2 duration-200 hover:bg-blue100 hover:text-[#A9C5A0]"
 										>
 											{item.name}
