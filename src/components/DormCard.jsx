@@ -23,8 +23,8 @@ const DormCard = ({ image1, image, $id, price, charges, rent, title }) => {
 						className=" rounded-tmd aspect-square object-cover hover:scale-125 transition duration-700 cursor-zoom-in"
 					/>
 				</div>
-				<div className=" [&>*]:px-0 md:[&>*]:px-2  flex justify-between items-center p-2 text-xs md:text-sm lg:text-base">
-					<p className="">{title}</p>
+				<div className=" [&>*]:px-0 p-2 text-xs md:text-sm lg:text-base space-y-1">
+					<p className=" w-full whitespace-nowrap overflow-hidden text-ellipsis ">{title}</p>
 					<p className="">
 						{price ||
 							rent ||
